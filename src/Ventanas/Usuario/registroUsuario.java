@@ -106,7 +106,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         Fondo.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 130, 50));
 
-        jPanel1.setBackground(new java.awt.Color(0, 149, 212));
+        jPanel1.setBackground(new java.awt.Color(0, 156, 255));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 27)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));

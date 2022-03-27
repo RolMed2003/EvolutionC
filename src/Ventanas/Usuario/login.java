@@ -41,11 +41,14 @@ public class login extends javax.swing.JInternalFrame {
 
         fondo_panel.setBackground(new java.awt.Color(52, 128, 225));
 
+        user_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         user_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 user_fieldActionPerformed(evt);
             }
         });
+
+        passTxt.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
 
         user_txt.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         user_txt.setForeground(new java.awt.Color(255, 255, 255));
@@ -64,7 +67,7 @@ public class login extends javax.swing.JInternalFrame {
             }
         });
 
-        entrar_txtButton.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        entrar_txtButton.setFont(new java.awt.Font("Trebuchet MS", 1, 22)); // NOI18N
         entrar_txtButton.setForeground(new java.awt.Color(255, 255, 255));
         entrar_txtButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         entrar_txtButton.setText("ENTRAR");
@@ -79,11 +82,11 @@ public class login extends javax.swing.JInternalFrame {
         entrar_panelButton.setLayout(entrar_panelButtonLayout);
         entrar_panelButtonLayout.setHorizontalGroup(
             entrar_panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(entrar_txtButton, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+            .addComponent(entrar_txtButton, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
         );
         entrar_panelButtonLayout.setVerticalGroup(
             entrar_panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(entrar_txtButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(entrar_txtButton, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout fondo_panelLayout = new javax.swing.GroupLayout(fondo_panel);
@@ -93,31 +96,31 @@ public class login extends javax.swing.JInternalFrame {
             .addGroup(fondo_panelLayout.createSequentialGroup()
                 .addGroup(fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondo_panelLayout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(entrar_panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(fondo_panelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(user_txt)
                             .addComponent(pass_txt)
                             .addComponent(user_field, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(fondo_panelLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(entrar_panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         fondo_panelLayout.setVerticalGroup(
             fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondo_panelLayout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(user_txt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(user_field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(user_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(pass_txt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(entrar_panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addGap(55, 55, 55))
         );
 
         Fondo.add(fondo_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 410));
