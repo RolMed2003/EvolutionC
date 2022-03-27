@@ -29,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
         agregarBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
@@ -101,6 +102,7 @@ public class Principal extends javax.swing.JFrame {
                 login X = new login();
                 Desktop.add(X);
                 X.setVisible(true);
+                
                 
             }
         });
