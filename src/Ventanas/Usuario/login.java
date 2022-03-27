@@ -12,6 +12,7 @@ public class login extends javax.swing.JInternalFrame {
         PlaceHolder p = new PlaceHolder("Ingrese su contraseña", passTxt);
 
         setSize(406, 534);
+        setLocation(437, 0);
 
     }
 

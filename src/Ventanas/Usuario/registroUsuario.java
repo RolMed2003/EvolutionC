@@ -8,9 +8,13 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         initComponents();
 
+        PlaceHolder u2 = new PlaceHolder("Ingrese un usuario", userTxt);
+        PlaceHolder pass2 = new PlaceHolder("Ingrese una contraseña", contra_txt);
+        
+        
         //Modelando la ventana 
-        setSize(720, 480);
-        setLocation(280, 90);
+        setSize(517, 557);
+        setLocation(380,0);
         setTitle("Registro de usuario");
         
 
@@ -21,33 +25,62 @@ public class registroUsuario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
+        regist_img = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         userTxt = new javax.swing.JTextField();
-        contraTxt = new javax.swing.JTextField();
+        contra_txt = new javax.swing.JPasswordField();
         rolCmb = new javax.swing.JComboBox();
         registrarBtn = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Registrar usuario");
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        regist_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/agregar-usuario (1).png"))); // NOI18N
+        Fondo.add(regist_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         jLabel1.setText("Nombre de usuario:");
+        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         jLabel2.setText("Contraseña:");
+        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         jLabel3.setText("Rol:");
+        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
 
+        userTxt.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        userTxt.setBorder(null);
+        userTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userTxtActionPerformed(evt);
+            }
+        });
+        Fondo.add(userTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 180, 28));
+
+        contra_txt.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        contra_txt.setBorder(null);
+        Fondo.add(contra_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 180, 30));
+
+        rolCmb.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         rolCmb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Contador", "Aux.Nomina", "Empleado" }));
+        Fondo.add(rolCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 122, 34));
 
-        registrarBtn.setBackground(new java.awt.Color(0, 51, 204));
+        registrarBtn.setBackground(new java.awt.Color(0, 149, 212));
+        registrarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarBtn.setPreferredSize(new java.awt.Dimension(105, 35));
         registrarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -55,21 +88,28 @@ public class registroUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Registrar");
+        jLabel4.setText("REGISTRAR");
 
         javax.swing.GroupLayout registrarBtnLayout = new javax.swing.GroupLayout(registrarBtn);
         registrarBtn.setLayout(registrarBtnLayout);
         registrarBtnLayout.setHorizontalGroup(
             registrarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         );
         registrarBtnLayout.setVerticalGroup(
             registrarBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        Fondo.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 130, 50));
+
+        jPanel1.setBackground(new java.awt.Color(0, 149, 212));
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 27)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("REGISTRO DE USUARIO ");
 
@@ -79,74 +119,35 @@ public class registroUsuario extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel5)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
-        Fondo.setLayout(FondoLayout);
-        FondoLayout.setHorizontalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
-                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(49, 49, 49)))
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
-                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(contraTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(rolCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(200, 200, 200))
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(registrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(304, Short.MAX_VALUE))))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        FondoLayout.setVerticalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169)
-                .addComponent(userTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addComponent(contraTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(rolCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(registrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 500, 90));
+        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 180, 10));
+        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 180, 10));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/user_registro.png"))); // NOI18N
+        Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/pass.png"))); // NOI18N
+        Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
 
         pack();
@@ -154,20 +155,29 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
     private void registrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseClicked
         
-        System.out.println("Hola");
+        
         
     }//GEN-LAST:event_registrarBtnMouseClicked
+
+    private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
-    private javax.swing.JTextField contraTxt;
+    private javax.swing.JPasswordField contra_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel regist_img;
     private javax.swing.JPanel registrarBtn;
     private javax.swing.JComboBox rolCmb;
     private javax.swing.JTextField userTxt;
