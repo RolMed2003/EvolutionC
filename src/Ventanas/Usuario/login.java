@@ -1,12 +1,8 @@
 package Ventanas.Usuario;
 
-import Clases.Apoyo.Conexion;
+
 import Clases.Apoyo.PlaceHolder;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+
 
 public class login extends javax.swing.JInternalFrame {
 
