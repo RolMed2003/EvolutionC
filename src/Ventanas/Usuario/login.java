@@ -65,6 +65,7 @@ public class login extends javax.swing.JInternalFrame {
 
         entrar_panelButton.setBackground(new java.awt.Color(0, 149, 212));
         entrar_panelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        entrar_panelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         entrar_panelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrar_panelButtonMouseClicked(evt);
