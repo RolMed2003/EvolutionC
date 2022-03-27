@@ -14,7 +14,7 @@ public class Principal extends javax.swing.JFrame {
         
         
         //Modelando ventana
-        setSize(1280, 700);
+        setSize(1280, 730);
         setTitle(" -  Principal");
         setLocationRelativeTo(null);
                 
