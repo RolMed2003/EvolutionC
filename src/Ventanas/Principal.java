@@ -2,6 +2,7 @@ package Ventanas;
 
 import Ventanas.Usuario.login;
 import Ventanas.Usuario.registroUsuario;
+import Ventana.Empleado.Agregar_Empleado;
 import java.awt.Desktop;
 
 public class Principal extends javax.swing.JFrame {
@@ -65,6 +66,11 @@ public class Principal extends javax.swing.JFrame {
 
         gestionar_Usuario_Btn.setSelected(true);
         gestionar_Usuario_Btn.setText("Gestionar");
+        gestionar_Usuario_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionar_Usuario_BtnActionPerformed(evt);
+            }
+        });
         Usuario_Menu.add(gestionar_Usuario_Btn);
 
         jMenuBar1.add(Usuario_Menu);
@@ -120,12 +126,21 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_agregar_Usuario_BtnActionPerformed
 
     private void agregar_Empelado_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_Empelado_BtnActionPerformed
-        // TODO add your handling code here:
+        
+    // Haciendo visible la ventana de agregar Empleados
+    Agregar_Empleado c = new Agregar_Empleado();
+    Desktop.add(c);
+    c.setVisible(true);
+    
     }//GEN-LAST:event_agregar_Empelado_BtnActionPerformed
 
     private void SalarioBase_Nomina_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalarioBase_Nomina_BtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalarioBase_Nomina_BtnActionPerformed
+
+    private void gestionar_Usuario_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionar_Usuario_BtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionar_Usuario_BtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
