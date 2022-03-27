@@ -156,11 +156,11 @@ public class login extends javax.swing.JInternalFrame {
         pass = passTxt.getText().trim();
         
         //Validaciones
-        if(user.equals("")){
+        
             
-            System.out.println("hola");
+            System.out.println(user);
             
-        }
+        
         
         
         /*
