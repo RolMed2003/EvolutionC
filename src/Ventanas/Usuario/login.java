@@ -1,6 +1,7 @@
 package Ventanas.Usuario;
 
 import Clases.Apoyo.PlaceHolder;
+import java.awt.Color;
 
 public class login extends javax.swing.JInternalFrame {
 
@@ -144,12 +145,22 @@ public class login extends javax.swing.JInternalFrame {
 
     private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
 
+        //Reset warnings
+        user_field.setBackground(Color.white);
+        
         //Variables
         int Val = 0;
         String user, pass, access;
         
         user = user_field.getText().trim();
         pass = passTxt.getText().trim();
+        
+        //Validaciones
+        if(user.equals("")){
+            
+            System.out.println("hola");
+            
+        }
         
         
         /*
