@@ -1,6 +1,8 @@
 package Ventanas;
 
+import Ventanas.Usuario.login;
 import Ventanas.Usuario.registroUsuario;
+import java.awt.Desktop;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -96,14 +98,16 @@ public class Principal extends javax.swing.JFrame {
                 
                 new Principal().setVisible(true);
                 
-                
+                login X = new login();
+                Desktop.add(X);
+                X.setVisible(true);
                 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Desktop;
+    public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem agregarBtn;
     private javax.swing.JMenu archivoMenu;
     private javax.swing.JMenuBar jMenuBar1;
