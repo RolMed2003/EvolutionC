@@ -1,19 +1,15 @@
 package Ventanas.Usuario;
 
-
 import Clases.Apoyo.PlaceHolder;
-
 
 public class login extends javax.swing.JInternalFrame {
 
-    
-    
     public login() {
 
         initComponents();
-         PlaceHolder u = new PlaceHolder("Ingrese su usuario", user_field);
-         PlaceHolder p = new PlaceHolder("Ingrese su contraseña", pass_field);
-         
+        PlaceHolder u = new PlaceHolder("Ingrese su usuario", user_field);
+        PlaceHolder p = new PlaceHolder("Ingrese su contraseña", passTxt);
+
         setSize(406, 534);
 
     }
@@ -26,7 +22,7 @@ public class login extends javax.swing.JInternalFrame {
         login_img = new javax.swing.JLabel();
         fondo_panel = new javax.swing.JPanel();
         user_field = new javax.swing.JTextField();
-        pass_field = new javax.swing.JTextField();
+        passTxt = new javax.swing.JPasswordField();
         user_txt = new javax.swing.JLabel();
         pass_txt = new javax.swing.JLabel();
         entrar_panelButton = new javax.swing.JPanel();
@@ -46,12 +42,6 @@ public class login extends javax.swing.JInternalFrame {
         user_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 user_fieldActionPerformed(evt);
-            }
-        });
-
-        pass_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pass_fieldActionPerformed(evt);
             }
         });
 
@@ -108,23 +98,22 @@ public class login extends javax.swing.JInternalFrame {
                         .addGroup(fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(user_txt)
                             .addComponent(pass_txt)
-                            .addGroup(fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(pass_field, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(user_field, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(user_field, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         fondo_panelLayout.setVerticalGroup(
             fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondo_panelLayout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(user_txt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(user_field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(pass_txt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pass_field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(entrar_panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
@@ -150,52 +139,50 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_entrar_txtButtonMouseClicked
 
     private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
-       
+
     }//GEN-LAST:event_user_fieldActionPerformed
 
-    private void pass_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_fieldActionPerformed
-        
-    }//GEN-LAST:event_pass_fieldActionPerformed
-
     private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
-         int Val = 0;
-        if (user_field.getText().equals("")) {
-            Val++;
-        }
-        if (pass_field.getText().equals("")) {
-            Val++;
-        }
+
+        //Variables
+        int Val = 0;
+        String user, pass, access;
+        
+        user = user_field.getText().trim();
+        pass = passTxt.getText().trim();
+        
+        
         /*
-        if(Val==0){
-            try {
+         if(Val==0){
+         try {
             
-            Connection cn = Conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement(
+         Connection cn = Conexion.conectar();
+         PreparedStatement pst = cn.prepareStatement(
             
-                   // "select Usuario, Contraseña from Register where Usuario = '"+txt_usuario.getText().trim()+"'"
-                    //+" and Contraseña = '"+txt_pass_oculto.getText().trim()+"'"        );
+         // "select Usuario, Contraseña from Register where Usuario = '"+txt_usuario.getText().trim()+"'"
+         //+" and Contraseña = '"+txt_pass_oculto.getText().trim()+"'"        );
             
-            //ResultSet rs = pst.executeQuery();
+         //ResultSet rs = pst.executeQuery();
            
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Sesión iniciada.");
+         if (rs.next()) {
+         JOptionPane.showMessageDialog(null, "Sesión iniciada.");
                 
                 
-            } else {
-                JOptionPane.showMessageDialog(null, "Datos erroneos.");
-            }
+         } else {
+         JOptionPane.showMessageDialog(null, "Datos erroneos.");
+         }
             
                     
             
-        } catch (SQLException e) {
-            System.err.println("Error al iniciar sesión."+e);
-        }
+         } catch (SQLException e) {
+         System.err.println("Error al iniciar sesión."+e);
+         }
             
             
-        }else{
-            JOptionPane.showMessageDialog(null, "Existen campos vacios.");
-        }
-       */
+         }else{
+         JOptionPane.showMessageDialog(null, "Existen campos vacios.");
+         }
+         */
     }//GEN-LAST:event_entrar_panelButtonMouseClicked
 
 
@@ -205,7 +192,7 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JLabel entrar_txtButton;
     private javax.swing.JPanel fondo_panel;
     private javax.swing.JLabel login_img;
-    private javax.swing.JTextField pass_field;
+    private javax.swing.JPasswordField passTxt;
     private javax.swing.JLabel pass_txt;
     private javax.swing.JTextField user_field;
     private javax.swing.JLabel user_txt;
