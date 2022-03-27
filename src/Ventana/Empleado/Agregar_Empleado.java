@@ -149,7 +149,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        Fondo.add(registrar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 100, 40));
+        Fondo.add(registrar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,7 +159,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
         );
 
         pack();
