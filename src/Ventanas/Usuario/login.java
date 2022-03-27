@@ -141,14 +141,6 @@ public class login extends javax.swing.JInternalFrame {
 
     private void entrar_txtButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_txtButtonMouseClicked
 
-    }//GEN-LAST:event_entrar_txtButtonMouseClicked
-
-    private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
-
-    }//GEN-LAST:event_user_fieldActionPerformed
-
-    private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
-
         //Reset warnings
         user_field.setBackground(Color.white);
         
@@ -160,9 +152,24 @@ public class login extends javax.swing.JInternalFrame {
         pass = passTxt.getText().trim();
         
         //Validaciones
-        
+        if(user.equals("")){
             
-            System.out.println(user);
+            Val++;
+            user_field.setBackground(new Color(224, 186, 51));
+            
+        }
+        
+    }//GEN-LAST:event_entrar_txtButtonMouseClicked
+
+    private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
+
+    }//GEN-LAST:event_user_fieldActionPerformed
+
+    private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
+        
+        
+        
+        
             
         
         
