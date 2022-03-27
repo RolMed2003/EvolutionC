@@ -1,6 +1,7 @@
 package Ventanas.Usuario;
 
 import Clases.Apoyo.Conexion;
+import Clases.Apoyo.PlaceHolder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,10 +10,13 @@ import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
 
+    
+    
     public login() {
 
         initComponents();
-
+        
+        
         setSize(406, 530);
 
     }
@@ -41,6 +45,18 @@ public class login extends javax.swing.JInternalFrame {
         Fondo.add(login_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, -1));
 
         fondo_panel.setBackground(new java.awt.Color(52, 128, 225));
+
+        user_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                user_fieldActionPerformed(evt);
+            }
+        });
+
+        pass_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pass_fieldActionPerformed(evt);
+            }
+        });
 
         user_txt.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         user_txt.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,6 +182,14 @@ public class login extends javax.swing.JInternalFrame {
        */
         
     }//GEN-LAST:event_entrar_txtButtonMouseClicked
+
+    private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
+        PlaceHolder u = new PlaceHolder("Ingrese su usuario", user_field);
+    }//GEN-LAST:event_user_fieldActionPerformed
+
+    private void pass_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_fieldActionPerformed
+        PlaceHolder p = new PlaceHolder("Ingrese su contraseña", pass_field);
+    }//GEN-LAST:event_pass_fieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

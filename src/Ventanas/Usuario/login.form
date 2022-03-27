@@ -113,8 +113,14 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="user_field">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="user_fieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="pass_field">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pass_fieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="user_txt">
               <Properties>

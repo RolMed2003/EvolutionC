@@ -8,6 +8,8 @@ public class Principal extends javax.swing.JFrame {
         
         initComponents();
         
+        
+        
         //Modelando ventana
         setSize(1280, 700);
         setTitle(" -  Principal");
