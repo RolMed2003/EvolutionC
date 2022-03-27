@@ -48,7 +48,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         regist_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/agregar-usuario (1).png"))); // NOI18N
-        Fondo.add(regist_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        Fondo.add(regist_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 130, 130));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         jLabel1.setText("Nombre de usuario:");
@@ -80,7 +80,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         Fondo.add(rolCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 122, 34));
 
         registrarBtn.setBackground(new java.awt.Color(0, 149, 212));
-        registrarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registrarBtn.setPreferredSize(new java.awt.Dimension(105, 35));
         registrarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
