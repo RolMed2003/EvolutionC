@@ -56,6 +56,8 @@ public class Principal extends javax.swing.JFrame {
 
         Usuario_Menu.setText("Usuario");
 
+        agregar_Usuario_Btn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        agregar_Usuario_Btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu/icons/add_menuicon.png"))); // NOI18N
         agregar_Usuario_Btn.setText("Agregar");
         agregar_Usuario_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

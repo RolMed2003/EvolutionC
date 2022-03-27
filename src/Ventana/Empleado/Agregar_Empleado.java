@@ -44,7 +44,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/cv.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Empleados/Icon/cv.png"))); // NOI18N
         Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, 140));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
