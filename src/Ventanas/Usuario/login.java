@@ -42,7 +42,7 @@ public class login extends javax.swing.JInternalFrame {
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         login_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/user (1).png"))); // NOI18N
-        Fondo.add(login_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, -1));
+        Fondo.add(login_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         fondo_panel.setBackground(new java.awt.Color(52, 128, 225));
 
@@ -73,6 +73,7 @@ public class login extends javax.swing.JInternalFrame {
         entrar_txtButton.setForeground(new java.awt.Color(255, 255, 255));
         entrar_txtButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         entrar_txtButton.setText("ENTRAR");
+        entrar_txtButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         entrar_txtButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrar_txtButtonMouseClicked(evt);
