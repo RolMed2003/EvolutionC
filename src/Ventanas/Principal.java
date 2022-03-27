@@ -14,7 +14,7 @@ public class Principal extends javax.swing.JFrame {
         
         
         //Modelando ventana
-        setSize(1280, 700);
+        setSize(1280, 745);
         setTitle(" -  Principal");
         setLocationRelativeTo(null);
                 
@@ -49,10 +49,10 @@ public class Principal extends javax.swing.JFrame {
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGap(0, 745, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 680));
+        getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
         Usuario_Menu.setText("Usuario");
 
