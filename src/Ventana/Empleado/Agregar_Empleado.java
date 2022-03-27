@@ -79,56 +79,57 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31))
         );
 
-        Fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 490, 110));
+        Fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 490, 110));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel3.setText("Nombre del Empleado");
-        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         Nombre_Empleado_txt.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        Nombre_Empleado_txt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nombre_Empleado_txt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         Nombre_Empleado_txt.setBorder(null);
-        Fondo.add(Nombre_Empleado_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 351, -1));
+        Fondo.add(Nombre_Empleado_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 351, 30));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel4.setText("DNI");
-        Fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        Fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         DNI_txt.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        DNI_txt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DNI_txt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         DNI_txt.setBorder(null);
-        Fondo.add(DNI_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 197, -1));
+        Fondo.add(DNI_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 197, 30));
 
         Edad_txt.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        Edad_txt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Edad_txt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         Edad_txt.setBorder(null);
-        Fondo.add(Edad_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 50, -1));
+        Fondo.add(Edad_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 50, 30));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel5.setText("Edad");
-        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel6.setText("Usuario");
-        Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         Usuario_txt.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        Usuario_txt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Usuario_txt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         Usuario_txt.setBorder(null);
-        Fondo.add(Usuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 180, -1));
+        Fondo.add(Usuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 180, 30));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel7.setText("Contraseña");
-        Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+        Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
 
         jPasswordField1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jPasswordField1.setBorder(null);
-        Fondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 183, 30));
-        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 180, 10));
-        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 350, 10));
-        Fondo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 190, 10));
-        Fondo.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 50, 10));
-        Fondo.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 180, 10));
+        Fondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 183, 30));
+        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 180, 10));
+        Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 350, 10));
+        Fondo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 190, 10));
+        Fondo.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 50, 10));
+        Fondo.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, 10));
 
         registrar_panel.setBackground(new java.awt.Color(255, 102, 102));
         registrar_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,7 +150,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        Fondo.add(registrar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 600, 100, 40));
+        Fondo.add(registrar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
