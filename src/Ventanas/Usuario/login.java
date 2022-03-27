@@ -30,7 +30,6 @@ public class login extends javax.swing.JInternalFrame {
         entrar_panelButton = new javax.swing.JPanel();
         entrar_txtButton = new javax.swing.JLabel();
 
-        setClosable(true);
         setTitle("Login");
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
