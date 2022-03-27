@@ -6,6 +6,8 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         initComponents();
 
+        setSize(720, 480);
+        setLocation(280, 90);
         
 
     }
@@ -18,11 +20,11 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGap(0, 704, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
         pack();

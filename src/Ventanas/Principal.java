@@ -1,5 +1,7 @@
 package Ventanas;
 
+import Ventanas.Usuario.registroUsuario;
+
 public class Principal extends javax.swing.JFrame {
 
     public Principal() {
@@ -20,6 +22,7 @@ public class Principal extends javax.swing.JFrame {
         Desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         archivoMenu = new javax.swing.JMenu();
+        agregarBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -37,13 +40,31 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 680));
 
-        archivoMenu.setText("Archivo");
+        archivoMenu.setText("Usuario");
+
+        agregarBtn.setText("Agregar");
+        agregarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarBtnActionPerformed(evt);
+            }
+        });
+        archivoMenu.add(agregarBtn);
+
         jMenuBar1.add(archivoMenu);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
+        
+        //Haciendo visible la ventana de registro
+        registroUsuario X = new registroUsuario();
+        Desktop.add(X);
+        X.setVisible(true);
+        
+    }//GEN-LAST:event_agregarBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -81,6 +102,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Desktop;
+    private javax.swing.JMenuItem agregarBtn;
     private javax.swing.JMenu archivoMenu;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
