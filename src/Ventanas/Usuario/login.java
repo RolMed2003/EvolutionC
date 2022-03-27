@@ -29,7 +29,7 @@ public class login extends javax.swing.JInternalFrame {
         pass_field = new javax.swing.JTextField();
         user_txt = new javax.swing.JLabel();
         pass_txt = new javax.swing.JLabel();
-        entrar_panel = new javax.swing.JPanel();
+        entrar_panelButton = new javax.swing.JPanel();
         entrar_txtButton = new javax.swing.JLabel();
 
         setClosable(true);
@@ -63,8 +63,13 @@ public class login extends javax.swing.JInternalFrame {
         pass_txt.setForeground(new java.awt.Color(255, 255, 255));
         pass_txt.setText("PASSWORD");
 
-        entrar_panel.setBackground(new java.awt.Color(0, 149, 212));
-        entrar_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        entrar_panelButton.setBackground(new java.awt.Color(0, 149, 212));
+        entrar_panelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        entrar_panelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                entrar_panelButtonMouseClicked(evt);
+            }
+        });
 
         entrar_txtButton.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         entrar_txtButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,14 +82,14 @@ public class login extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout entrar_panelLayout = new javax.swing.GroupLayout(entrar_panel);
-        entrar_panel.setLayout(entrar_panelLayout);
-        entrar_panelLayout.setHorizontalGroup(
-            entrar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout entrar_panelButtonLayout = new javax.swing.GroupLayout(entrar_panelButton);
+        entrar_panelButton.setLayout(entrar_panelButtonLayout);
+        entrar_panelButtonLayout.setHorizontalGroup(
+            entrar_panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(entrar_txtButton, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
         );
-        entrar_panelLayout.setVerticalGroup(
-            entrar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        entrar_panelButtonLayout.setVerticalGroup(
+            entrar_panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(entrar_txtButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
@@ -96,7 +101,7 @@ public class login extends javax.swing.JInternalFrame {
                 .addGroup(fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondo_panelLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(entrar_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(entrar_panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(fondo_panelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(fondo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +124,7 @@ public class login extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pass_field, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(entrar_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(entrar_panelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
 
@@ -140,7 +145,19 @@ public class login extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrar_txtButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_txtButtonMouseClicked
-        int Val = 0;
+
+    }//GEN-LAST:event_entrar_txtButtonMouseClicked
+
+    private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
+       
+    }//GEN-LAST:event_user_fieldActionPerformed
+
+    private void pass_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_fieldActionPerformed
+        
+    }//GEN-LAST:event_pass_fieldActionPerformed
+
+    private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
+         int Val = 0;
         if (user_field.getText().equals("")) {
             Val++;
         }
@@ -178,21 +195,12 @@ public class login extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Existen campos vacios.");
         }
        */
-        
-    }//GEN-LAST:event_entrar_txtButtonMouseClicked
-
-    private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
-       
-    }//GEN-LAST:event_user_fieldActionPerformed
-
-    private void pass_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_fieldActionPerformed
-        
-    }//GEN-LAST:event_pass_fieldActionPerformed
+    }//GEN-LAST:event_entrar_panelButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
-    private javax.swing.JPanel entrar_panel;
+    private javax.swing.JPanel entrar_panelButton;
     private javax.swing.JLabel entrar_txtButton;
     private javax.swing.JPanel fondo_panel;
     private javax.swing.JLabel login_img;
