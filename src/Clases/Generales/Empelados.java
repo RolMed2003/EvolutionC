@@ -1,5 +1,5 @@
 
-package Clases.Proyecto;
+package Clases.Generales;
 
 
 public class Empelados {
