@@ -11,18 +11,11 @@ public class Empelados {
     int Edad;
 
     //El constructor
-    public Empelados(String Usuario_Asignado, String Contraseña, String Nombre, String DNI, float Deduccion_INS, float Deduccion_IR, float Salario_Bruto, float Salario_Neto, float Total_Horas_Extras, float Pago_Horas_Extras, int Edad) {
-        this.Usuario_Asignado = Usuario_Asignado;
-        this.Contraseña = Contraseña;
-        this.Nombre = Nombre;
-        this.DNI = DNI;
-        this.Deduccion_INS = Deduccion_INS;
-        this.Deduccion_IR = Deduccion_IR;
-        this.Salario_Bruto = Salario_Bruto;
-        this.Salario_Neto = Salario_Neto;
-        this.Edad = Edad;
-        this.Total_Horas_Extras = Total_Horas_Extras;
-        this.Pago_Horas_Extras =Pago_Horas_Extras;
+    public Empelados() {
+   
+        
+        
+        
     }
 
     //Los getter and setter

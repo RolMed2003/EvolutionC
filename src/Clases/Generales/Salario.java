@@ -9,11 +9,10 @@ public class Salario {
     float  monto, Ingreso_Horas_Extras;
 
     //Constructor
-    public Salario(String Nombre, String tipo, float monto, float Ingreso_Horas_Extras) {
-        this.Nombre = Nombre;
-        this.tipo = tipo;
-        this.monto = monto;
-        this.Ingreso_Horas_Extras = Ingreso_Horas_Extras;
+    public Salario() {
+       
+        
+        
     }
 
     //Getter and Setter
