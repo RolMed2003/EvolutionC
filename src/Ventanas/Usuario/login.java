@@ -15,9 +15,10 @@ public class login extends javax.swing.JInternalFrame {
     public login() {
 
         initComponents();
-        
-        
-        setSize(406, 530);
+         PlaceHolder u = new PlaceHolder("Ingrese su usuario", user_field);
+         PlaceHolder p = new PlaceHolder("Ingrese su contraseña", pass_field);
+         
+        setSize(406, 534);
 
     }
 
@@ -185,11 +186,11 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_entrar_txtButtonMouseClicked
 
     private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
-        PlaceHolder u = new PlaceHolder("Ingrese su usuario", user_field);
+       
     }//GEN-LAST:event_user_fieldActionPerformed
 
     private void pass_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pass_fieldActionPerformed
-        PlaceHolder p = new PlaceHolder("Ingrese su contraseña", pass_field);
+        
     }//GEN-LAST:event_pass_fieldActionPerformed
 
 
