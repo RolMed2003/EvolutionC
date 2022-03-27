@@ -28,14 +28,14 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Usuario_Menu = new javax.swing.JMenu();
         agregar_Usuario_Btn = new javax.swing.JMenuItem();
-        gestionar_Usuario_Btn = new javax.swing.JRadioButtonMenuItem();
+        gestionarBtn = new javax.swing.JMenuItem();
         Empleado_Menu = new javax.swing.JMenu();
         agregar_Empelado_Btn = new javax.swing.JMenuItem();
-        gestionar_Empleado_Btn = new javax.swing.JRadioButtonMenuItem();
+        gestionarEmpBtn = new javax.swing.JMenuItem();
         Contabilidad_Menu = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         SalarioBase_Nomina_Btn = new javax.swing.JMenuItem();
-        VerNomina_Nomina_Btn = new javax.swing.JRadioButtonMenuItem();
+        verNominaBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -64,14 +64,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Usuario_Menu.add(agregar_Usuario_Btn);
 
-        gestionar_Usuario_Btn.setSelected(true);
-        gestionar_Usuario_Btn.setText("Gestionar");
-        gestionar_Usuario_Btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionar_Usuario_BtnActionPerformed(evt);
-            }
-        });
-        Usuario_Menu.add(gestionar_Usuario_Btn);
+        gestionarBtn.setText("Gestionar");
+        Usuario_Menu.add(gestionarBtn);
 
         jMenuBar1.add(Usuario_Menu);
 
@@ -85,9 +79,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Empleado_Menu.add(agregar_Empelado_Btn);
 
-        gestionar_Empleado_Btn.setSelected(true);
-        gestionar_Empleado_Btn.setText("Gestionar");
-        Empleado_Menu.add(gestionar_Empleado_Btn);
+        gestionarEmpBtn.setText("Gestionar");
+        Empleado_Menu.add(gestionarEmpBtn);
 
         jMenuBar1.add(Empleado_Menu);
 
@@ -103,9 +96,8 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(SalarioBase_Nomina_Btn);
 
-        VerNomina_Nomina_Btn.setSelected(true);
-        VerNomina_Nomina_Btn.setText("Ver Nomina");
-        jMenu1.add(VerNomina_Nomina_Btn);
+        verNominaBtn.setText("Ver nomina");
+        jMenu1.add(verNominaBtn);
 
         Contabilidad_Menu.add(jMenu1);
 
@@ -137,10 +129,6 @@ public class Principal extends javax.swing.JFrame {
     private void SalarioBase_Nomina_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalarioBase_Nomina_BtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SalarioBase_Nomina_BtnActionPerformed
-
-    private void gestionar_Usuario_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionar_Usuario_BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gestionar_Usuario_BtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -174,6 +162,7 @@ public class Principal extends javax.swing.JFrame {
                 Desktop.add(X);
                 X.setVisible(true);
                 
+                Usuario_Menu.setVisible(false);
                 
             }
         });
@@ -184,13 +173,13 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenu Empleado_Menu;
     private javax.swing.JMenuItem SalarioBase_Nomina_Btn;
-    private javax.swing.JMenu Usuario_Menu;
-    private javax.swing.JRadioButtonMenuItem VerNomina_Nomina_Btn;
+    public static javax.swing.JMenu Usuario_Menu;
     private javax.swing.JMenuItem agregar_Empelado_Btn;
     private javax.swing.JMenuItem agregar_Usuario_Btn;
-    private javax.swing.JRadioButtonMenuItem gestionar_Empleado_Btn;
-    private javax.swing.JRadioButtonMenuItem gestionar_Usuario_Btn;
+    private javax.swing.JMenuItem gestionarBtn;
+    private javax.swing.JMenuItem gestionarEmpBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem verNominaBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="agregar_Usuario_Btn">
               <Properties>
@@ -17,14 +20,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregar_Usuario_BtnActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="gestionar_Usuario_Btn">
+            <MenuItem class="javax.swing.JMenuItem" name="gestionarBtn">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Gestionar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionar_Usuario_BtnActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -41,9 +40,8 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregar_Empelado_BtnActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="gestionar_Empleado_Btn">
+            <MenuItem class="javax.swing.JMenuItem" name="gestionarEmpBtn">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Gestionar"/>
               </Properties>
             </MenuItem>
@@ -67,10 +65,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalarioBase_Nomina_BtnActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JRadioButtonMenuItem" name="VerNomina_Nomina_Btn">
+                <MenuItem class="javax.swing.JMenuItem" name="verNominaBtn">
                   <Properties>
-                    <Property name="selected" type="boolean" value="true"/>
-                    <Property name="text" type="java.lang.String" value="Ver Nomina"/>
+                    <Property name="text" type="java.lang.String" value="Ver nomina"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
