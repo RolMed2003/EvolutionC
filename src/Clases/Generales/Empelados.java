@@ -7,11 +7,11 @@ public class Empelados {
     //Los atributos
     
     String Usuario_Asignado,Contraseña,Nombre,DNI ;
-    float Deduccion_INS,Deduccion_IR,Salario_Bruto,Salario_Neto ;
+    float Deduccion_INS,Deduccion_IR,Salario_Bruto,Salario_Neto,Total_Horas_Extras,Pago_Horas_Extras;
     int Edad;
 
     //El constructor
-    public Empelados(String Usuario_Asignado, String Contraseña, String Nombre, String DNI, float Deduccion_INS, float Deduccion_IR, float Salario_Bruto, float Salario_Neto, int Edad) {
+    public Empelados(String Usuario_Asignado, String Contraseña, String Nombre, String DNI, float Deduccion_INS, float Deduccion_IR, float Salario_Bruto, float Salario_Neto, float Total_Horas_Extras, float Pago_Horas_Extras, int Edad) {
         this.Usuario_Asignado = Usuario_Asignado;
         this.Contraseña = Contraseña;
         this.Nombre = Nombre;
@@ -21,6 +21,8 @@ public class Empelados {
         this.Salario_Bruto = Salario_Bruto;
         this.Salario_Neto = Salario_Neto;
         this.Edad = Edad;
+        this.Total_Horas_Extras = Total_Horas_Extras;
+        this.Pago_Horas_Extras =Pago_Horas_Extras;
     }
 
     //Los getter and setter
@@ -96,7 +98,20 @@ public class Empelados {
         this.Edad = Edad;
     }
     
+    public void getTotal_Horas_Extras(float Total_Horas_Extras){
+        this.Total_Horas_Extras = Total_Horas_Extras;
+    }
     
+    public void setTotal_Horas_Extras(float Total_Horas_Extras){
+        this.Total_Horas_Extras= Total_Horas_Extras;
+    }
     
+    public void getPago_Horas_Extras(float Pago_Horas_Extras){
+        this.Pago_Horas_Extras= Pago_Horas_Extras;
+    }
+      
+    public void setPago_Horas_Extras(float Pago_Horas_Extras){
+        this.Pago_Horas_Extras= Pago_Horas_Extras;
+    }
     
 }
