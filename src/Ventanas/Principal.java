@@ -4,22 +4,34 @@ import Ventanas.Usuario.login;
 import Ventanas.Usuario.registroUsuario;
 import Ventana.Empleado.Agregar_Empleado;
 import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 public class Principal extends javax.swing.JFrame {
 
     public Principal() {
         
         initComponents();
-        
-        
-        
+
         //Modelando ventana
         setSize(1280, 745);
         setTitle(" -  Principal");
         setLocationRelativeTo(null);
+        
+        //Add window icon
+        setIconImage(getIconImage());
                 
     }
 
+    //Icono de ventana principal.
+    @Override
+        public final Image getIconImage(){
+        
+           Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("menu/icons/icon.jpg"));
+        
+           return retValue;
+        }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
