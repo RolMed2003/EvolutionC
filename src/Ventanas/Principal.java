@@ -27,7 +27,7 @@ public class Principal extends javax.swing.JFrame {
     @Override
         public final Image getIconImage(){
         
-           Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("menu/icons/icon.jpg"));
+           Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("menu/icons/coding.png"));
         
            return retValue;
         }
