@@ -2,6 +2,7 @@ package Ventanas.Usuario;
 
 import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
+import Ventanas.Principal;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -149,6 +150,7 @@ public class login extends javax.swing.JInternalFrame {
 
         //Reset warnings
         user_field.setBackground(Color.white);
+        passTxt.setBackground(Color.white);
 
         //Variables
         int Val = 0;
@@ -167,7 +169,7 @@ public class login extends javax.swing.JInternalFrame {
         if (pass.equals("")) {
 
             Val++;
-            user_field.setBackground(new Color(224, 186, 51));
+            passTxt.setBackground(new Color(224, 186, 51));
 
         }
 
@@ -186,7 +188,15 @@ public class login extends javax.swing.JInternalFrame {
                     
                     access = rs.getString("Role_User");
                     
-                    if(access.equals(""));
+                    if(access.equalsIgnoreCase("Administrador")){
+                        
+                        Principal.Usuario_Menu.setVisible(true);
+                        Principal.Empleado_Menu.setVisible(true);
+                        Principal.Contabilidad_Menu.setVisible(true);
+                        
+                        this.dispose();
+                        
+                    }
                     
                 }else{
                     
