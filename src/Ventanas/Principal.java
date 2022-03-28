@@ -36,6 +36,8 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         SalarioBase_Nomina_Btn = new javax.swing.JMenuItem();
         verNominaBtn = new javax.swing.JMenuItem();
+        perfilMenu = new javax.swing.JMenu();
+        perfilBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -105,6 +107,13 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Contabilidad_Menu);
 
+        perfilMenu.setText("Perfil");
+
+        perfilBtn.setText("Ver perfil");
+        perfilMenu.add(perfilBtn);
+
+        jMenuBar1.add(perfilMenu);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -169,6 +178,7 @@ public class Principal extends javax.swing.JFrame {
                 Usuario_Menu.setVisible(false);
                 Empleado_Menu.setVisible(false);
                 Contabilidad_Menu.setVisible(false);
+                perfilMenu.setVisible(false);
                 
             }
         });
@@ -186,6 +196,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem gestionarEmpBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem perfilBtn;
+    public static javax.swing.JMenu perfilMenu;
     private javax.swing.JMenuItem verNominaBtn;
     // End of variables declaration//GEN-END:variables
 }

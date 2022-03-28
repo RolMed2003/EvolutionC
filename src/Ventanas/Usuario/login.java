@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -196,6 +197,26 @@ public class login extends javax.swing.JInternalFrame {
                         
                         this.dispose();
                         
+                    }else if(access.equalsIgnoreCase("Contador")){
+                        
+                        Principal.Empleado_Menu.setVisible(true);
+                        Principal.Contabilidad_Menu.setVisible(true);
+                        
+                        this.dispose();
+                        
+                    }else if(access.equalsIgnoreCase("Aux.Nomina")){
+                        
+                        Principal.Empleado_Menu.setVisible(true);
+                        Principal.Contabilidad_Menu.setVisible(true);
+                        
+                        this.dispose();
+                        
+                    }else if(access.equalsIgnoreCase("Empleado")){
+                        
+                        Principal.perfilMenu.setVisible(true);
+                        
+                        this.dispose();
+                        
                     }
                     
                 }else{
@@ -210,7 +231,7 @@ public class login extends javax.swing.JInternalFrame {
                     
                 }
                 
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 
                 System.err.println("Error al logear al usuario");
                 
