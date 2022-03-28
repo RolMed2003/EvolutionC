@@ -4,6 +4,8 @@ import Ventanas.Usuario.login;
 import Ventanas.Usuario.registroUsuario;
 import Ventana.Empleado.Agregar_Empleado;
 import java.awt.Desktop;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -11,7 +13,7 @@ public class Principal extends javax.swing.JFrame {
         
         initComponents();
         
-        
+        Icon icono = new ImageIcon(getClass().getResource("/menu.icons/coding.png"));
         
         //Modelando ventana
         setSize(1280, 745);
