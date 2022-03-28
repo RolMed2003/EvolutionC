@@ -1,7 +1,14 @@
 package Ventanas.Usuario;
 
+import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
 
@@ -142,22 +149,71 @@ public class login extends javax.swing.JInternalFrame {
 
         //Reset warnings
         user_field.setBackground(Color.white);
-        
+
         //Variables
         int Val = 0;
         String user, pass, access;
-        
+
         user = user_field.getText().trim();
         pass = passTxt.getText().trim();
-        
+
         //Validaciones
-        if(user.equals("")){
-            
+        if (user.equals("")) {
+
             Val++;
             user_field.setBackground(new Color(224, 186, 51));
-            
+
         }
-        
+        if (pass.equals("")) {
+
+            Val++;
+            user_field.setBackground(new Color(224, 186, 51));
+
+        }
+
+        //Guardando datos
+        if (Val == 0) {
+            
+            try {
+                
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("select Role_User from Usuarios where Nombre_User = '"
+                        +user+"' and Password_User = '"+pass+"'");
+                
+                ResultSet rs = pst.executeQuery();
+                
+                if(rs.next()){
+                    
+                    access = rs.getString("Role_User");
+                    
+                    if(access.equals(""));
+                    
+                }else{
+                    
+                    user_field.requestFocus();
+                    user_field.setText("");
+                    passTxt.setText("");
+                    
+                    Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cerca.png"));
+                    JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.",
+                        "Mensaje de advertencia", JOptionPane.PLAIN_MESSAGE, icon);
+                    
+                }
+                
+            } catch (Exception e) {
+                
+                System.err.println("Error al logear al usuario");
+                
+            }
+
+        } else {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.",
+                    "Mensaje de advertencia", JOptionPane.PLAIN_MESSAGE, icon);
+
+        }
+
     }//GEN-LAST:event_entrar_txtButtonMouseClicked
 
     private void user_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_fieldActionPerformed
@@ -165,14 +221,7 @@ public class login extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_user_fieldActionPerformed
 
     private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
-        
-        
-        
-        
-            
-        
-        
-        
+
         /*
          if(Val==0){
          try {

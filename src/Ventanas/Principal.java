@@ -160,20 +160,24 @@ public class Principal extends javax.swing.JFrame {
                 
                 new Principal().setVisible(true);
                 
+                //Agregando el login
                 login X = new login();
                 Desktop.add(X);
                 X.setVisible(true);
                 
+                //Ocultando menus
                 Usuario_Menu.setVisible(false);
+                Empleado_Menu.setVisible(false);
+                Contabilidad_Menu.setVisible(false);
                 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Contabilidad_Menu;
+    public static javax.swing.JMenu Contabilidad_Menu;
     public static javax.swing.JDesktopPane Desktop;
-    private javax.swing.JMenu Empleado_Menu;
+    public static javax.swing.JMenu Empleado_Menu;
     private javax.swing.JMenuItem SalarioBase_Nomina_Btn;
     public static javax.swing.JMenu Usuario_Menu;
     private javax.swing.JMenuItem agregar_Empelado_Btn;

@@ -37,6 +37,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Empelado"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="agregar_Empelado_Btn">
               <Properties>
@@ -57,6 +60,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Contabilidad"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu1">
               <Properties>
