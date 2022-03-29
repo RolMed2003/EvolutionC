@@ -187,35 +187,56 @@ public class login extends javax.swing.JInternalFrame {
                 
                 if(rs.next()){
                     
+                    //Obteniendo el rol del usuario
                     access = rs.getString("Role_User");
                     
+                    //Enviandolo a su respectiva ventana.
                     if(access.equalsIgnoreCase("Administrador")){
                         
                         Principal.Usuario_Menu.setVisible(true);
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
+                        Principal.perfilMenu.setVisible(true);
                         
                         this.dispose();
+                        
+                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Administrador.", " -  Info",
+                                JOptionPane.PLAIN_MESSAGE, icon);
                         
                     }else if(access.equalsIgnoreCase("Contador")){
                         
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
+                        Principal.perfilMenu.setVisible(true);
                         
                         this.dispose();
+                        
+                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Contador.", " -  Info",
+                                JOptionPane.PLAIN_MESSAGE, icon);
                         
                     }else if(access.equalsIgnoreCase("Aux.Nomina")){
                         
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
+                        Principal.perfilMenu.setVisible(true);
                         
                         this.dispose();
+                        
+                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Auxiliar de Nomina.", " -  Info",
+                                JOptionPane.PLAIN_MESSAGE, icon);
                         
                     }else if(access.equalsIgnoreCase("Empleado")){
                         
                         Principal.perfilMenu.setVisible(true);
                         
                         this.dispose();
+                        
+                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Empleado.", " -  Info",
+                                JOptionPane.PLAIN_MESSAGE, icon);
                         
                     }
                     
@@ -233,12 +254,14 @@ public class login extends javax.swing.JInternalFrame {
                 
             } catch (SQLException e) {
                 
+                //Esto es lo que nos saldra por consola si hay un error al iniciar sesion
                 System.err.println("Error al logear al usuario");
                 
             }
 
         } else {
 
+            //Mensaje de advertencia para que el usuario no deje campos vacios.
             Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/advertencia.png"));
             JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.",
                     "Mensaje de advertencia", JOptionPane.PLAIN_MESSAGE, icon);
@@ -253,37 +276,6 @@ public class login extends javax.swing.JInternalFrame {
 
     private void entrar_panelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrar_panelButtonMouseClicked
 
-        /*
-         if(Val==0){
-         try {
-            
-         Connection cn = Conexion.conectar();
-         PreparedStatement pst = cn.prepareStatement(
-            
-         // "select Usuario, Contraseña from Register where Usuario = '"+txt_usuario.getText().trim()+"'"
-         //+" and Contraseña = '"+txt_pass_oculto.getText().trim()+"'"        );
-            
-         //ResultSet rs = pst.executeQuery();
-           
-         if (rs.next()) {
-         JOptionPane.showMessageDialog(null, "Sesión iniciada.");
-                
-                
-         } else {
-         JOptionPane.showMessageDialog(null, "Datos erroneos.");
-         }
-            
-                    
-            
-         } catch (SQLException e) {
-         System.err.println("Error al iniciar sesión."+e);
-         }
-            
-            
-         }else{
-         JOptionPane.showMessageDialog(null, "Existen campos vacios.");
-         }
-         */
     }//GEN-LAST:event_entrar_panelButtonMouseClicked
 
 
