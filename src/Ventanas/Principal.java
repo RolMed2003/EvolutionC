@@ -20,6 +20,9 @@ public class Principal extends javax.swing.JFrame {
         
         //Add window icon
         setIconImage(getIconImage());
+        
+        //Componentes
+        cerrarSesionBtn.setVisible(false);
                 
     }
 
@@ -37,6 +40,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Desktop = new javax.swing.JDesktopPane();
+        cerrarSesionBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Usuario_Menu = new javax.swing.JMenu();
         agregar_Usuario_Btn = new javax.swing.JMenuItem();
@@ -55,16 +59,26 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/logout (2).png"))); // NOI18N
+        cerrarSesionBtn.setText("Cerrar sesion");
+
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopLayout.createSequentialGroup()
+                .addContainerGap(1137, Short.MAX_VALUE)
+                .addComponent(cerrarSesionBtn)
+                .addContainerGap())
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopLayout.createSequentialGroup()
+                .addContainerGap(658, Short.MAX_VALUE)
+                .addComponent(cerrarSesionBtn)
+                .addContainerGap())
         );
+        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
@@ -204,6 +218,7 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JMenu Usuario_Menu;
     private javax.swing.JMenuItem agregar_Empelado_Btn;
     private javax.swing.JMenuItem agregar_Usuario_Btn;
+    public static javax.swing.JButton cerrarSesionBtn;
     private javax.swing.JMenuItem gestionarBtn;
     private javax.swing.JMenuItem gestionarEmpBtn;
     private javax.swing.JMenu jMenu1;

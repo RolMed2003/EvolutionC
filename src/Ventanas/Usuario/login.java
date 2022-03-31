@@ -197,6 +197,7 @@ public class login extends javax.swing.JInternalFrame {
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
                         Principal.perfilMenu.setVisible(true);
+                        Principal.cerrarSesionBtn.setVisible(true);
                         
                         this.dispose();
                         
@@ -209,6 +210,7 @@ public class login extends javax.swing.JInternalFrame {
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
                         Principal.perfilMenu.setVisible(true);
+                        Principal.cerrarSesionBtn.setVisible(true);
                         
                         this.dispose();
                         
@@ -221,6 +223,7 @@ public class login extends javax.swing.JInternalFrame {
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
                         Principal.perfilMenu.setVisible(true);
+                        Principal.cerrarSesionBtn.setVisible(true);
                         
                         this.dispose();
                         
@@ -231,6 +234,7 @@ public class login extends javax.swing.JInternalFrame {
                     }else if(access.equalsIgnoreCase("Empleado")){
                         
                         Principal.perfilMenu.setVisible(true);
+                        Principal.cerrarSesionBtn.setVisible(true);
                         
                         this.dispose();
                         

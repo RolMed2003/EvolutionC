@@ -1,6 +1,12 @@
 package Ventanas.Usuario;
 
+import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
+import java.awt.Color;
+import java.sql.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class registroUsuario extends javax.swing.JInternalFrame {
 
@@ -10,13 +16,11 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         PlaceHolder u2 = new PlaceHolder("Ingrese un usuario", userTxt);
         PlaceHolder pass2 = new PlaceHolder("Ingrese una contraseña", contra_txt);
-        
-        
+
         //Modelando la ventana 
         setSize(517, 557);
-        setLocation(380,0);
+        setLocation(380, 0);
         setTitle("Registro de usuario");
-        
 
     }
 
@@ -92,6 +96,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("REGISTRAR");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout registrarBtnLayout = new javax.swing.GroupLayout(registrarBtn);
         registrarBtn.setLayout(registrarBtnLayout);
@@ -154,9 +159,89 @@ public class registroUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarBtnMouseClicked
-        
-        
-        
+
+        //Reset warnings
+        userTxt.setBackground(Color.white);
+        contra_txt.setBackground(Color.white);
+
+        //Variables
+        String user, pass, selection = "null";
+        int select, Val = 0;
+
+        user = userTxt.getText();
+        pass = contra_txt.getText();
+        select = rolCmb.getSelectedIndex();
+
+        //Obteniendo los valores del combo box
+        if (select == 0) {
+
+            selection = "Administrador";
+
+        } else if (select == 1) {
+
+            selection = "Contador";
+
+        } else if (select == 2) {
+
+            selection = "Aux.Nomina";
+
+        } else if (select == 3) {
+
+            selection = "Empleado";
+
+        }
+
+        //Validaciones
+        if (user.equals("")) {
+
+            Val++;
+            userTxt.setBackground(new Color(224, 186, 51));
+
+        }
+        if (pass.equals("")) {
+
+            Val++;
+            contra_txt.setBackground(new Color(224, 186, 51));
+
+        }
+
+        //Insertando datos en la base de datos.
+        if (Val == 0) {
+
+            try {
+
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("insert into Usuarios values (?,?,?,?)");
+
+                pst.setInt(1, 0);
+                pst.setString(2, user);
+                pst.setString(3, pass);
+                pst.setString(4, selection);
+                pst.execute();
+                
+                //Mensaje de confirmacion
+                Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
+                        JOptionPane.PLAIN_MESSAGE, icon);
+                
+                //Reseteando campos.
+                userTxt.setText("");
+                contra_txt.setText("");
+
+            } catch (SQLException e) {
+
+                System.err.println("Error al registrar usuario");
+
+            }
+
+        } else {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        }
+
     }//GEN-LAST:event_registrarBtnMouseClicked
 
     private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
