@@ -209,38 +209,64 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         if (Val == 0) {
 
             try {
-
+                
                 Connection cn = Conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("insert into Usuarios values (?,?,?,?)");
-
-                pst.setInt(1, 0);
-                pst.setString(2, user);
-                pst.setString(3, pass);
-                pst.setString(4, selection);
-                pst.execute();
+                PreparedStatement pst = cn.prepareStatement("select Nombre_User from Usuarios where Nombre_User = '"
+                        + user +"'");
                 
-                //Mensaje de confirmacion
-                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
-                        JOptionPane.PLAIN_MESSAGE, icon);
+                ResultSet rs = pst.executeQuery();
                 
-                //Reseteando campos.
-                userTxt.setText("");
-                contra_txt.setText("");
+                if(rs.next()){
+                    
+                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
+                        JOptionPane.showMessageDialog(null, "Nombre de usuario ya en uso.", " -  Error",
+                                JOptionPane.PLAIN_MESSAGE, icon);
+                    
+                }else{
+                    
+                    cn.close();
+                    
+                    try {
+                        
+                        Connection cn2 = Conexion.conectar();
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into Usuarios values (?,?,?,?)");
 
+                        pst2.setInt(1, 0);
+                        pst2.setString(2, user);
+                        pst2.setString(3, pass);
+                        pst2.setString(4, selection);
+                        pst2.execute();
+
+                        //Mensaje de confirmacion
+                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                        JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
+                                JOptionPane.PLAIN_MESSAGE, icon);
+
+                        //Reseteando campos.
+                        userTxt.setText("");
+                        contra_txt.setText("");
+                        
+                    } catch (SQLException e) {
+                        
+                        System.err.println("Error al registrar usuario."+ e);
+                        
+                    }
+                    
+                }
+                
             } catch (SQLException e) {
-
-                System.err.println("Error al registrar usuario");
-
+                
+                System.err.println("Error al comprobar el nombre de usuario."+ e);
+                
             }
-
-        } else {
-
+            
+        }else{
+            
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
             JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
                     JOptionPane.PLAIN_MESSAGE, icon);
-
-        }
+            
+        }    
 
     }//GEN-LAST:event_registrarBtnMouseClicked
 
