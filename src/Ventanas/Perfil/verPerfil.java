@@ -28,67 +28,67 @@ public class verPerfil extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
-        fotoEmpleado = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        fotoEmpleado_panel = new javax.swing.JPanel();
+        nombre_txt = new javax.swing.JLabel();
+        nombre_field = new javax.swing.JTextField();
+        sexo_txt = new javax.swing.JLabel();
+        sexo_field = new javax.swing.JTextField();
+        edad_Txt = new javax.swing.JLabel();
+        edad_field = new javax.swing.JTextField();
+        puesto_txt = new javax.swing.JLabel();
+        puesto_field = new javax.swing.JTextField();
+        tipo_txt = new javax.swing.JLabel();
+        tipo_field = new javax.swing.JTextField();
+        salario_txt = new javax.swing.JLabel();
+        salario_field = new javax.swing.JTextField();
 
         setTitle("Perfil - empleado");
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout fotoEmpleadoLayout = new javax.swing.GroupLayout(fotoEmpleado);
-        fotoEmpleado.setLayout(fotoEmpleadoLayout);
-        fotoEmpleadoLayout.setHorizontalGroup(
-            fotoEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout fotoEmpleado_panelLayout = new javax.swing.GroupLayout(fotoEmpleado_panel);
+        fotoEmpleado_panel.setLayout(fotoEmpleado_panelLayout);
+        fotoEmpleado_panelLayout.setHorizontalGroup(
+            fotoEmpleado_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 128, Short.MAX_VALUE)
         );
-        fotoEmpleadoLayout.setVerticalGroup(
-            fotoEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 128, Short.MAX_VALUE)
+        fotoEmpleado_panelLayout.setVerticalGroup(
+            fotoEmpleado_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 208, Short.MAX_VALUE)
         );
 
-        Fondo.add(fotoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 128, 128));
+        Fondo.add(fotoEmpleado_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 128, 208));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jLabel1.setText("Nombre:");
-        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+        nombre_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        nombre_txt.setText("Nombre:");
+        Fondo.add(nombre_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+        Fondo.add(nombre_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 260, 30));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jLabel2.setText("Sexo:");
-        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
+        sexo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        sexo_txt.setText("Sexo:");
+        Fondo.add(sexo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+        Fondo.add(sexo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 140, 30));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jLabel3.setText("Edad:");
-        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
+        edad_Txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        edad_Txt.setText("Edad:");
+        Fondo.add(edad_Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+        Fondo.add(edad_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 40, 30));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jLabel4.setText("Puesto:");
-        Fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        puesto_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        puesto_txt.setText("Puesto:");
+        Fondo.add(puesto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        Fondo.add(puesto_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 110, -1));
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jLabel5.setText("Tipo:");
-        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        tipo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        tipo_txt.setText("Tipo:");
+        Fondo.add(tipo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 110, -1));
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        jLabel6.setText("Salario base:");
-        Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
-        Fondo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 260, 30));
-        Fondo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 140, 30));
-        Fondo.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 40, 30));
-        Fondo.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 110, -1));
-        Fondo.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 110, -1));
-        Fondo.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 110, -1));
+        salario_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        salario_txt.setText("Salario base:");
+        Fondo.add(salario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+        Fondo.add(salario_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,18 +107,18 @@ public class verPerfil extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
-    private javax.swing.JPanel fotoEmpleado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel edad_Txt;
+    private javax.swing.JTextField edad_field;
+    private javax.swing.JPanel fotoEmpleado_panel;
+    private javax.swing.JTextField nombre_field;
+    private javax.swing.JLabel nombre_txt;
+    private javax.swing.JTextField puesto_field;
+    private javax.swing.JLabel puesto_txt;
+    private javax.swing.JTextField salario_field;
+    private javax.swing.JLabel salario_txt;
+    private javax.swing.JTextField sexo_field;
+    private javax.swing.JLabel sexo_txt;
+    private javax.swing.JTextField tipo_field;
+    private javax.swing.JLabel tipo_txt;
     // End of variables declaration//GEN-END:variables
 }
