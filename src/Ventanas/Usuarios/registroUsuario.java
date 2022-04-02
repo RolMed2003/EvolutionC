@@ -19,7 +19,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         //Modelando la ventana 
         setSize(517, 557);
-        setLocation(380, 0);
+        setLocation(380, 70);
         setTitle("Registro de usuario");
 
     }
