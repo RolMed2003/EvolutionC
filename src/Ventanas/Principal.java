@@ -1,41 +1,43 @@
 package Ventanas;
 
-import Ventanas.Usuario.login;
-import Ventanas.Usuario.registroUsuario;
-import Ventana.Empleado.Agregar_Empleado;
-import Ventana.Salario.Salario_base;
-import java.awt.Desktop;
+import Ventanas.Usuarios.login;
+import Ventanas.Usuarios.registroUsuario;
+import Ventanas.Empleados.Agregar_Empleado;
+import Ventanas.Salarios.Salario_base;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
     public Principal() {
-        
+
         initComponents();
 
         //Modelando ventana
         setSize(1280, 745);
         setTitle(" -  Principal");
         setLocationRelativeTo(null);
-        
+
         //Add window icon
         setIconImage(getIconImage());
-        
+
         //Componentes
         cerrarSesionBtn.setVisible(false);
-                
+
     }
 
     //Icono de ventana principal.
     @Override
-        public final Image getIconImage(){
-        
-           Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("menu/icons/coding.png"));
-        
-           return retValue;
-        }
-    
+    public final Image getIconImage() {
+
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("menu/icons/coding.png"));
+
+        return retValue;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,8 +65,11 @@ public class Principal extends javax.swing.JFrame {
         cerrarSesionBtn.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/logout.png"))); // NOI18N
         cerrarSesionBtn.setText("Cerrar sesión");
-
-        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        cerrarSesionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
@@ -82,6 +87,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(cerrarSesionBtn)
                 .addGap(40, 40, 40))
         );
+        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
@@ -149,21 +155,21 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregar_Usuario_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_Usuario_BtnActionPerformed
-        
+
         //Haciendo visible la ventana de registro
         registroUsuario X = new registroUsuario();
         Desktop.add(X);
         X.setVisible(true);
-        
+
     }//GEN-LAST:event_agregar_Usuario_BtnActionPerformed
 
     private void agregar_Empelado_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_Empelado_BtnActionPerformed
-        
-    // Haciendo visible la ventana de agregar Empleados
-    Agregar_Empleado c = new Agregar_Empleado();
-    Desktop.add(c);
-    c.setVisible(true);
-    
+
+        // Haciendo visible la ventana de agregar Empleados
+        Agregar_Empleado c = new Agregar_Empleado();
+        Desktop.add(c);
+        c.setVisible(true);
+
     }//GEN-LAST:event_agregar_Empelado_BtnActionPerformed
 
     private void SalarioBase_Nomina_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalarioBase_Nomina_BtnActionPerformed
@@ -171,6 +177,24 @@ public class Principal extends javax.swing.JFrame {
         Desktop.add(k);
         k.setVisible(true);
     }//GEN-LAST:event_SalarioBase_Nomina_BtnActionPerformed
+
+    private void cerrarSesionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBtnActionPerformed
+
+        Principal.Usuario_Menu.setVisible(false);
+        Principal.Empleado_Menu.setVisible(false);
+        Principal.Contabilidad_Menu.setVisible(false);
+        Principal.perfilMenu.setVisible(false);
+        Principal.cerrarSesionBtn.setVisible(false);
+        
+        login X = new login();
+        Desktop.add(X);
+        X.setVisible(true);
+        
+        Icon icon = new ImageIcon(getClass().getResource("../Recursos/Iconos/JOption/logoutx64.png"));
+        JOptionPane.showMessageDialog(null, "Se ha cerrado su sesión.", " -  Info", JOptionPane.PLAIN_MESSAGE,
+                icon);
+
+    }//GEN-LAST:event_cerrarSesionBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -197,20 +221,20 @@ public class Principal extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new Principal().setVisible(true);
-                
+
                 //Agregando el login
                 login X = new login();
                 Desktop.add(X);
                 X.setVisible(true);
-                
+
                 //Ocultando menus
                 Usuario_Menu.setVisible(false);
                 Empleado_Menu.setVisible(false);
                 Contabilidad_Menu.setVisible(false);
                 perfilMenu.setVisible(false);
-                
+
             }
         });
     }

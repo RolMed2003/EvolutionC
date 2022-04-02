@@ -1,4 +1,4 @@
-package Ventanas.Usuario;
+package Ventanas.Usuarios;
 
 import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
@@ -220,7 +220,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
                 pst.execute();
                 
                 //Mensaje de confirmacion
-                Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                 JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
                         JOptionPane.PLAIN_MESSAGE, icon);
                 
@@ -236,7 +236,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         } else {
 
-            Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/advertencia.png"));
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
             JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
                     JOptionPane.PLAIN_MESSAGE, icon);
 

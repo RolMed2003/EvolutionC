@@ -1,4 +1,4 @@
-package Ventanas.Usuario;
+package Ventanas.Usuarios;
 
 import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
@@ -201,7 +201,7 @@ public class login extends javax.swing.JInternalFrame {
                         
                         this.dispose();
                         
-                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Administrador.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
@@ -214,7 +214,7 @@ public class login extends javax.swing.JInternalFrame {
                         
                         this.dispose();
                         
-                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Contador.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
@@ -227,7 +227,7 @@ public class login extends javax.swing.JInternalFrame {
                         
                         this.dispose();
                         
-                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Auxiliar de Nomina.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
@@ -238,7 +238,7 @@ public class login extends javax.swing.JInternalFrame {
                         
                         this.dispose();
                         
-                        Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cheque.png"));
+                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Empleado.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
@@ -250,9 +250,9 @@ public class login extends javax.swing.JInternalFrame {
                     user_field.setText("");
                     passTxt.setText("");
                     
-                    Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/cerca.png"));
+                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
                     JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.",
-                        "Mensaje de advertencia", JOptionPane.PLAIN_MESSAGE, icon);
+                        "Mensaje de error", JOptionPane.PLAIN_MESSAGE, icon);
                     
                 }
                 
@@ -266,7 +266,7 @@ public class login extends javax.swing.JInternalFrame {
         } else {
 
             //Mensaje de advertencia para que el usuario no deje campos vacios.
-            Icon icon = new ImageIcon(getClass().getResource("../../JOIcons/advertencia.png"));
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
             JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.",
                     "Mensaje de advertencia", JOptionPane.PLAIN_MESSAGE, icon);
 
