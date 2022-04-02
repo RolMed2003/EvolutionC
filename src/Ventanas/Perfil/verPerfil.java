@@ -9,12 +9,12 @@ package Ventanas.Perfil;
  *
  * @author Microsoft Windows
  */
-public class verPerfil_empleado extends javax.swing.JInternalFrame {
+public class verPerfil extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form verPerfil
      */
-    public verPerfil_empleado() {
+    public verPerfil() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class verPerfil_empleado extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        fotoEmpleado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,18 +47,18 @@ public class verPerfil_empleado extends javax.swing.JInternalFrame {
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout fotoEmpleadoLayout = new javax.swing.GroupLayout(fotoEmpleado);
+        fotoEmpleado.setLayout(fotoEmpleadoLayout);
+        fotoEmpleadoLayout.setHorizontalGroup(
+            fotoEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 128, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        fotoEmpleadoLayout.setVerticalGroup(
+            fotoEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 128, Short.MAX_VALUE)
         );
 
-        Fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 128, 128));
+        Fondo.add(fotoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 128, 128));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jLabel1.setText("Nombre:");
@@ -107,13 +107,13 @@ public class verPerfil_empleado extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
+    private javax.swing.JPanel fotoEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
