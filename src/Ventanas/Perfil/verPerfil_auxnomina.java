@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ventanas.Salarios;
+package Ventanas.Perfil;
 
 /**
  *
  * @author Microsoft Windows
  */
-public class Salario_base extends javax.swing.JInternalFrame {
+public class verPerfil_auxnomina extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Salario_base
+     * Creates new form verPerfil_auxnomina
      */
-    public Salario_base() {
+    public verPerfil_auxnomina() {
         initComponents();
     }
 
@@ -27,23 +27,15 @@ public class Salario_base extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Fondo = new javax.swing.JPanel();
-
-        setTitle("Salarios base");
-        setToolTipText("");
-
-        Fondo.setBackground(new java.awt.Color(255, 255, 255));
-        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGap(0, 394, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 274, Short.MAX_VALUE)
         );
 
         pack();
@@ -51,6 +43,5 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Fondo;
     // End of variables declaration//GEN-END:variables
 }
