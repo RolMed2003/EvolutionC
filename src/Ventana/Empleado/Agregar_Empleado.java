@@ -26,15 +26,9 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         DNI_txt = new javax.swing.JTextField();
         Edad_txt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        Usuario_txt = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         registrar_panel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -97,29 +91,9 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel5.setText("Edad");
         Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel6.setText("Usuario");
-        Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
-
-        Usuario_txt.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        Usuario_txt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Usuario_txt.setBorder(null);
-        Fondo.add(Usuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 180, 30));
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel7.setText("Contraseña");
-        Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
-
-        jPasswordField1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPasswordField1.setBorder(null);
-        Fondo.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 183, 30));
-        Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 180, 10));
         Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 350, 10));
         Fondo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 190, 10));
         Fondo.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 50, 10));
-        Fondo.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 180, 10));
 
         registrar_panel.setBackground(new java.awt.Color(255, 102, 102));
         registrar_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -162,22 +136,16 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JTextField Edad_txt;
     private javax.swing.JPanel Fondo;
     private javax.swing.JTextField Nombre_Empleado_txt;
-    private javax.swing.JTextField Usuario_txt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel registrar_panel;
     // End of variables declaration//GEN-END:variables
 }

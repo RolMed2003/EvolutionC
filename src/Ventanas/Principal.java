@@ -3,6 +3,7 @@ package Ventanas;
 import Ventanas.Usuario.login;
 import Ventanas.Usuario.registroUsuario;
 import Ventana.Empleado.Agregar_Empleado;
+import Ventana.Salario.Salario_base;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -59,26 +60,28 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/logout (2).png"))); // NOI18N
-        cerrarSesionBtn.setText("Cerrar sesion");
+        cerrarSesionBtn.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/logout.png"))); // NOI18N
+        cerrarSesionBtn.setText("Cerrar sesión");
+
+        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopLayout.createSequentialGroup()
-                .addContainerGap(1137, Short.MAX_VALUE)
+                .addContainerGap(1092, Short.MAX_VALUE)
                 .addComponent(cerrarSesionBtn)
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopLayout.createSequentialGroup()
-                .addContainerGap(658, Short.MAX_VALUE)
+                .addContainerGap(629, Short.MAX_VALUE)
                 .addComponent(cerrarSesionBtn)
-                .addContainerGap())
+                .addGap(40, 40, 40))
         );
-        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
@@ -99,7 +102,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Usuario_Menu);
 
-        Empleado_Menu.setText("Empelado");
+        Empleado_Menu.setText("Empleado");
 
         agregar_Empelado_Btn.setText("Agregar");
         agregar_Empelado_Btn.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +167,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_agregar_Empelado_BtnActionPerformed
 
     private void SalarioBase_Nomina_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalarioBase_Nomina_BtnActionPerformed
-        // TODO add your handling code here:
+        Salario_base k = new Salario_base();
+        Desktop.add(k);
+        k.setVisible(true);
     }//GEN-LAST:event_SalarioBase_Nomina_BtnActionPerformed
 
     public static void main(String args[]) {
