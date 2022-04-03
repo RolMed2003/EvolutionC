@@ -1,31 +1,79 @@
 package Ventanas.Perfil;
 
+import Clases.Apoyo.Conexion;
 import Ventanas.Usuarios.login;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class verPerfil extends javax.swing.JInternalFrame {
 
     String rolUser = login.rolUser;
-   
+    String Username = login.Username;
+
     public verPerfil() {
-        
+
         initComponents();
-        
+
         //Modelando ventana
         setLocation(387, 115);
-        
-        if(rolUser.equals("Administrador")){
-            
+
+        //Seteando la foto del usuario
+        if (rolUser.equals("Administrador")) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Empleados/Enrique.jpeg"));
+            empleadoFoto.setIcon(icon);
+
+        } else if (rolUser.equals("Contador")) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Empleados/Rolando.jpeg"));
+            empleadoFoto.setIcon(icon);
+
+        } else if (rolUser.equals("Empleado")) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Empleados/Andreus.jpeg"));
+            empleadoFoto.setIcon(icon);
+
+        } else if (rolUser.equals("Aux.Nomina")) {
+
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Empleados/Oscar.jpeg"));
             empleadoFoto.setIcon(icon);
-            
+
         }
-        
+
+        //Obteniendo datos del empleado
+        try {
+
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select * from Empleados where UserAsign = '"
+                    + Username + "'");
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                //Poniendo los datos en los campos del formulario
+                nombre_field.setText(rs.getString(2));
+                sexo_field.setText(rs.getString(4));
+                edad_field.setText(Integer.toString(rs.getInt(5)));
+                puesto_field.setText(rs.getString(6));
+                tipo_field.setText(rs.getString(7));
+                salario_field.setText(Float.toString(rs.getFloat(8)));
+                IdTxt.setText(Integer.toString(rs.getInt(1)));
+
+            }
+
+            cn.close();
+
+        } catch (Exception e) {
+
+            System.err.println("Error al mostrar perfil." + e);
+
+        }
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,7 +81,7 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo = new javax.swing.JPanel();
         fotoEmpleado_panel = new javax.swing.JPanel();
         empleadoFoto = new javax.swing.JLabel();
-        nombre_txt = new javax.swing.JLabel();
+        IdTxt = new javax.swing.JLabel();
         nombre_field = new javax.swing.JTextField();
         sexo_txt = new javax.swing.JLabel();
         sexo_field = new javax.swing.JTextField();
@@ -45,6 +93,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         tipo_field = new javax.swing.JTextField();
         salario_txt = new javax.swing.JLabel();
         salario_field = new javax.swing.JTextField();
+        nombre_txt1 = new javax.swing.JLabel();
+        nombre_txt2 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Perfil ");
@@ -66,35 +116,54 @@ public class verPerfil extends javax.swing.JInternalFrame {
 
         Fondo.add(fotoEmpleado_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 128, 208));
 
-        nombre_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        nombre_txt.setText("Nombre:");
-        Fondo.add(nombre_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
-        Fondo.add(nombre_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 260, 30));
+        IdTxt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        Fondo.add(IdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+
+        nombre_field.setEditable(false);
+        Fondo.add(nombre_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 260, 30));
 
         sexo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         sexo_txt.setText("Sexo:");
-        Fondo.add(sexo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
-        Fondo.add(sexo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 140, 30));
+        Fondo.add(sexo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+
+        sexo_field.setEditable(false);
+        Fondo.add(sexo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 140, 30));
 
         edad_Txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         edad_Txt.setText("Edad:");
-        Fondo.add(edad_Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
-        Fondo.add(edad_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 40, 30));
+        Fondo.add(edad_Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+
+        edad_field.setEditable(false);
+        Fondo.add(edad_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 40, 30));
 
         puesto_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         puesto_txt.setText("Puesto:");
         Fondo.add(puesto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-        Fondo.add(puesto_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 110, -1));
+
+        puesto_field.setEditable(false);
+        Fondo.add(puesto_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 220, -1));
 
         tipo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         tipo_txt.setText("Tipo:");
         Fondo.add(tipo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
-        Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 110, -1));
+
+        tipo_field.setEditable(false);
+        Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 220, -1));
 
         salario_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         salario_txt.setText("Salario base:");
         Fondo.add(salario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
-        Fondo.add(salario_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 110, -1));
+
+        salario_field.setEditable(false);
+        Fondo.add(salario_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 130, -1));
+
+        nombre_txt1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        nombre_txt1.setText("Nombre:");
+        Fondo.add(nombre_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+
+        nombre_txt2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        nombre_txt2.setText("ID:");
+        Fondo.add(nombre_txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,12 +182,14 @@ public class verPerfil extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
+    private javax.swing.JLabel IdTxt;
     private javax.swing.JLabel edad_Txt;
     private javax.swing.JTextField edad_field;
     private javax.swing.JLabel empleadoFoto;
     private javax.swing.JPanel fotoEmpleado_panel;
     private javax.swing.JTextField nombre_field;
-    private javax.swing.JLabel nombre_txt;
+    private javax.swing.JLabel nombre_txt1;
+    private javax.swing.JLabel nombre_txt2;
     private javax.swing.JTextField puesto_field;
     private javax.swing.JLabel puesto_txt;
     private javax.swing.JTextField salario_field;

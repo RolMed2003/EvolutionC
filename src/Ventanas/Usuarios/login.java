@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JInternalFrame {
 
     public static String rolUser;
+    public static String Username;
     
     public login() {
 
@@ -157,13 +158,13 @@ public class login extends javax.swing.JInternalFrame {
 
         //Variables
         int Val = 0;
-        String user, pass;
+        String pass;
 
-        user = user_field.getText().trim();
+        Username = user_field.getText().trim();
         pass = passTxt.getText().trim();
 
         //Validaciones
-        if (user.equals("")) {
+        if (Username.equals("")) {
 
             Val++;
             user_field.setBackground(new Color(224, 186, 51));
@@ -183,7 +184,7 @@ public class login extends javax.swing.JInternalFrame {
                 
                 Connection cn = Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement("select Role_User from Usuarios where Nombre_User = '"
-                        +user+"' and Password_User = '"+pass+"'");
+                        +Username+"' and Password_User = '"+pass+"'");
                 
                 ResultSet rs = pst.executeQuery();
                 

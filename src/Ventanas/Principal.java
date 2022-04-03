@@ -192,11 +192,11 @@ public class Principal extends javax.swing.JFrame {
         Principal.Contabilidad_Menu.setVisible(false);
         Principal.perfilMenu.setVisible(false);
         Principal.cerrarSesionBtn.setVisible(false);
-        
+
         login X = new login();
         Desktop.add(X);
         X.setVisible(true);
-        
+
         Icon icon = new ImageIcon(getClass().getResource("../Recursos/Iconos/JOption/logoutx64.png"));
         JOptionPane.showMessageDialog(null, "Se ha cerrado su sesión.", " -  Info", JOptionPane.PLAIN_MESSAGE,
                 icon);
@@ -205,10 +205,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void perfilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilBtnActionPerformed
         
-        verPerfil X = new verPerfil();
-        Desktop.add(X);
-        X.setVisible(true);
+        String Username = login.Username;
         
+        
+        Icon icon = new ImageIcon(getClass().getResource("../Recursos/Iconos/JOption/cerca.png"));
+            JOptionPane.showMessageDialog(null, "Aun no se ha agregado informacion para este usuario.", " -  Error",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
     }//GEN-LAST:event_perfilBtnActionPerformed
 
     public static void main(String args[]) {
