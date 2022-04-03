@@ -12,15 +12,15 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
         initComponents();
 
-        //Modelando ventana
+        //Modelando ventana.
         setTitle("Gestión de usuarios");
         setSize(790, 490);
         setLocation(245, 105);
         
-        //Placeholder
+        //Placeholder.
         PlaceHolder X = new PlaceHolder("Nombre de usuario", buscarTxt);
         
-        //Tabla
+        //Tabla.
         usuariosTbl.setModel(user.mostrarUsuarios((DefaultTableModel)usuariosTbl.getModel()));
 
     }
