@@ -14,13 +14,22 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="registrarUsuarioBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/add_menuicon.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="gestionarUsuarioBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/gestion_usuario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gestionar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionarUsuarioBtnActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -34,13 +43,22 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="registrarEmpleadoBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/add_empleado.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="gestionarEmpleadoBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/management.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gestionar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gestionarEmpleadoBtnActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -54,11 +72,17 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="verNominaBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/budget.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nomina"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="verSalariosBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/salary.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver salarios base"/>
               </Properties>
             </MenuItem>
@@ -74,6 +98,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="verPerfilBtn">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/user_profile.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver perfil"/>
               </Properties>
               <Events>

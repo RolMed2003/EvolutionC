@@ -1,5 +1,7 @@
 package Ventanas.Perfil;
 
+import Ventanas.Empleados.Gestionar_empleados;
+import Ventanas.Usuarios.Gestionar;
 import Ventanas.Usuarios.login;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -72,29 +74,45 @@ public class Principal extends javax.swing.JFrame {
 
         Usuario_Menu.setText("Usuarios");
 
+        registrarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/add_menuicon.png"))); // NOI18N
         registrarUsuarioBtn.setText("Registrar");
         Usuario_Menu.add(registrarUsuarioBtn);
 
+        gestionarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/gestion_usuario.png"))); // NOI18N
         gestionarUsuarioBtn.setText("Gestionar");
+        gestionarUsuarioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionarUsuarioBtnActionPerformed(evt);
+            }
+        });
         Usuario_Menu.add(gestionarUsuarioBtn);
 
         jMenuBar1.add(Usuario_Menu);
 
         Empleado_Menu.setText("Empleados");
 
+        registrarEmpleadoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/add_empleado.png"))); // NOI18N
         registrarEmpleadoBtn.setText("Registrar");
         Empleado_Menu.add(registrarEmpleadoBtn);
 
+        gestionarEmpleadoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/management.png"))); // NOI18N
         gestionarEmpleadoBtn.setText("Gestionar");
+        gestionarEmpleadoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionarEmpleadoBtnActionPerformed(evt);
+            }
+        });
         Empleado_Menu.add(gestionarEmpleadoBtn);
 
         jMenuBar1.add(Empleado_Menu);
 
         Contabilidad_Menu.setText("Contabilidad");
 
+        verNominaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/budget.png"))); // NOI18N
         verNominaBtn.setText("Nomina");
         Contabilidad_Menu.add(verNominaBtn);
 
+        verSalariosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/salary.png"))); // NOI18N
         verSalariosBtn.setText("Ver salarios base");
         Contabilidad_Menu.add(verSalariosBtn);
 
@@ -102,6 +120,7 @@ public class Principal extends javax.swing.JFrame {
 
         perfilMenu.setText("Perfil");
 
+        verPerfilBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/user_profile.png"))); // NOI18N
         verPerfilBtn.setText("Ver perfil");
         verPerfilBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +154,18 @@ public class Principal extends javax.swing.JFrame {
         X.setVisible(true);
 
     }//GEN-LAST:event_verPerfilBtnActionPerformed
+
+    private void gestionarUsuarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarUsuarioBtnActionPerformed
+        Gestionar x = new Gestionar();
+        Desktop.add(x);
+        x.setVisible(true);
+    }//GEN-LAST:event_gestionarUsuarioBtnActionPerformed
+
+    private void gestionarEmpleadoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarEmpleadoBtnActionPerformed
+        Gestionar_empleados x = new Gestionar_empleados();
+        Desktop.add(x);
+        x.setVisible(true);
+    }//GEN-LAST:event_gestionarEmpleadoBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

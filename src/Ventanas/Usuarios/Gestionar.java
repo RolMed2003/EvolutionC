@@ -38,6 +38,7 @@ public class Gestionar extends javax.swing.JInternalFrame {
         buscarTxt = new javax.swing.JTextField();
 
         setClosable(true);
+        setTitle("Gestion de usuarios");
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

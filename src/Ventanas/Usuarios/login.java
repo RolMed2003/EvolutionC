@@ -394,7 +394,7 @@ public class login extends javax.swing.JInternalFrame {
                     } catch (SQLException e) {
 
                         //Esto es lo que nos saldra por consola si hay un error al iniciar sesion
-                        System.err.println("Error al logear al usuario");
+                        System.err.println("Error al logear al usuario.");
 
                     }
 
