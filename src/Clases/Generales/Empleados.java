@@ -169,4 +169,51 @@ public class Empleados {
         return model;
     }
 
+    public DefaultTableModel mostrarEmpleados(String Buscar) {
+
+        Object[] Titulos = new Object[7];
+        Titulos[0] = "ID";
+        Titulos[1] = "Nombre";
+        Titulos[2] = "DNI";
+        Titulos[3] = "Sexo";
+        Titulos[4] = "Edad";
+        Titulos[5] = "Cargo";
+        Titulos[6] = "Salario base";
+
+        DefaultTableModel model = new DefaultTableModel(Titulos, 0);
+
+        try {
+
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select ID_empleado, Nombre_empleado, DNI, Sexo, Edad, "
+                    + "Cargo, Salario_Base from Empleados where Nombre_empleado like "
+                    + "'%" + Buscar + "%'");
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Object[] row = new Object[7];
+
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getInt(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getFloat(7);
+
+                model.addRow(row);
+
+            }
+
+        } catch (SQLException e) {
+
+            System.err.println("Error al obtener tabla de empleados" + e);
+
+        }
+
+        return model;
+
+    }
 }

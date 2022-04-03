@@ -23,7 +23,6 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         PlaceHolder y = new PlaceHolder("Nombre del empleado", buscarTxt_empleados);
         
         //Tabla.
-        
         EmpleadosTbl.setModel(emp.mostrarEmpleados((DefaultTableModel)EmpleadosTbl.getModel()));
     }
 
@@ -39,6 +38,7 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         eliminarEmpleados_button = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         buscarTxt_empleados = new javax.swing.JTextField();
+        buscarBtn = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -89,6 +89,13 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
 
         buscarTxt_empleados.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
+        buscarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/buscar_empleado.png"))); // NOI18N
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,6 +107,8 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buscarTxt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscarBtn)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +126,8 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(buscarTxt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buscarTxt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarBtn))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(105, 105, 105)
@@ -129,15 +139,24 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+
+        String buscar = buscarTxt_empleados.getText().trim();
+
+        EmpleadosTbl.setModel(emp.mostrarEmpleados(buscar));
+
+    }//GEN-LAST:event_buscarBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable EmpleadosTbl;
+    private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt_empleados;
     private javax.swing.JButton editarEmpleados_button;
     private javax.swing.JButton eliminarEmpleados_button;

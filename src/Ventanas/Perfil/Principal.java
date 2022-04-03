@@ -1,5 +1,6 @@
 package Ventanas.Perfil;
 
+import Ventanas.Contabilidad.Nomina;
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
 import Ventanas.Contabilidad.Salario_base;
@@ -126,6 +127,11 @@ public class Principal extends javax.swing.JFrame {
 
         verNominaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/budget.png"))); // NOI18N
         verNominaBtn.setText("Nomina");
+        verNominaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verNominaBtnActionPerformed(evt);
+            }
+        });
         Contabilidad_Menu.add(verNominaBtn);
 
         verSalariosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/salary.png"))); // NOI18N
@@ -223,6 +229,11 @@ public class Principal extends javax.swing.JFrame {
         X.setVisible(true);
         
     }//GEN-LAST:event_verSalariosBtnActionPerformed
+    private void verNominaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verNominaBtnActionPerformed
+        Nomina x = new Nomina();
+        Desktop.add(x);
+        x.setVisible(true);
+    }//GEN-LAST:event_verNominaBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -289,8 +289,8 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
                     pst3.setString(4, sexo);
                     pst3.setInt(5, edad);
                     pst3.setString(6, cargo);
-                    pst3.setString(7, tipo);
-                    pst3.setFloat(8, 0);
+                    pst3.setFloat(7, 0);
+                    pst3.setString(8, tipo);
                     pst3.setFloat(9, 0);
                     pst3.setInt(10, 0);
                     pst3.setFloat(11, 0);
