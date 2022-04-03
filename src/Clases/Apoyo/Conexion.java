@@ -2,6 +2,7 @@ package Clases.Apoyo;
 
 //Imports
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Conexion {
 
@@ -20,7 +21,8 @@ public class Conexion {
         } catch (Exception e) {
             
             //Mensaje que se mostrara por consola si la conexion falla
-            System.err.println("Error desde el metodo conectar.");
+            System.err.println("Error desde el metodo conectar."+ e);
+            JOptionPane.showMessageDialog(null, "No sirve Enrique, hace la base de datos.");
             
         }
         

@@ -16,7 +16,7 @@ public class login extends javax.swing.JInternalFrame {
 
     public static String rolUser;
     public static String Username;
-    
+
     public login() {
 
         initComponents();
@@ -26,12 +26,15 @@ public class login extends javax.swing.JInternalFrame {
         setSize(406, 534);
         setLocation(437, 88);
 
+        loading.setVisible(false);
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loading = new javax.swing.JLabel();
         Fondo = new javax.swing.JPanel();
         login_img = new javax.swing.JLabel();
         fondo_panel = new javax.swing.JPanel();
@@ -43,6 +46,10 @@ public class login extends javax.swing.JInternalFrame {
         entrar_txtButton = new javax.swing.JLabel();
 
         setTitle("Login");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
+        getContentPane().add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 157, -1, -1));
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,16 +143,7 @@ public class login extends javax.swing.JInternalFrame {
 
         Fondo.add(fondo_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 410));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-        );
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 504));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,92 +177,107 @@ public class login extends javax.swing.JInternalFrame {
 
         //Guardando datos
         if (Val == 0) {
-            
-            try {
-                
-                Connection cn = Conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("select Role_User from Usuarios where Nombre_User = '"
-                        +Username+"' and Password_User = '"+pass+"'");
-                
-                ResultSet rs = pst.executeQuery();
-                
-                if(rs.next()){
+
+            new Thread() {
+
+                @Override
+                public void run() {
+
+                    loading.setVisible(true);
                     
-                    //Obteniendo el rol del usuario
-                    rolUser = rs.getString("Role_User");
-                    
-                    //Enviandolo a su respectiva ventana.
-                    if(rolUser.equalsIgnoreCase("Administrador")){
+                    try {
                         
-                        Principal.Usuario_Menu.setVisible(true);
-                        Principal.Empleado_Menu.setVisible(true);
-                        Principal.Contabilidad_Menu.setVisible(true);
-                        Principal.perfilMenu.setVisible(true);
-                        Principal.cerrarSesionBtn.setVisible(true);
+                        Connection cn = Conexion.conectar();
+                        PreparedStatement pst = cn.prepareStatement("select Role_User from Usuarios where Nombre_User = '"
+                                + Username + "' and Password_User = '" + pass + "'");
                         
-                        this.dispose();
-                        
-                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Administrador.", " -  Info",
-                                JOptionPane.PLAIN_MESSAGE, icon);
-                        
-                    }else if(rolUser.equalsIgnoreCase("Contador")){
-                        
-                        Principal.Empleado_Menu.setVisible(true);
-                        Principal.Contabilidad_Menu.setVisible(true);
-                        Principal.perfilMenu.setVisible(true);
-                        Principal.cerrarSesionBtn.setVisible(true);
-                        
-                        this.dispose();
-                        
-                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Contador.", " -  Info",
-                                JOptionPane.PLAIN_MESSAGE, icon);
-                        
-                    }else if(rolUser.equalsIgnoreCase("Aux.Nomina")){
-                        
-                        Principal.Empleado_Menu.setVisible(true);
-                        Principal.Contabilidad_Menu.setVisible(true);
-                        Principal.perfilMenu.setVisible(true);
-                        Principal.cerrarSesionBtn.setVisible(true);
-                        
-                        this.dispose();
-                        
-                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Auxiliar de Nomina.", " -  Info",
-                                JOptionPane.PLAIN_MESSAGE, icon);
-                        
-                    }else if(rolUser.equalsIgnoreCase("Empleado")){
-                        
-                        Principal.perfilMenu.setVisible(true);
-                        Principal.cerrarSesionBtn.setVisible(true);
-                        
-                        this.dispose();
-                        
-                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                        JOptionPane.showMessageDialog(null, "Sesion iniciada como Empleado.", " -  Info",
-                                JOptionPane.PLAIN_MESSAGE, icon);
-                        
+                        ResultSet rs = pst.executeQuery();
+
+                        if (rs.next()) {
+
+                            //Obteniendo el rol del usuario
+                            rolUser = rs.getString("Role_User");
+
+                            //Enviandolo a su respectiva ventana.
+                            if (rolUser.equalsIgnoreCase("Administrador")) {
+
+                                Principal.Usuario_Menu.setVisible(true);
+                                Principal.Empleado_Menu.setVisible(true);
+                                Principal.Contabilidad_Menu.setVisible(true);
+                                Principal.perfilMenu.setVisible(true);
+                                Principal.cerrarSesionBtn.setVisible(true);
+
+                                dispose();
+
+                                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                                JOptionPane.showMessageDialog(null, "Sesion iniciada como Administrador.", " -  Info",
+                                        JOptionPane.PLAIN_MESSAGE, icon);
+
+                            } else if (rolUser.equalsIgnoreCase("Contador")) {
+
+                                Principal.Empleado_Menu.setVisible(true);
+                                Principal.Contabilidad_Menu.setVisible(true);
+                                Principal.perfilMenu.setVisible(true);
+                                Principal.cerrarSesionBtn.setVisible(true);
+
+                                dispose();
+
+                                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                                JOptionPane.showMessageDialog(null, "Sesion iniciada como Contador.", " -  Info",
+                                        JOptionPane.PLAIN_MESSAGE, icon);
+
+                            } else if (rolUser.equalsIgnoreCase("Aux.Nomina")) {
+
+                                Principal.Empleado_Menu.setVisible(true);
+                                Principal.Contabilidad_Menu.setVisible(true);
+                                Principal.perfilMenu.setVisible(true);
+                                Principal.cerrarSesionBtn.setVisible(true);
+
+                                dispose();
+
+                                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                                JOptionPane.showMessageDialog(null, "Sesion iniciada como Auxiliar de Nomina.", " -  Info",
+                                        JOptionPane.PLAIN_MESSAGE, icon);
+
+                            } else if (rolUser.equalsIgnoreCase("Empleado")) {
+
+                                Principal.perfilMenu.setVisible(true);
+                                Principal.cerrarSesionBtn.setVisible(true);
+
+                                dispose();
+
+                                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                                JOptionPane.showMessageDialog(null, "Sesion iniciada como Empleado.", " -  Info",
+                                        JOptionPane.PLAIN_MESSAGE, icon);
+
+                            }
+
+                        } else {
+
+                            user_field.requestFocus();
+                            user_field.setText("");
+                            passTxt.setText("");
+
+                            loading.setVisible(false);
+                            
+                            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
+                            JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.",
+                                    "Mensaje de error", JOptionPane.PLAIN_MESSAGE, icon);
+
+                        }
+
+                    } catch (SQLException e) {
+
+                        //Esto es lo que nos saldra por consola si hay un error al iniciar sesion
+                        System.err.println("Error al logear al usuario");
+
                     }
-                    
-                }else{
-                    
-                    user_field.requestFocus();
-                    user_field.setText("");
-                    passTxt.setText("");
-                    
-                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
-                    JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.",
-                        "Mensaje de error", JOptionPane.PLAIN_MESSAGE, icon);
+
+                    loading.setVisible(false);
                     
                 }
-                
-            } catch (SQLException e) {
-                
-                //Esto es lo que nos saldra por consola si hay un error al iniciar sesion
-                System.err.println("Error al logear al usuario");
-                
-            }
+
+            }.start();
 
         } else {
 
@@ -291,6 +304,7 @@ public class login extends javax.swing.JInternalFrame {
     private javax.swing.JPanel entrar_panelButton;
     private javax.swing.JLabel entrar_txtButton;
     private javax.swing.JPanel fondo_panel;
+    public static javax.swing.JLabel loading;
     private javax.swing.JLabel login_img;
     private javax.swing.JPasswordField passTxt;
     private javax.swing.JLabel pass_txt;

@@ -3,6 +3,7 @@ package Clases.Generales;
 import Clases.Apoyo.Conexion;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 
 public class Usuario {
 
@@ -44,15 +45,31 @@ public class Usuario {
     }
     
     //Metodos particulares
-    public DefaultTableModel mostrarUsuarios(){
-        
-        DefaultTableModel model = new DefaultTableModel();
-        
+    public DefaultTableModel mostrarUsuarios(DefaultTableModel model){
+      
         try {
             
             Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select ID_User, Nombre_User, Role_User from Usuarios");
             
-        } catch (Exception e) {
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+                Object[] row = new Object[3];
+                
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                
+                model.addRow(row);
+                
+            }
+            
+        } catch (SQLException e) {
+            
+            System.err.println("Error al obtener tabla de usuarios"+ e);
+            
         }
         
         return model;

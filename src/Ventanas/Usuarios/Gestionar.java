@@ -1,8 +1,12 @@
 package Ventanas.Usuarios;
 
 import Clases.Apoyo.PlaceHolder;
+import Clases.Generales.Usuario;
+import javax.swing.table.DefaultTableModel;
 
 public class Gestionar extends javax.swing.JInternalFrame {
+    
+    Usuario user = new Usuario();
     
     public Gestionar() {
 
@@ -15,6 +19,9 @@ public class Gestionar extends javax.swing.JInternalFrame {
         
         //Placeholder
         PlaceHolder X = new PlaceHolder("Nombre de usuario", buscarTxt);
+        
+        //Tabla
+        usuariosTbl.setModel(user.mostrarUsuarios((DefaultTableModel)usuariosTbl.getModel()));
 
     }
 
@@ -30,15 +37,14 @@ public class Gestionar extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         buscarTxt = new javax.swing.JTextField();
 
+        setClosable(true);
+
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         usuariosTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         usuariosTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre de usuario", "Tipo de acceso"

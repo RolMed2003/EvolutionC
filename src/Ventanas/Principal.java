@@ -8,6 +8,7 @@ import Ventanas.Salarios.Salario_base;
 import Ventanas.Usuarios.Gestionar;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.Timer;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
 
         //Componentes
         cerrarSesionBtn.setVisible(false);
+        loading.setVisible(false);
 
     }
 
@@ -47,6 +49,7 @@ public class Principal extends javax.swing.JFrame {
 
         Desktop = new javax.swing.JDesktopPane();
         cerrarSesionBtn = new javax.swing.JButton();
+        loading = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Usuario_Menu = new javax.swing.JMenu();
         agregar_Usuario_Btn = new javax.swing.JMenuItem();
@@ -74,24 +77,29 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopLayout.createSequentialGroup()
-                .addContainerGap(1092, Short.MAX_VALUE)
-                .addComponent(cerrarSesionBtn)
-                .addGap(31, 31, 31))
+            .addGroup(DesktopLayout.createSequentialGroup()
+                .addGap(540, 540, 540)
+                .addComponent(loading))
+            .addGroup(DesktopLayout.createSequentialGroup()
+                .addGap(1092, 1092, 1092)
+                .addComponent(cerrarSesionBtn))
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopLayout.createSequentialGroup()
-                .addContainerGap(629, Short.MAX_VALUE)
-                .addComponent(cerrarSesionBtn)
-                .addGap(40, 40, 40))
+            .addGroup(DesktopLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(loading)
+                .addGap(179, 179, 179)
+                .addComponent(cerrarSesionBtn))
         );
+        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Desktop.setLayer(loading, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
@@ -200,6 +208,8 @@ public class Principal extends javax.swing.JFrame {
         Principal.perfilMenu.setVisible(false);
         Principal.cerrarSesionBtn.setVisible(false);
 
+        Desktop.removeAll();
+
         login X = new login();
         Desktop.add(X);
         X.setVisible(true);
@@ -211,31 +221,44 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSesionBtnActionPerformed
 
     private void perfilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilBtnActionPerformed
-        
+
         String Username = login.Username;
-        
-        if(Username.equals("System")){
-            
+
+        if (Username.equals("System")) {
+
             Icon icon = new ImageIcon(getClass().getResource("../Recursos/Iconos/JOption/cerca.png"));
             JOptionPane.showMessageDialog(null, "Aun no se ha agregado informacion para este usuario.", " -  Error",
                     JOptionPane.PLAIN_MESSAGE, icon);
-            
-        }else{
-            
+
+        } else {
+
             verPerfil X = new verPerfil();
             Desktop.add(X);
             X.setVisible(true);
-            
+
         }
- 
+
     }//GEN-LAST:event_perfilBtnActionPerformed
 
     private void gestionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarBtnActionPerformed
-        
-        Gestionar X = new Gestionar();
-        Desktop.add(X);
-        X.setVisible(true);
-        
+
+        new Thread() {
+
+            @Override
+            public void run() {
+
+                loading.setVisible(true);
+
+                Gestionar X = new Gestionar();
+                Desktop.add(X);
+                X.setVisible(true);
+
+                loading.setVisible(false);
+
+            }
+
+        }.start();
+
     }//GEN-LAST:event_gestionarBtnActionPerformed
 
     public static void main(String args[]) {
@@ -294,6 +317,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem gestionarEmpBtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    public static javax.swing.JLabel loading;
     private javax.swing.JMenuItem perfilBtn;
     public static javax.swing.JMenu perfilMenu;
     private javax.swing.JMenuItem verNominaBtn;
