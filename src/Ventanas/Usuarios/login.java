@@ -2,20 +2,29 @@ package Ventanas.Usuarios;
 
 import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
-import Ventanas.Principal;
+import Ventanas.Perfil.Principal;
+import static Ventanas.Perfil.Principal.Contabilidad_Menu;
+import static Ventanas.Perfil.Principal.Desktop;
+import static Ventanas.Perfil.Principal.Empleado_Menu;
+import static Ventanas.Perfil.Principal.Usuario_Menu;
+import static Ventanas.Perfil.Principal.perfilMenu;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
 
     public static String rolUser;
     public static String Username;
+    public static JButton X = new JButton();
 
     public login() {
 
@@ -184,13 +193,13 @@ public class login extends javax.swing.JInternalFrame {
                 public void run() {
 
                     loading.setVisible(true);
-                    
+
                     try {
-                        
+
                         Connection cn = Conexion.conectar();
                         PreparedStatement pst = cn.prepareStatement("select Role_user from Usuarios where User = '"
                                 + Username + "' and password = '" + pass + "'");
-                        
+
                         ResultSet rs = pst.executeQuery();
 
                         if (rs.next()) {
@@ -205,7 +214,36 @@ public class login extends javax.swing.JInternalFrame {
                                 Principal.Empleado_Menu.setVisible(true);
                                 Principal.Contabilidad_Menu.setVisible(true);
                                 Principal.perfilMenu.setVisible(true);
-                                Principal.cerrarSesionBtn.setVisible(true);
+                               
+                                X.setSize(149, 41);
+                                X.setText("Cerrar sesion");
+                                X.setFont(new Font("Yu Gothic UI", 0, 14));
+                                X.setLocation(1110, 610);
+
+                                X.addActionListener(new java.awt.event.ActionListener() {
+                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                        XActionPerformed(evt);
+                                    }
+
+                                    private void XActionPerformed(ActionEvent evt) {
+
+                                        Usuario_Menu.setVisible(false);
+                                        Empleado_Menu.setVisible(false);
+                                        Contabilidad_Menu.setVisible(false);
+                                        perfilMenu.setVisible(false);
+
+                                        Desktop.removeAll();
+
+                                        login X = new login();
+                                        Desktop.add(X);
+                                        X.setVisible(true);
+
+                                    }
+                                });
+
+                                Icon icon2 = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Login/logout.png"));
+                                X.setIcon(icon2);
+                                Principal.Desktop.add(X);
 
                                 dispose();
 
@@ -218,8 +256,37 @@ public class login extends javax.swing.JInternalFrame {
                                 Principal.Empleado_Menu.setVisible(true);
                                 Principal.Contabilidad_Menu.setVisible(true);
                                 Principal.perfilMenu.setVisible(true);
-                                Principal.cerrarSesionBtn.setVisible(true);
 
+                                X.setSize(149, 41);
+                                X.setText("Cerrar sesion");
+                                X.setFont(new Font("Yu Gothic UI", 0, 14));
+                                X.setLocation(1110, 610);
+
+                                X.addActionListener(new java.awt.event.ActionListener() {
+                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                        XActionPerformed(evt);
+                                    }
+
+                                    private void XActionPerformed(ActionEvent evt) {
+
+                                        Usuario_Menu.setVisible(false);
+                                        Empleado_Menu.setVisible(false);
+                                        Contabilidad_Menu.setVisible(false);
+                                        perfilMenu.setVisible(false);
+
+                                        Desktop.removeAll();
+
+                                        login X = new login();
+                                        Desktop.add(X);
+                                        X.setVisible(true);
+
+                                    }
+                                });
+
+                                Icon icon2 = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Login/logout.png"));
+                                X.setIcon(icon2);
+                                Principal.Desktop.add(X);
+                                
                                 dispose();
 
                                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
@@ -231,8 +298,37 @@ public class login extends javax.swing.JInternalFrame {
                                 Principal.Empleado_Menu.setVisible(true);
                                 Principal.Contabilidad_Menu.setVisible(true);
                                 Principal.perfilMenu.setVisible(true);
-                                Principal.cerrarSesionBtn.setVisible(true);
 
+                                X.setSize(149, 41);
+                                X.setText("Cerrar sesion");
+                                X.setFont(new Font("Yu Gothic UI", 0, 14));
+                                X.setLocation(1110, 610);
+
+                                X.addActionListener(new java.awt.event.ActionListener() {
+                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                        XActionPerformed(evt);
+                                    }
+
+                                    private void XActionPerformed(ActionEvent evt) {
+
+                                        Usuario_Menu.setVisible(false);
+                                        Empleado_Menu.setVisible(false);
+                                        Contabilidad_Menu.setVisible(false);
+                                        perfilMenu.setVisible(false);
+
+                                        Desktop.removeAll();
+
+                                        login X = new login();
+                                        Desktop.add(X);
+                                        X.setVisible(true);
+
+                                    }
+                                });
+
+                                Icon icon2 = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Login/logout.png"));
+                                X.setIcon(icon2);
+                                Principal.Desktop.add(X);
+                                
                                 dispose();
 
                                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
@@ -242,8 +338,37 @@ public class login extends javax.swing.JInternalFrame {
                             } else if (rolUser.equalsIgnoreCase("Empleado")) {
 
                                 Principal.perfilMenu.setVisible(true);
-                                Principal.cerrarSesionBtn.setVisible(true);
 
+                                X.setSize(149, 41);
+                                X.setText("Cerrar sesion");
+                                X.setFont(new Font("Yu Gothic UI", 0, 14));
+                                X.setLocation(1110, 610);
+
+                                X.addActionListener(new java.awt.event.ActionListener() {
+                                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                        XActionPerformed(evt);
+                                    }
+
+                                    private void XActionPerformed(ActionEvent evt) {
+
+                                        Usuario_Menu.setVisible(false);
+                                        Empleado_Menu.setVisible(false);
+                                        Contabilidad_Menu.setVisible(false);
+                                        perfilMenu.setVisible(false);
+
+                                        Desktop.removeAll();
+
+                                        login X = new login();
+                                        Desktop.add(X);
+                                        X.setVisible(true);
+
+                                    }
+                                });
+
+                                Icon icon2 = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Login/logout.png"));
+                                X.setIcon(icon2);
+                                Principal.Desktop.add(X);
+                                
                                 dispose();
 
                                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
@@ -259,7 +384,7 @@ public class login extends javax.swing.JInternalFrame {
                             passTxt.setText("");
 
                             loading.setVisible(false);
-                            
+
                             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
                             JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos.",
                                     "Mensaje de error", JOptionPane.PLAIN_MESSAGE, icon);
@@ -274,11 +399,10 @@ public class login extends javax.swing.JInternalFrame {
                     }
 
                     loading.setVisible(false);
-                    
+
                 }
 
-            }.start() ;
-             
+            }.start();
 
         } else {
 
