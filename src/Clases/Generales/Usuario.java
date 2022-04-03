@@ -13,12 +13,10 @@ public class Usuario {
     String Role_User;
 
     //Constructor
-    public Usuario(){
-        
-        
-        
+    public Usuario() {
+
     }
-    
+
     //Getters and setters
     public String getNombre_User() {
         return Nombre_User;
@@ -43,36 +41,75 @@ public class Usuario {
     public void setRole_User(String Role_User) {
         this.Role_User = Role_User;
     }
-    
+
     //Metodos particulares
-    public DefaultTableModel mostrarUsuarios(DefaultTableModel model){
-      
+    public DefaultTableModel mostrarUsuarios(DefaultTableModel model) {
+
         try {
-            
+
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement("select ID_USER, User, Role_user from Usuarios");
-            
+
             ResultSet rs = pst.executeQuery();
-            
-            while(rs.next()){
-                
+
+            while (rs.next()) {
+
                 Object[] row = new Object[3];
-                
+
                 row[0] = rs.getInt(1);
                 row[1] = rs.getString(2);
                 row[2] = rs.getString(3);
-                
+
                 model.addRow(row);
-                
+
             }
-            
+
         } catch (SQLException e) {
-            
-            System.err.println("Error al obtener tabla de usuarios"+ e);
-            
+
+            System.err.println("Error al obtener tabla de usuarios" + e);
+
         }
-        
+
         return model;
     }
-    
+
+    public DefaultTableModel mostrarUsuarios(String Buscar) {
+
+        Object[] Titulos = new Object[3];
+        Titulos[0] = "ID";
+        Titulos[1] = "Nombre de usuario";
+        Titulos[2] = "Tipo de acceso";
+        
+        DefaultTableModel model = new DefaultTableModel(Titulos, 0);
+        
+        try {
+
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select ID_USER, User, Role_user from Usuarios where User like "
+                    + "'%"+ Buscar +"%'");
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Object[] row = new Object[3];
+
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+
+                model.addRow(row);
+
+            }
+
+        } catch (SQLException e) {
+
+            System.err.println("Error al obtener tabla de usuarios" + e);
+
+        }
+
+        return model;
+
+    }
+
 }
