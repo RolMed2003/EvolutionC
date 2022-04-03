@@ -92,18 +92,18 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(540, 540, 540)
                         .addComponent(loading))
                     .addGroup(DesktopLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
+                        .addContainerGap()
                         .addComponent(cerrarSesionBtn)))
                 .addGap(540, 540, 540))
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DesktopLayout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(cerrarSesionBtn)
-                .addGap(46, 46, 46)
+                .addGap(250, 250, 250)
                 .addComponent(loading)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addComponent(cerrarSesionBtn)
+                .addGap(29, 29, 29))
         );
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
