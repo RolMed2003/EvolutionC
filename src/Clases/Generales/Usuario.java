@@ -1,5 +1,9 @@
 package Clases.Generales;
 
+import Clases.Apoyo.Conexion;
+import java.sql.Connection;
+import javax.swing.table.DefaultTableModel;
+
 public class Usuario {
 
     //Atributos
@@ -37,6 +41,21 @@ public class Usuario {
 
     public void setRole_User(String Role_User) {
         this.Role_User = Role_User;
+    }
+    
+    //Metodos particulares
+    public DefaultTableModel mostrarUsuarios(){
+        
+        DefaultTableModel model = new DefaultTableModel();
+        
+        try {
+            
+            Connection cn = Conexion.conectar();
+            
+        } catch (Exception e) {
+        }
+        
+        return model;
     }
     
 }
