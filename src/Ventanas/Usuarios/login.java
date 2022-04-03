@@ -188,15 +188,15 @@ public class login extends javax.swing.JInternalFrame {
                     try {
                         
                         Connection cn = Conexion.conectar();
-                        PreparedStatement pst = cn.prepareStatement("select Role_User from Usuarios where Nombre_User = '"
-                                + Username + "' and Password_User = '" + pass + "'");
+                        PreparedStatement pst = cn.prepareStatement("select Role_user from Usuarios where User = '"
+                                + Username + "' and password = '" + pass + "'");
                         
                         ResultSet rs = pst.executeQuery();
 
                         if (rs.next()) {
 
                             //Obteniendo el rol del usuario
-                            rolUser = rs.getString("Role_User");
+                            rolUser = rs.getString("Role_user");
 
                             //Enviandolo a su respectiva ventana.
                             if (rolUser.equalsIgnoreCase("Administrador")) {

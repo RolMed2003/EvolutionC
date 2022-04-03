@@ -301,7 +301,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="tipo_combobx">
+        <Component class="javax.swing.JComboBox" name="cargo_combobx">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="0"/>
@@ -343,7 +343,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="tipo_combobx">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="14" style="0"/>

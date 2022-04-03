@@ -211,7 +211,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
             try {
                 
                 Connection cn = Conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("select Nombre_User from Usuarios where Nombre_User = '"
+                PreparedStatement pst = cn.prepareStatement("select user from Usuarios where user = '"
                         + user +"'");
                 
                 ResultSet rs = pst.executeQuery();

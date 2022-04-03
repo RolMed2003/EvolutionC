@@ -150,22 +150,28 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="540" pref="540" max="-2" attributes="0"/>
-                  <Component id="loading" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="1092" pref="1092" max="-2" attributes="0"/>
-                  <Component id="cerrarSesionBtn" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="540" pref="540" max="-2" attributes="0"/>
+                          <Component id="loading" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                          <Component id="cerrarSesionBtn" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="540" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="250" pref="250" max="-2" attributes="0"/>
-                  <Component id="loading" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="179" pref="179" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                   <Component id="cerrarSesionBtn" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="loading" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="260" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -79,27 +79,32 @@ public class Principal extends javax.swing.JFrame {
 
         loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
 
+        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        Desktop.setLayer(loading, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DesktopLayout.createSequentialGroup()
-                .addGap(540, 540, 540)
-                .addComponent(loading))
-            .addGroup(DesktopLayout.createSequentialGroup()
-                .addGap(1092, 1092, 1092)
-                .addComponent(cerrarSesionBtn))
+                .addGroup(DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DesktopLayout.createSequentialGroup()
+                        .addGap(540, 540, 540)
+                        .addComponent(loading))
+                    .addGroup(DesktopLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(cerrarSesionBtn)))
+                .addGap(540, 540, 540))
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DesktopLayout.createSequentialGroup()
-                .addGap(250, 250, 250)
+                .addGap(163, 163, 163)
+                .addComponent(cerrarSesionBtn)
+                .addGap(46, 46, 46)
                 .addComponent(loading)
-                .addGap(179, 179, 179)
-                .addComponent(cerrarSesionBtn))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
-        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        Desktop.setLayer(loading, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
@@ -254,6 +259,7 @@ public class Principal extends javax.swing.JFrame {
                 X.setVisible(true);
 
                 loading.setVisible(false);
+                
 
             }
 

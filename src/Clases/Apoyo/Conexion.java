@@ -9,9 +9,9 @@ public class Conexion {
     public static Connection conectar(){
         
         //Variables.
-        String url = "jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3481829";
-        String user = "sql3481829";
-        String pass = "zPVEAE7ie2";
+        String url = "jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3483340";
+        String user = "sql3483340";
+        String pass = "NRZE8Blmtq";
         Connection cn = null;
         
         try {

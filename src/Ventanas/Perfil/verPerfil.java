@@ -120,6 +120,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo.add(IdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
 
         nombre_field.setEditable(false);
+        nombre_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        nombre_field.setBorder(null);
         Fondo.add(nombre_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 260, 30));
 
         sexo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -127,6 +129,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo.add(sexo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         sexo_field.setEditable(false);
+        sexo_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        sexo_field.setBorder(null);
         Fondo.add(sexo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 140, 30));
 
         edad_Txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -134,6 +138,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo.add(edad_Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
         edad_field.setEditable(false);
+        edad_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        edad_field.setBorder(null);
         Fondo.add(edad_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 40, 30));
 
         puesto_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -141,6 +147,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo.add(puesto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         puesto_field.setEditable(false);
+        puesto_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        puesto_field.setBorder(null);
         Fondo.add(puesto_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 220, -1));
 
         tipo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -148,6 +156,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo.add(tipo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         tipo_field.setEditable(false);
+        tipo_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        tipo_field.setBorder(null);
         Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 220, -1));
 
         salario_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
@@ -155,6 +165,8 @@ public class verPerfil extends javax.swing.JInternalFrame {
         Fondo.add(salario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         salario_field.setEditable(false);
+        salario_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        salario_field.setBorder(null);
         Fondo.add(salario_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 130, -1));
 
         nombre_txt1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N

@@ -44,9 +44,9 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         femenino_jradio = new javax.swing.JRadioButton();
         masculino_jradio = new javax.swing.JRadioButton();
         cargo_txt = new javax.swing.JLabel();
-        tipo_combobx = new javax.swing.JComboBox<>();
+        cargo_combobx = new javax.swing.JComboBox<>();
         tipo_field = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tipo_combobx = new javax.swing.JComboBox<>();
         nombreEmpleado_field1 = new javax.swing.JTextField();
 
         setClosable(true);
@@ -152,17 +152,17 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         cargo_txt.setText("Cargo:");
         Fondo.add(cargo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
-        tipo_combobx.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        tipo_combobx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Presidente ejecutivo", "Vicepresidente ejecutivo", "Gerente general", "Contador", "Auxiliar contable", "Secretari@", "Guarda de seguridad", "Afanadora", " " }));
-        Fondo.add(tipo_combobx, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 190, -1));
+        cargo_combobx.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        cargo_combobx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Presidente ejecutivo", "Vicepresidente ejecutivo", "Gerente general", "Contador", "Auxiliar contable", "Secretari@", "Guarda de seguridad", "Afanadora", " " }));
+        Fondo.add(cargo_combobx, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 190, -1));
 
         tipo_field.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         tipo_field.setText("Tipo:");
         Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Gerencial", "Administrativo", "Operativo", " " }));
-        Fondo.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 190, -1));
+        tipo_combobx.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        tipo_combobx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Gerencial", "Administrativo", "Operativo", " " }));
+        Fondo.add(tipo_combobx, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 190, -1));
 
         nombreEmpleado_field1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         nombreEmpleado_field1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -194,10 +194,17 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         boolean edadOk = true;
 
         name = nombreEmpleado_field1.getText();
-        select_cargo = tipo_combobx.getSelectedIndex();
-        select_tipo = jComboBox1.getSelectedIndex();
+        select_cargo = cargo_combobx.getSelectedIndex();
+        select_tipo = tipo_combobx.getSelectedIndex();
         dni = dni_field.getText();
 
+        
+        //Reseteando los warnings.
+        nombreEmpleado_field1.setBackground(Color.white);
+        dni_field.setBackground(Color.white);
+        edad_field.setBackground(Color.white);
+        
+        
         //Condicionales para la seleccion del JRadioButton.
         if (masculino_jradio.isSelected()) {
             sexo = "Masculino";
@@ -302,8 +309,8 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
                     dni_field.setText("");
                     edad_field.setText("");
                     buttonGroup1.clearSelection();
+                    cargo_combobx.setSelectedIndex(0);
                     tipo_combobx.setSelectedIndex(0);
-                    jComboBox1.setSelectedIndex(0);
                     
                     cn.close();
 
@@ -335,12 +342,12 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel DNI_txt;
     private javax.swing.JPanel Fondo;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cargo_combobx;
     private javax.swing.JLabel cargo_txt;
     private javax.swing.JTextField dni_field;
     private javax.swing.JTextField edad_field;
     private javax.swing.JLabel edad_txt;
     private javax.swing.JRadioButton femenino_jradio;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
