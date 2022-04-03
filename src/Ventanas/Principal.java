@@ -207,11 +207,20 @@ public class Principal extends javax.swing.JFrame {
         
         String Username = login.Username;
         
-        
-        Icon icon = new ImageIcon(getClass().getResource("../Recursos/Iconos/JOption/cerca.png"));
+        if(Username.equals("System")){
+            
+            Icon icon = new ImageIcon(getClass().getResource("../Recursos/Iconos/JOption/cerca.png"));
             JOptionPane.showMessageDialog(null, "Aun no se ha agregado informacion para este usuario.", " -  Error",
                     JOptionPane.PLAIN_MESSAGE, icon);
-
+            
+        }else{
+            
+            verPerfil X = new verPerfil();
+            Desktop.add(X);
+            X.setVisible(true);
+            
+        }
+ 
     }//GEN-LAST:event_perfilBtnActionPerformed
 
     public static void main(String args[]) {

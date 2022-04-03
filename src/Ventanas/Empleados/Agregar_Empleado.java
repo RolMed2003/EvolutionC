@@ -1,6 +1,7 @@
 package Ventanas.Empleados;
 
 import Clases.Apoyo.Conexion;
+import Clases.Apoyo.Utilities;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Agregar_Empleado extends javax.swing.JInternalFrame {
+
+    Utilities ut = new Utilities();
 
     public Agregar_Empleado() {
         initComponents();
@@ -184,15 +187,17 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
 
         //Variables.
         int Val = 0;
-        int edad;
+        int edad = 0;
         int select_cargo;
-        int select_tipo = 0;
-        String name="null",dni="null", sexo = "null", cargo = "null",  tipo="null";
-        
-        name = dni_field.getText();
-        edad = Integer.parseInt(edad_field.getText());
+        int select_tipo;
+        String name = "", dni = "", sexo = "", cargo = "", tipo = "";
+        boolean edadOk = true;
+
+        name = nombreEmpleado_field1.getText();
         select_cargo = tipo_combobx.getSelectedIndex();
-        dni= dni_field.getText();
+        select_tipo = jComboBox1.getSelectedIndex();
+        dni = dni_field.getText();
+
         //Condicionales para la seleccion del JRadioButton.
         if (masculino_jradio.isSelected()) {
             sexo = "Masculino";
@@ -211,94 +216,118 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
             cargo = "Vicepresidente ejecutivo";
         } else if (select_cargo == 3) {
 
-            cargo = "Contador";
-        } else if (select_cargo == 4) {
+            cargo = "Gerente General";
+        }else if (select_cargo == 4) {
 
-            cargo = "Auxiliar contable";
+            cargo = "Contador";
         } else if (select_cargo == 5) {
 
-            cargo = "Secretari@";
+            cargo = "Auxiliar contable";
         } else if (select_cargo == 6) {
 
-            cargo = "Guarda de seguridad";
+            cargo = "Secretari@";
         } else if (select_cargo == 7) {
+
+            cargo = "Guarda de seguridad";
+        } else if (select_cargo == 8) {
 
             cargo = "Afanadora";
         }
-        
-        //Obteniendo valores de la combo box "Tipo".
-           if (select_tipo == 1) {
 
-            tipo = "Presidente ejecutivo";
+        //Obteniendo valores de la combo box "Tipo".
+        if (select_tipo == 1) {
+
+            tipo = "Gerencial";
         } else if (select_tipo == 2) {
 
-            tipo = "Vicepresidente ejecutivo";
+            tipo = "Administrativo";
         } else if (select_tipo == 3) {
 
-            tipo = "Contador";
+            tipo = "Operativo";
         }
         //Validaciones para campos vacios.
         if (nombreEmpleado_field1.getText().equals("")) {
             Val++;
             nombreEmpleado_field1.setBackground(new Color(224, 186, 51));
-            
+
         }
         if (dni_field.getText().equals("")) {
             Val++;
             dni_field.setBackground(new Color(224, 186, 51));
-            
-        }
-        if (edad_field.getText().equals("")) {
-            Val++;
-            edad_field.setBackground(new Color(224, 186, 51));
-        }
-        
-        
 
-            if (Val == 0) {
-              try {
-                 Connection cn = Conexion.conectar();
-                 PreparedStatement pst3 = cn.prepareStatement("insert to Empleados values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        }
+
+        //Validando la edad
+        if (ut.isInt(edad_field.getText())) {
+
+            edad = Integer.parseInt(edad_field.getText());
+
+        } else {
+
+            edadOk = false;
+
+        }
+
+        if (Val == 0) {
+
+            if (edadOk) {
+
+                try {
+                    Connection cn = Conexion.conectar();
+                    PreparedStatement pst3 = cn.prepareStatement("insert into Empleados values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                     pst3.setInt(1, 0);
-                    pst3.setString(2,name);
-                    pst3.setString(3,dni);
-                    pst3.setString(4,sexo);
-                    pst3.setInt(5,edad);
-                    pst3.setString(6,cargo);
-                    pst3.setString(7,tipo);
-                    pst3.setFloat(8,0);
-                    pst3.setFloat(9,0);
-                    pst3.setInt(10,0);
-                    pst3.setFloat(11,0);
-                    pst3.setFloat(12,0);
-                    pst3.setFloat(13,0);
-                    pst3.setString(14,"");
+                    pst3.setString(2, name);
+                    pst3.setString(3, dni);
+                    pst3.setString(4, sexo);
+                    pst3.setInt(5, edad);
+                    pst3.setString(6, cargo);
+                    pst3.setString(7, tipo);
+                    pst3.setFloat(8, 0);
+                    pst3.setFloat(9, 0);
+                    pst3.setInt(10, 0);
+                    pst3.setFloat(11, 0);
+                    pst3.setFloat(12, 0);
+                    pst3.setFloat(13, 0);
+                    pst3.setString(14, "");
                     pst3.execute();
-                
-                 //Mensaje de confirmacion.
-                 
-           
-                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                        JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
-                                JOptionPane.PLAIN_MESSAGE, icon);
-                        
-                        cn.close();
+
+                    //Mensaje de confirmacion.
+                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                    JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
+                            JOptionPane.PLAIN_MESSAGE, icon);
+
+                    //Reseteando campos.
+                    nombreEmpleado_field1.setText("");
+                    dni_field.setText("");
+                    edad_field.setText("");
+                    buttonGroup1.clearSelection();
+                    tipo_combobx.setSelectedIndex(0);
+                    jComboBox1.setSelectedIndex(0);
+                    
+                    cn.close();
+
                 } catch (SQLException e) {
-                System.err.println("Error al registrar usuario."+e);
+
+                    System.err.println("Error al registrar usuario." + e);
+
                 }
-            } else{
-                
+            } else {
+
                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
-                JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
-                    JOptionPane.PLAIN_MESSAGE, icon);
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un valor valido para la edad.", " -  Advertencia",
+                        JOptionPane.PLAIN_MESSAGE, icon);
             }
-        
-            //Reseteando campos.
-            nombreEmpleado_field1.setText("");
-            dni_field.setText("");
-            edad_field.setText("");
-        
+
+        } else {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.",
+                    " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        }
+
     }//GEN-LAST:event_registrar_txtMouseClicked
 
 
