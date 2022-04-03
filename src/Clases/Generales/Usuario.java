@@ -50,7 +50,7 @@ public class Usuario {
         try {
             
             Connection cn = Conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement("select ID_User, Nombre_User, Role_User from Usuarios");
+            PreparedStatement pst = cn.prepareStatement("select ID_USER, User, Role_user from Usuarios");
             
             ResultSet rs = pst.executeQuery();
             
