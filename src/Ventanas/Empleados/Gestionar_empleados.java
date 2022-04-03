@@ -40,6 +40,8 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         buscarTxt_empleados = new javax.swing.JTextField();
 
+        setClosable(true);
+
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         EmpleadosTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
