@@ -33,7 +33,8 @@ public class Principal extends javax.swing.JFrame {
     @Override
     public final Image getIconImage() {
 
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("menu/icons/coding.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Recursos/Iconos/MenuBar"
+                + "/coding.png"));
 
         return retValue;
     }
@@ -63,7 +64,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cerrarSesionBtn.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
-        cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/logout.png"))); // NOI18N
+        cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/logout.png"))); // NOI18N
         cerrarSesionBtn.setText("Cerrar sesión");
         cerrarSesionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +95,7 @@ public class Principal extends javax.swing.JFrame {
         Usuario_Menu.setText("Usuario");
 
         agregar_Usuario_Btn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        agregar_Usuario_Btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu/icons/add_menuicon.png"))); // NOI18N
+        agregar_Usuario_Btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/add_menuicon.png"))); // NOI18N
         agregar_Usuario_Btn.setText("Agregar");
         agregar_Usuario_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

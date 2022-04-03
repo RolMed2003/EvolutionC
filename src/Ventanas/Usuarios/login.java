@@ -44,7 +44,7 @@ public class login extends javax.swing.JInternalFrame {
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/user (1).png"))); // NOI18N
+        login_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/user (1).png"))); // NOI18N
         Fondo.add(login_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         fondo_panel.setBackground(new java.awt.Color(52, 128, 225));

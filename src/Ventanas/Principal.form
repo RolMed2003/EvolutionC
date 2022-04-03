@@ -18,7 +18,7 @@
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/menu/icons/add_menuicon.png"/>
+                  <Image iconType="3" name="/Recursos/Iconos/MenuBar/add_menuicon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
@@ -167,7 +167,7 @@
               <Font name="Yu Gothic" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/login/icons/logout.png"/>
+              <Image iconType="3" name="/Recursos/Iconos/Login/logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n"/>
           </Properties>

@@ -51,7 +51,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        regist_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/agregar-usuario (1).png"))); // NOI18N
+        regist_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/agregar-usuario (1).png"))); // NOI18N
         Fondo.add(regist_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 130, 130));
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
@@ -138,10 +138,10 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         Fondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 180, 10));
         Fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 180, 10));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/user_registro.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/user_registro.png"))); // NOI18N
         Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/icons/pass.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/pass.png"))); // NOI18N
         Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
