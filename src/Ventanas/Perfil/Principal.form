@@ -91,6 +91,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver salarios base"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verSalariosBtnActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

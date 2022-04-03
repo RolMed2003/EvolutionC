@@ -2,6 +2,7 @@ package Ventanas.Perfil;
 
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
+import Ventanas.Contabilidad.Salario_base;
 import Ventanas.Usuarios.Gestionar;
 import Ventanas.Usuarios.login;
 import Ventanas.Usuarios.registroUsuario;
@@ -129,6 +130,11 @@ public class Principal extends javax.swing.JFrame {
 
         verSalariosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/salary.png"))); // NOI18N
         verSalariosBtn.setText("Ver salarios base");
+        verSalariosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verSalariosBtnActionPerformed(evt);
+            }
+        });
         Contabilidad_Menu.add(verSalariosBtn);
 
         jMenuBar1.add(Contabilidad_Menu);
@@ -209,6 +215,14 @@ public class Principal extends javax.swing.JFrame {
         X.setVisible(true);
 
     }//GEN-LAST:event_registrarEmpleadoBtnActionPerformed
+
+    private void verSalariosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verSalariosBtnActionPerformed
+       
+        Salario_base X = new Salario_base();
+        Desktop.add(X);
+        X.setVisible(true);
+        
+    }//GEN-LAST:event_verSalariosBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
