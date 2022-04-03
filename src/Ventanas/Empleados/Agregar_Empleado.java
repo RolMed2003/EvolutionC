@@ -143,7 +143,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
         Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
         tipo_combobx.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        tipo_combobx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Operativo", "Administrativo", "Gerencial" }));
+        tipo_combobx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Presidente ejecutivo", "Vicepresidente ejecutivo", "Contador", "Auxiliar contable", "Secretari@", "Guarda de seguridad", "Afanadora", " " }));
         Fondo.add(tipo_combobx, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
