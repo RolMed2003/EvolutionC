@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
@@ -35,7 +36,8 @@ public class login extends javax.swing.JInternalFrame {
         setSize(406, 534);
         setLocation(437, 88);
 
-        loading.setVisible(false);
+        //Componentes
+        loading.setVisible(false);     
 
     }
 
