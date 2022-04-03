@@ -5,6 +5,7 @@ import Ventanas.Usuarios.registroUsuario;
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Perfil.verPerfil;
 import Ventanas.Salarios.Salario_base;
+import Ventanas.Usuarios.Gestionar;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.Icon;
@@ -73,6 +74,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
@@ -89,7 +92,6 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(cerrarSesionBtn)
                 .addGap(40, 40, 40))
         );
-        Desktop.setLayer(cerrarSesionBtn, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(Desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 710));
 
@@ -106,6 +108,11 @@ public class Principal extends javax.swing.JFrame {
         Usuario_Menu.add(agregar_Usuario_Btn);
 
         gestionarBtn.setText("Gestionar");
+        gestionarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionarBtnActionPerformed(evt);
+            }
+        });
         Usuario_Menu.add(gestionarBtn);
 
         jMenuBar1.add(Usuario_Menu);
@@ -222,6 +229,14 @@ public class Principal extends javax.swing.JFrame {
         }
  
     }//GEN-LAST:event_perfilBtnActionPerformed
+
+    private void gestionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarBtnActionPerformed
+        
+        Gestionar X = new Gestionar();
+        Desktop.add(X);
+        X.setVisible(true);
+        
+    }//GEN-LAST:event_gestionarBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
