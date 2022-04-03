@@ -1,12 +1,28 @@
-
 package Ventanas.Perfil;
+
+import Ventanas.Usuarios.login;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 
 public class verPerfil extends javax.swing.JInternalFrame {
 
+    String rolUser = login.rolUser;
    
     public verPerfil() {
+        
         initComponents();
+        
+        //Modelando ventana
+        setLocation(387, 115);
+        
+        if(rolUser.equals("Administrador")){
+            
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/Empleados/Oscar.jpeg"));
+            empleadoFoto.setIcon(icon);
+            
+        }
+        
     }
 
     
@@ -16,6 +32,7 @@ public class verPerfil extends javax.swing.JInternalFrame {
 
         Fondo = new javax.swing.JPanel();
         fotoEmpleado_panel = new javax.swing.JPanel();
+        empleadoFoto = new javax.swing.JLabel();
         nombre_txt = new javax.swing.JLabel();
         nombre_field = new javax.swing.JTextField();
         sexo_txt = new javax.swing.JLabel();
@@ -29,6 +46,7 @@ public class verPerfil extends javax.swing.JInternalFrame {
         salario_txt = new javax.swing.JLabel();
         salario_field = new javax.swing.JTextField();
 
+        setClosable(true);
         setTitle("Perfil ");
         setToolTipText("");
 
@@ -39,11 +57,11 @@ public class verPerfil extends javax.swing.JInternalFrame {
         fotoEmpleado_panel.setLayout(fotoEmpleado_panelLayout);
         fotoEmpleado_panelLayout.setHorizontalGroup(
             fotoEmpleado_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 128, Short.MAX_VALUE)
+            .addComponent(empleadoFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
         fotoEmpleado_panelLayout.setVerticalGroup(
             fotoEmpleado_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 208, Short.MAX_VALUE)
+            .addComponent(empleadoFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
 
         Fondo.add(fotoEmpleado_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 128, 208));
@@ -97,6 +115,7 @@ public class verPerfil extends javax.swing.JInternalFrame {
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel edad_Txt;
     private javax.swing.JTextField edad_field;
+    private javax.swing.JLabel empleadoFoto;
     private javax.swing.JPanel fotoEmpleado_panel;
     private javax.swing.JTextField nombre_field;
     private javax.swing.JLabel nombre_txt;

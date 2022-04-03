@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JInternalFrame {
 
+    public static String rolUser;
+    
     public login() {
 
         initComponents();
@@ -155,7 +157,7 @@ public class login extends javax.swing.JInternalFrame {
 
         //Variables
         int Val = 0;
-        String user, pass, access;
+        String user, pass;
 
         user = user_field.getText().trim();
         pass = passTxt.getText().trim();
@@ -188,10 +190,10 @@ public class login extends javax.swing.JInternalFrame {
                 if(rs.next()){
                     
                     //Obteniendo el rol del usuario
-                    access = rs.getString("Role_User");
+                    rolUser = rs.getString("Role_User");
                     
                     //Enviandolo a su respectiva ventana.
-                    if(access.equalsIgnoreCase("Administrador")){
+                    if(rolUser.equalsIgnoreCase("Administrador")){
                         
                         Principal.Usuario_Menu.setVisible(true);
                         Principal.Empleado_Menu.setVisible(true);
@@ -205,7 +207,7 @@ public class login extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Administrador.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
-                    }else if(access.equalsIgnoreCase("Contador")){
+                    }else if(rolUser.equalsIgnoreCase("Contador")){
                         
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
@@ -218,7 +220,7 @@ public class login extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Contador.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
-                    }else if(access.equalsIgnoreCase("Aux.Nomina")){
+                    }else if(rolUser.equalsIgnoreCase("Aux.Nomina")){
                         
                         Principal.Empleado_Menu.setVisible(true);
                         Principal.Contabilidad_Menu.setVisible(true);
@@ -231,7 +233,7 @@ public class login extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(null, "Sesion iniciada como Auxiliar de Nomina.", " -  Info",
                                 JOptionPane.PLAIN_MESSAGE, icon);
                         
-                    }else if(access.equalsIgnoreCase("Empleado")){
+                    }else if(rolUser.equalsIgnoreCase("Empleado")){
                         
                         Principal.perfilMenu.setVisible(true);
                         Principal.cerrarSesionBtn.setVisible(true);

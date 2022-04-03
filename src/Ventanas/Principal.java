@@ -3,6 +3,7 @@ package Ventanas;
 import Ventanas.Usuarios.login;
 import Ventanas.Usuarios.registroUsuario;
 import Ventanas.Empleados.Agregar_Empleado;
+import Ventanas.Perfil.verPerfil;
 import Ventanas.Salarios.Salario_base;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -146,6 +147,11 @@ public class Principal extends javax.swing.JFrame {
         perfilMenu.setText("Perfil");
 
         perfilBtn.setText("Ver perfil");
+        perfilBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                perfilBtnActionPerformed(evt);
+            }
+        });
         perfilMenu.add(perfilBtn);
 
         jMenuBar1.add(perfilMenu);
@@ -196,6 +202,14 @@ public class Principal extends javax.swing.JFrame {
                 icon);
 
     }//GEN-LAST:event_cerrarSesionBtnActionPerformed
+
+    private void perfilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perfilBtnActionPerformed
+        
+        verPerfil X = new verPerfil();
+        Desktop.add(X);
+        X.setVisible(true);
+        
+    }//GEN-LAST:event_perfilBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
