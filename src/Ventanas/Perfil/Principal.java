@@ -1,6 +1,8 @@
 package Ventanas.Perfil;
 
 import Ventanas.Usuarios.login;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -12,18 +14,29 @@ public class Principal extends javax.swing.JFrame {
         setSize(1280, 720);
         setTitle(" -  Principal");
         setLocationRelativeTo(null);
-
+        setIconImage(getIconImage());
+        
         //Componentes
         Usuario_Menu.setVisible(false);
         Empleado_Menu.setVisible(false);
         Contabilidad_Menu.setVisible(false);
         perfilMenu.setVisible(false);
-        
+
         //Login
         login X = new login();
         Desktop.add(X);
         X.setVisible(true);
 
+    }
+
+    //Icono de ventana principal.
+    @Override
+    public final Image getIconImage() {
+
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Recursos/Iconos/"
+                + "MenuBar/coding.png"));
+
+        return retValue;
     }
 
     @SuppressWarnings("unchecked")
@@ -90,6 +103,11 @@ public class Principal extends javax.swing.JFrame {
         perfilMenu.setText("Perfil");
 
         verPerfilBtn.setText("Ver perfil");
+        verPerfilBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verPerfilBtnActionPerformed(evt);
+            }
+        });
         perfilMenu.add(verPerfilBtn);
 
         jMenuBar1.add(perfilMenu);
@@ -109,6 +127,14 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void verPerfilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerfilBtnActionPerformed
+
+        verPerfil X = new verPerfil();
+        Desktop.add(X);
+        X.setVisible(true);
+
+    }//GEN-LAST:event_verPerfilBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -76,6 +76,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver perfil"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verPerfilBtnActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
