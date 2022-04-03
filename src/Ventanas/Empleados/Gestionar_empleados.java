@@ -16,8 +16,8 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         
         //Modelando ventana.
         setTitle("Gestión de Empleados");
-        setSize(940, 495);
-        setLocation(170,90);
+        setSize(1180, 500);
+        setLocation(50,90);
         
         //Place Holders.
         PlaceHolder y = new PlaceHolder("Nombre del empleado", buscarTxt_empleados);
@@ -39,6 +39,8 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         eliminarEmpleados_button = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         buscarTxt_empleados = new javax.swing.JTextField();
+
+        setClosable(true);
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -101,9 +103,9 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE))
-                        .addGap(40, 40, 40)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(eliminarEmpleados_button)
                             .addComponent(editarEmpleados_button, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -127,7 +129,7 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();

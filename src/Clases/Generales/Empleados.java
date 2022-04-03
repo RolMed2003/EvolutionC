@@ -140,8 +140,7 @@ public class Empleados {
         try {
 
             Connection cn = Conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement("select ID_empleado,Nombre_empleado,DNI,Sexo"
-                    + "Edad,Cargo,Salario_base from Empleados");
+            PreparedStatement pst = cn.prepareStatement("select ID_empleado, Nombre_empleado, DNI, Sexo, Edad, Cargo, Salario_base from Empleados");
 
             ResultSet rs = pst.executeQuery();
 
@@ -155,7 +154,7 @@ public class Empleados {
                 row[3] = rs.getString(4);
                 row[4] = rs.getInt(5);
                 row[5] = rs.getString(6);
-                row[6] = rs.getString(7);
+                row[6] = rs.getFloat(7);
 
                 model.addRow(row);
 
