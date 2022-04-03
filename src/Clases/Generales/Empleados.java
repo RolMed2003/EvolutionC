@@ -154,7 +154,7 @@ public class Empleados {
                 row[3] = rs.getString(4);
                 row[4] = rs.getInt(5);
                 row[5] = rs.getString(6);
-                row[6] = rs.getInt(8);
+                row[6] = rs.getFloat(7);
 
                 model.addRow(row);
 
