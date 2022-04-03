@@ -1,10 +1,15 @@
 package Ventanas.Perfil;
 
+import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
 import Ventanas.Usuarios.Gestionar;
 import Ventanas.Usuarios.login;
+import Ventanas.Usuarios.registroUsuario;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -17,7 +22,7 @@ public class Principal extends javax.swing.JFrame {
         setTitle(" -  Principal");
         setLocationRelativeTo(null);
         setIconImage(getIconImage());
-        
+
         //Componentes
         Usuario_Menu.setVisible(false);
         Empleado_Menu.setVisible(false);
@@ -76,6 +81,11 @@ public class Principal extends javax.swing.JFrame {
 
         registrarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/add_menuicon.png"))); // NOI18N
         registrarUsuarioBtn.setText("Registrar");
+        registrarUsuarioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarUsuarioBtnActionPerformed(evt);
+            }
+        });
         Usuario_Menu.add(registrarUsuarioBtn);
 
         gestionarUsuarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/gestion_usuario.png"))); // NOI18N
@@ -93,6 +103,11 @@ public class Principal extends javax.swing.JFrame {
 
         registrarEmpleadoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/add_empleado.png"))); // NOI18N
         registrarEmpleadoBtn.setText("Registrar");
+        registrarEmpleadoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarEmpleadoBtnActionPerformed(evt);
+            }
+        });
         Empleado_Menu.add(registrarEmpleadoBtn);
 
         gestionarEmpleadoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/MenuBar/management.png"))); // NOI18N
@@ -149,9 +164,21 @@ public class Principal extends javax.swing.JFrame {
 
     private void verPerfilBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verPerfilBtnActionPerformed
 
-        verPerfil X = new verPerfil();
-        Desktop.add(X);
-        X.setVisible(true);
+        String Username = login.Username;
+
+        if (Username.equals("System")) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
+            JOptionPane.showMessageDialog(null, "Aun no se ha agregado un perfil para este usuario", " -  Error",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        } else {
+
+            verPerfil X = new verPerfil();
+            Desktop.add(X);
+            X.setVisible(true);
+
+        }
 
     }//GEN-LAST:event_verPerfilBtnActionPerformed
 
@@ -166,6 +193,22 @@ public class Principal extends javax.swing.JFrame {
         Desktop.add(x);
         x.setVisible(true);
     }//GEN-LAST:event_gestionarEmpleadoBtnActionPerformed
+
+    private void registrarUsuarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarUsuarioBtnActionPerformed
+
+        registroUsuario X = new registroUsuario();
+        Desktop.add(X);
+        X.setVisible(true);
+
+    }//GEN-LAST:event_registrarUsuarioBtnActionPerformed
+
+    private void registrarEmpleadoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpleadoBtnActionPerformed
+
+        Agregar_Empleado X = new Agregar_Empleado();
+        Desktop.add(X);
+        X.setVisible(true);
+
+    }//GEN-LAST:event_registrarEmpleadoBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
