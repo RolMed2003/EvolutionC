@@ -216,4 +216,115 @@ public class Empleados {
         return model;
 
     }
+
+    public float showSalarioBase(String Cargo) {
+
+        float SalarioBase = 0;
+
+        if (Cargo.equalsIgnoreCase("Presidente ejecutivo")) {
+
+            SalarioBase = 25000;
+
+        } else if (Cargo.equalsIgnoreCase("Vicepresidente ejecutivo")) {
+
+            SalarioBase = 20000;
+
+        } else if (Cargo.equalsIgnoreCase("Gerente general")) {
+
+            SalarioBase = 17000;
+
+        } else if (Cargo.equalsIgnoreCase("Contador")) {
+
+            SalarioBase = 15000;
+
+        } else if (Cargo.equalsIgnoreCase("Auxiliar contable")) {
+
+            SalarioBase = 13000;
+
+        } else if (Cargo.equalsIgnoreCase("Secretari@")) {
+
+            SalarioBase = 10000;
+
+        } else if (Cargo.equalsIgnoreCase("Conductor")) {
+
+            SalarioBase = 7000;
+
+        } else if (Cargo.equalsIgnoreCase("Guarda de seguridad")) {
+
+            SalarioBase = 6500;
+
+        } else if (Cargo.equalsIgnoreCase("Afanadora")) {
+
+            SalarioBase = 5500;
+
+        }
+
+        return SalarioBase;
+    }
+
+    public String showCargo(int select_cargo) {
+
+        String cargo = "";
+
+        if (select_cargo == 1) {
+
+            cargo = "Presidente ejecutivo";
+            
+        } else if (select_cargo == 2) {
+
+            cargo = "Vicepresidente ejecutivo";
+            
+        } else if (select_cargo == 3) {
+
+            cargo = "Gerente General";
+            
+        } else if (select_cargo == 4) {
+
+            cargo = "Contador";
+            
+        } else if (select_cargo == 5) {
+
+            cargo = "Auxiliar contable";
+            
+        } else if (select_cargo == 6) {
+
+            cargo = "Secretari@";
+            
+        } else if (select_cargo == 7) {
+
+            cargo = "Conductor";
+            
+        } else if (select_cargo == 8) {
+
+            cargo = "Guarda de seguridad";
+            
+        } else if (select_cargo == 9) {
+
+            cargo = "Afanadora";
+        }
+
+        return cargo;
+    }
+    
+    public String showTipo(int selected){
+        
+        String Tipo = "";
+        
+        if(selected == 1 || selected == 2 || selected == 3){
+            
+            Tipo = "Gerencial";
+            
+        }else if(selected == 4 || selected == 5 || selected == 6){
+            
+            Tipo = "Administrativo";
+            
+        }else if(selected == 7 || selected == 8 || selected == 9){
+            
+            Tipo = "Operativo";
+            
+        }
+        
+        return Tipo;
+    }
+
 }

@@ -23,7 +23,19 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         PlaceHolder y = new PlaceHolder("Nombre del empleado", buscarTxt_empleados);
         
         //Tabla.
-        EmpleadosTbl.setModel(emp.mostrarEmpleados((DefaultTableModel)EmpleadosTbl.getModel()));
+        new Thread(){
+            
+            @Override
+            public void run(){
+                
+                loading.setVisible(true);
+                EmpleadosTbl.setModel(emp.mostrarEmpleados((DefaultTableModel)EmpleadosTbl.getModel()));
+                loading.setVisible(false);
+                
+            }
+            
+        }.start();
+        
     }
 
    
@@ -31,6 +43,7 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loading = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         EmpleadosTbl = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -41,6 +54,10 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         buscarBtn = new javax.swing.JButton();
 
         setClosable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
+        getContentPane().add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -72,22 +89,29 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
             EmpleadosTbl.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 84, 999, 338));
+
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tabla de empleados");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 51, 999, -1));
 
         editarEmpleados_button.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         editarEmpleados_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/editar-documento.png"))); // NOI18N
         editarEmpleados_button.setText("Editar");
+        getContentPane().add(editarEmpleados_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(1027, 142, 119, -1));
 
         eliminarEmpleados_button.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         eliminarEmpleados_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/hombre.png"))); // NOI18N
         eliminarEmpleados_button.setText("Eliminar");
+        getContentPane().add(eliminarEmpleados_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(1029, 201, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Buscar:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
 
         buscarTxt_empleados.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        getContentPane().add(buscarTxt_empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 11, 175, -1));
 
         buscarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/buscar_empleado.png"))); // NOI18N
         buscarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -95,52 +119,7 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
                 buscarBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarTxt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarBtn)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eliminarEmpleados_button)
-                            .addComponent(editarEmpleados_button, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(buscarTxt_empleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarBtn))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(editarEmpleados_button)
-                        .addGap(18, 18, 18)
-                        .addComponent(eliminarEmpleados_button))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
+        getContentPane().add(buscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 11, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,5 +142,6 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JLabel loading;
     // End of variables declaration//GEN-END:variables
 }

@@ -229,12 +229,13 @@ public class registroUsuario extends javax.swing.JInternalFrame {
                     try {
                         
                         Connection cn2 = Conexion.conectar();
-                        PreparedStatement pst2 = cn2.prepareStatement("insert into Usuarios values (?,?,?,?)");
+                        PreparedStatement pst2 = cn2.prepareStatement("insert into Usuarios values (?,?,?,?,?)");
 
                         pst2.setInt(1, 0);
                         pst2.setString(2, user);
                         pst2.setString(3, pass);
                         pst2.setString(4, selection);
+                        pst2.setString(5, "");
                         pst2.execute();
 
                         //Mensaje de confirmacion

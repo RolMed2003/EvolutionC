@@ -112,4 +112,34 @@ public class Usuario {
 
     }
 
+    public DefaultTableModel mostrarUsuariosDisponibles(DefaultTableModel model){
+        
+        try {
+            
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select * from Usuarios where AsignadoA = ''");
+            
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                    
+                Object[] row = new Object[3];
+                
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(4);
+                
+                model.addRow(row);
+                
+            }
+            
+        } catch (SQLException e) {
+            
+            System.err.println("Error al obtener usuarios disponibles"+ e);
+            
+        }
+        
+        return model;
+    }
+    
 }

@@ -44,34 +44,47 @@ public class verPerfil extends javax.swing.JInternalFrame {
         }
 
         //Obteniendo datos del empleado
-        try {
+        new Thread() {
 
-            Connection cn = Conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement("select * from Empleados where UserAsign = '"
-                    + Username + "'");
+            @Override
+            public void run() {
 
-            ResultSet rs = pst.executeQuery();
+                loading.setVisible(true);
 
-            if (rs.next()) {
+                try {
 
-                //Poniendo los datos en los campos del formulario
-                nombre_field.setText(rs.getString(2));
-                sexo_field.setText(rs.getString(4));
-                edad_field.setText(Integer.toString(rs.getInt(5)));
-                puesto_field.setText(rs.getString(6));
-                tipo_field.setText(rs.getString(7));
-                salario_field.setText(Float.toString(rs.getFloat(8)));
-                IdTxt.setText(Integer.toString(rs.getInt(1)));
+                    Connection cn = Conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement("select * from Empleados where UserAsign = '"
+                            + Username + "'");
+
+                    ResultSet rs = pst.executeQuery();
+
+                    if (rs.next()) {
+
+                        //Poniendo los datos en los campos del formulario
+                        nombre_field.setText(rs.getString(2));
+                        sexo_field.setText(rs.getString(4));
+                        edad_field.setText(Integer.toString(rs.getInt(5)));
+                        puesto_field.setText(rs.getString(6));
+                        tipo_field.setText(rs.getString(8));
+                        salario_field.setText(Float.toString(rs.getFloat(7)));
+                        IdTxt.setText(Integer.toString(rs.getInt(1)));
+
+                    }
+
+                    cn.close();
+
+                } catch (Exception e) {
+
+                    System.err.println("Error al mostrar perfil." + e);
+
+                }
+
+                loading.setVisible(false);
 
             }
 
-            cn.close();
-
-        } catch (Exception e) {
-
-            System.err.println("Error al mostrar perfil." + e);
-
-        }
+        }.start();
 
     }
 
@@ -80,6 +93,7 @@ public class verPerfil extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
+        loading = new javax.swing.JLabel();
         fotoEmpleado_panel = new javax.swing.JPanel();
         empleadoFoto = new javax.swing.JLabel();
         nombre_field = new javax.swing.JTextField();
@@ -102,6 +116,10 @@ public class verPerfil extends javax.swing.JInternalFrame {
         setToolTipText("");
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
+        Fondo.add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
 
         javax.swing.GroupLayout fotoEmpleado_panelLayout = new javax.swing.GroupLayout(fotoEmpleado_panel);
         fotoEmpleado_panel.setLayout(fotoEmpleado_panelLayout);
@@ -114,121 +132,62 @@ public class verPerfil extends javax.swing.JInternalFrame {
             .addComponent(empleadoFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
         );
 
+        Fondo.add(fotoEmpleado_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
         nombre_field.setEditable(false);
         nombre_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        Fondo.add(nombre_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 58, 260, 30));
 
         sexo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         sexo_txt.setText("Sexo:");
+        Fondo.add(sexo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 99, -1, -1));
 
         sexo_field.setEditable(false);
         sexo_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        Fondo.add(sexo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 128, 140, 30));
 
         edad_Txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         edad_Txt.setText("Edad:");
+        Fondo.add(edad_Txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 169, -1, -1));
 
         edad_field.setEditable(false);
         edad_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        Fondo.add(edad_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 198, 49, 30));
 
         puesto_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         puesto_txt.setText("Puesto:");
+        Fondo.add(puesto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         puesto_field.setEditable(false);
         puesto_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        Fondo.add(puesto_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 215, -1));
 
         tipo_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         tipo_txt.setText("Tipo:");
+        Fondo.add(tipo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         tipo_field.setEditable(false);
         tipo_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        Fondo.add(tipo_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 215, -1));
 
         salario_txt.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         salario_txt.setText("Salario base:");
+        Fondo.add(salario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
         salario_field.setEditable(false);
         salario_field.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        Fondo.add(salario_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 215, -1));
 
         nombre_txt1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         nombre_txt1.setText("Nombre:");
+        Fondo.add(nombre_txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 30, -1, -1));
 
         nombre_txt2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         nombre_txt2.setText("ID:");
+        Fondo.add(nombre_txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 6, -1, -1));
 
         IdTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
-        Fondo.setLayout(FondoLayout);
-        FondoLayout.setHorizontalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addComponent(fotoEmpleado_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(FondoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
-                                .addComponent(nombre_txt2)
-                                .addGap(18, 18, 18)
-                                .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(FondoLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombre_field, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sexo_txt)
-                                    .addComponent(sexo_field, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(edad_Txt)
-                                    .addComponent(edad_field, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre_txt1))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(salario_txt)
-                            .addComponent(tipo_txt)
-                            .addComponent(puesto_txt))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(puesto_field, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tipo_field, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(salario_field, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        FondoLayout.setVerticalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(IdTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombre_txt2))
-                .addGap(1, 1, 1)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addComponent(nombre_txt1)
-                        .addGap(5, 5, 5)
-                        .addComponent(nombre_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sexo_txt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sexo_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edad_Txt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edad_field, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(fotoEmpleado_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(puesto_txt)
-                    .addComponent(puesto_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo_txt)
-                    .addComponent(tipo_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salario_txt)
-                    .addComponent(salario_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(91, 91, 91))
-        );
+        Fondo.add(IdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 8, 70, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,6 +211,7 @@ public class verPerfil extends javax.swing.JInternalFrame {
     private javax.swing.JTextField edad_field;
     private javax.swing.JLabel empleadoFoto;
     private javax.swing.JPanel fotoEmpleado_panel;
+    public static javax.swing.JLabel loading;
     private javax.swing.JTextField nombre_field;
     private javax.swing.JLabel nombre_txt1;
     private javax.swing.JLabel nombre_txt2;
