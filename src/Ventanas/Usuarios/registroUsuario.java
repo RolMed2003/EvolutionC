@@ -10,10 +10,13 @@ import javax.swing.JOptionPane;
 
 public class registroUsuario extends javax.swing.JInternalFrame {
 
+    String selection = "";
+    
     public registroUsuario() {
 
         initComponents();
 
+        //Place holder
         PlaceHolder u2 = new PlaceHolder("Ingrese un usuario", userTxt);
         PlaceHolder pass2 = new PlaceHolder("Ingrese una contraseña", contra_txt);
 
@@ -21,6 +24,9 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         setSize(517, 557);
         setLocation(380, 70);
         setTitle("Registro de usuario");
+        
+        //Componentes
+        loading.setVisible(false);
 
     }
 
@@ -29,6 +35,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         Fondo = new javax.swing.JPanel();
+        loading = new javax.swing.JLabel();
         regist_img = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,6 +57,9 @@ public class registroUsuario extends javax.swing.JInternalFrame {
 
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
+        Fondo.add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
         regist_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/agregar-usuario (1).png"))); // NOI18N
         Fondo.add(regist_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 130, 130));
@@ -165,7 +175,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         contra_txt.setBackground(Color.white);
 
         //Variables
-        String user, pass, selection = "null";
+        String user, pass;
         int select, Val = 0;
 
         user = userTxt.getText();
@@ -173,22 +183,21 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         select = rolCmb.getSelectedIndex();
 
         //Obteniendo los valores del combo box
-        if (select == 0) {
-
-            selection = "Administrador";
-
-        } else if (select == 1) {
-
-            selection = "Contador";
-
-        } else if (select == 2) {
-
-            selection = "Aux.Nomina";
-
-        } else if (select == 3) {
-
-            selection = "Empleado";
-
+        switch (select) {
+            case 0:
+                selection = "Administrador";
+                break;
+            case 1:
+                selection = "Contador";
+                break;
+            case 2:
+                selection = "Aux.Nomina";
+                break;
+            case 3:
+                selection = "Empleado";
+                break;
+            default:
+                break;
         }
 
         //Validaciones
@@ -208,66 +217,79 @@ public class registroUsuario extends javax.swing.JInternalFrame {
         //Insertando datos en la base de datos.
         if (Val == 0) {
 
-            try {
-                
-                Connection cn = Conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("select user from Usuarios where user = '"
-                        + user +"'");
-                
-                ResultSet rs = pst.executeQuery();
-                
-                if(rs.next()){
-                    
-                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
-                        JOptionPane.showMessageDialog(null, "Nombre de usuario ya en uso.", " -  Error",
-                                JOptionPane.PLAIN_MESSAGE, icon);
-                    
-                }else{
-                    
-                    cn.close();
-                    
+            new Thread() {
+
+                @Override
+                public void run() {
+
+                    loading.setVisible(true);
+
                     try {
-                        
-                        Connection cn2 = Conexion.conectar();
-                        PreparedStatement pst2 = cn2.prepareStatement("insert into Usuarios values (?,?,?,?,?)");
 
-                        pst2.setInt(1, 0);
-                        pst2.setString(2, user);
-                        pst2.setString(3, pass);
-                        pst2.setString(4, selection);
-                        pst2.setString(5, "");
-                        pst2.execute();
+                        Connection cn = Conexion.conectar();
+                        PreparedStatement pst = cn.prepareStatement("select user from Usuarios where user = '"
+                                + user + "'");
 
-                        //Mensaje de confirmacion
-                        Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
-                        JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
-                                JOptionPane.PLAIN_MESSAGE, icon);
+                        ResultSet rs = pst.executeQuery();
 
-                        //Reseteando campos.
-                        userTxt.setText("");
-                        contra_txt.setText("");
-                        
+                        if (rs.next()) {
+
+                            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cerca.png"));
+                            JOptionPane.showMessageDialog(null, "Nombre de usuario ya en uso.", " -  Error",
+                                    JOptionPane.PLAIN_MESSAGE, icon);
+
+                        } else {
+
+                            cn.close();
+
+                            try {
+
+                                Connection cn2 = Conexion.conectar();
+                                PreparedStatement pst2 = cn2.prepareStatement("insert into Usuarios values (?,?,?,?,?)");
+
+                                pst2.setInt(1, 0);
+                                pst2.setString(2, user);
+                                pst2.setString(3, pass);
+                                pst2.setString(4, selection);
+                                pst2.setString(5, "");
+                                pst2.execute();
+
+                                loading.setVisible(false);
+                                
+                                //Mensaje de confirmacion
+                                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                                JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
+                                        JOptionPane.PLAIN_MESSAGE, icon);
+
+                                //Reseteando campos.
+                                userTxt.setText("");
+                                contra_txt.setText("");
+
+                            } catch (SQLException e) {
+
+                                System.err.println("Error al registrar usuario." + e);
+
+                            }
+
+                        }
+
                     } catch (SQLException e) {
-                        
-                        System.err.println("Error al registrar usuario."+ e);
-                        
-                    }
-                    
+
+                        System.err.println("Error al comprobar el nombre de usuario." + e);
+
+                    }   
+
                 }
-                
-            } catch (SQLException e) {
-                
-                System.err.println("Error al comprobar el nombre de usuario."+ e);
-                
-            }
-            
-        }else{
-            
+
+            }.start();
+
+        } else {
+
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
             JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
                     JOptionPane.PLAIN_MESSAGE, icon);
-            
-        }    
+
+        }
 
     }//GEN-LAST:event_registrarBtnMouseClicked
 
@@ -289,6 +311,7 @@ public class registroUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    public static javax.swing.JLabel loading;
     private javax.swing.JLabel regist_img;
     private javax.swing.JPanel registrarBtn;
     private javax.swing.JComboBox rolCmb;
