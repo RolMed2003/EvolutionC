@@ -175,7 +175,7 @@ public class Agregar extends javax.swing.JInternalFrame {
                     pst.setFloat(5, horasExtra);
                     pst.execute();
 
-                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                     JOptionPane.showMessageDialog(null, "Registro agregado exitosamente", " -  Info",
                             JOptionPane.PLAIN_MESSAGE, icon);
 
@@ -189,7 +189,7 @@ public class Agregar extends javax.swing.JInternalFrame {
 
                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese valores validos para los campos horas extras"
-                        + "y salario.", " -  Advertencia",
+                        + " y salario.", " -  Advertencia",
                         JOptionPane.PLAIN_MESSAGE, icon);
 
             }
