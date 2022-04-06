@@ -343,6 +343,7 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblNomina);
         if (tblNomina.getColumnModel().getColumnCount() > 0) {
             tblNomina.getColumnModel().getColumn(0).setResizable(false);
+            tblNomina.getColumnModel().getColumn(0).setPreferredWidth(10);
             tblNomina.getColumnModel().getColumn(1).setResizable(false);
             tblNomina.getColumnModel().getColumn(2).setResizable(false);
             tblNomina.getColumnModel().getColumn(3).setResizable(false);
@@ -439,7 +440,7 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     private void ver_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ver_buttonActionPerformed
         allNominas.setVisible(true);
         allNominas.setSize(910, 552);
-        allNominas.setLocation(185, 200);
+        allNominas.setLocationRelativeTo(null);
     }//GEN-LAST:event_ver_buttonActionPerformed
 
     private void txt_exiitMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_exiitMouseDragged
@@ -479,7 +480,8 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     private void agregar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_buttonActionPerformed
         agregarNómina.setVisible(true);
         agregarNómina.setSize(910, 552);
-        agregarNómina.setLocation(185, 200);
+        agregarNómina.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_agregar_buttonActionPerformed
 
     private void txt_exiit2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_exiit2MouseDragged
@@ -518,7 +520,7 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     private void editar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_buttonActionPerformed
         editarNómina.setVisible(true);
         editarNómina.setSize(910, 552);
-        editarNómina.setLocation(185, 200);
+        editarNómina.setLocationRelativeTo(null);
     }//GEN-LAST:event_editar_buttonActionPerformed
 
     private void barra_superior3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barra_superior3MouseDragged
