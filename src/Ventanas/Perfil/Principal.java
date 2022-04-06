@@ -1,6 +1,6 @@
 package Ventanas.Perfil;
 
-import Ventanas.Contabilidad.Nomina;
+import Ventanas.Contabilidad.Ver_nomina;
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
 import Ventanas.Contabilidad.Salario_base;
@@ -67,6 +67,7 @@ public class Principal extends javax.swing.JFrame {
         verPerfilBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
@@ -230,7 +231,7 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_verSalariosBtnActionPerformed
     private void verNominaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verNominaBtnActionPerformed
-        Nomina x = new Nomina();
+        Ver_nomina x = new Ver_nomina();
         Desktop.add(x);
         x.setVisible(true);
     }//GEN-LAST:event_verNominaBtnActionPerformed

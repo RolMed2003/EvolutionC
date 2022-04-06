@@ -18,7 +18,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
     Utilities ut = new Utilities();
     Empleados empleado = new Empleados();
     Usuario user = new Usuario();
-    
+
     String name = "", dni = "", sexo = "", cargo = "", tipo = "", UserAsign = "";
     float SalarioBase = 0;
     int edad = 0;
@@ -395,7 +395,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
                                 pst4.executeUpdate();
 
                                 loading.setVisible(false);
-                                
+
                                 //Mensaje de confirmacion.
                                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                                 JOptionPane.showMessageDialog(null, "Registro guardado exitosamente", " -  Info",
