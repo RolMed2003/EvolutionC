@@ -169,6 +169,8 @@ public class Empleados {
         return model;
     }
 
+    
+    //Metodo para el campo "Buscar".
     public DefaultTableModel mostrarEmpleados(String Buscar) {
 
         Object[] Titulos = new Object[7];
@@ -214,9 +216,11 @@ public class Empleados {
         }
 
         return model;
-
+        
     }
 
+    
+    //Metodo para mostrar el salario base dependiendo de la seleccion de la comboBox.
     public float showSalarioBase(String Cargo) {
 
         float SalarioBase = 0;

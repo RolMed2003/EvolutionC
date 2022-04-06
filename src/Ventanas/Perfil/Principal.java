@@ -1,7 +1,6 @@
 package Ventanas.Perfil;
 
-import Ventanas.Contabilidad.Agregar;
-import Ventanas.Contabilidad.Nomina;
+import Ventanas.Contabilidad.Ver_nomina;
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
 import Ventanas.Contabilidad.Salario_base;
@@ -64,11 +63,11 @@ public class Principal extends javax.swing.JFrame {
         Contabilidad_Menu = new javax.swing.JMenu();
         verNominaBtn = new javax.swing.JMenuItem();
         verSalariosBtn = new javax.swing.JMenuItem();
-        agregarSalarioBtn = new javax.swing.JMenuItem();
         perfilMenu = new javax.swing.JMenu();
         verPerfilBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
@@ -144,15 +143,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         Contabilidad_Menu.add(verSalariosBtn);
-
-        agregarSalarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/agregar-archivo.png"))); // NOI18N
-        agregarSalarioBtn.setText("Agregar salario base");
-        agregarSalarioBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarSalarioBtnActionPerformed(evt);
-            }
-        });
-        Contabilidad_Menu.add(agregarSalarioBtn);
 
         jMenuBar1.add(Contabilidad_Menu);
 
@@ -241,18 +231,10 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_verSalariosBtnActionPerformed
     private void verNominaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verNominaBtnActionPerformed
-        Nomina x = new Nomina();
+        Ver_nomina x = new Ver_nomina();
         Desktop.add(x);
         x.setVisible(true);
     }//GEN-LAST:event_verNominaBtnActionPerformed
-
-    private void agregarSalarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarSalarioBtnActionPerformed
-       
-        Agregar X = new Agregar();
-        Desktop.add(X);
-        X.setVisible(true);
-        
-    }//GEN-LAST:event_agregarSalarioBtnActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -289,7 +271,6 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane Desktop;
     public static javax.swing.JMenu Empleado_Menu;
     public static javax.swing.JMenu Usuario_Menu;
-    private javax.swing.JMenuItem agregarSalarioBtn;
     private javax.swing.JMenuItem gestionarEmpleadoBtn;
     private javax.swing.JMenuItem gestionarUsuarioBtn;
     private javax.swing.JMenuBar jMenuBar1;
