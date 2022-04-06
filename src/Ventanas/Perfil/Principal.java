@@ -1,5 +1,6 @@
 package Ventanas.Perfil;
 
+import Ventanas.Contabilidad.Agregar;
 import Ventanas.Contabilidad.Nomina;
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
@@ -63,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         Contabilidad_Menu = new javax.swing.JMenu();
         verNominaBtn = new javax.swing.JMenuItem();
         verSalariosBtn = new javax.swing.JMenuItem();
+        agregarSalarioBtn = new javax.swing.JMenuItem();
         perfilMenu = new javax.swing.JMenu();
         verPerfilBtn = new javax.swing.JMenuItem();
 
@@ -142,6 +144,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         Contabilidad_Menu.add(verSalariosBtn);
+
+        agregarSalarioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/agregar-archivo.png"))); // NOI18N
+        agregarSalarioBtn.setText("Agregar salario base");
+        agregarSalarioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarSalarioBtnActionPerformed(evt);
+            }
+        });
+        Contabilidad_Menu.add(agregarSalarioBtn);
 
         jMenuBar1.add(Contabilidad_Menu);
 
@@ -235,6 +246,14 @@ public class Principal extends javax.swing.JFrame {
         x.setVisible(true);
     }//GEN-LAST:event_verNominaBtnActionPerformed
 
+    private void agregarSalarioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarSalarioBtnActionPerformed
+       
+        Agregar X = new Agregar();
+        Desktop.add(X);
+        X.setVisible(true);
+        
+    }//GEN-LAST:event_agregarSalarioBtnActionPerformed
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -270,6 +289,7 @@ public class Principal extends javax.swing.JFrame {
     public static javax.swing.JDesktopPane Desktop;
     public static javax.swing.JMenu Empleado_Menu;
     public static javax.swing.JMenu Usuario_Menu;
+    private javax.swing.JMenuItem agregarSalarioBtn;
     private javax.swing.JMenuItem gestionarEmpleadoBtn;
     private javax.swing.JMenuItem gestionarUsuarioBtn;
     private javax.swing.JMenuBar jMenuBar1;

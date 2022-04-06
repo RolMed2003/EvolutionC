@@ -8,7 +8,24 @@ public class Utilities {
         
         try {
             
-            float Y = Integer.parseInt(numero);
+            int Y = Integer.parseInt(numero);
+            
+        } catch (NumberFormatException e) {
+            
+            X = false;
+            
+        }
+        
+        return X;
+    }
+    
+    public boolean isFloat(String numero){
+        
+        boolean X = true;
+        
+        try {
+            
+            float Y = Float.parseFloat(numero);
             
         } catch (NumberFormatException e) {
             

@@ -1,42 +1,48 @@
 package Ventanas.Contabilidad;
 
+import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
 import Clases.Generales.Salario;
-import java.util.Vector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Salario_base extends javax.swing.JInternalFrame {
 
     Salario salario = new Salario();
-    
+
     public Salario_base() {
-        
+
         initComponents();
-        
+
         //Modelando
         setTitle("Salarios base");
         setSize(950, 494);
         setLocation(165, 103);
-        
+
         //Mostrando tabla de salarios base
         DefaultTableModel model = (DefaultTableModel) salariosTbl.getModel();
-        
-        new Thread(){
-            
+
+        new Thread() {
+
             @Override
-            public void run(){
-                
+            public void run() {
+
                 loading.setVisible(true);
                 salariosTbl.setModel(salario.mostrarSalarios(model));
                 loading.setVisible(false);
-                
+
             }
-            
+
         }.start();
-        
+
         //Placeholder
         PlaceHolder X = new PlaceHolder("Tipo de cargo", buscarTxt);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -53,8 +59,8 @@ public class Salario_base extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         salariosTbl = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        editarBtn = new javax.swing.JButton();
+        eliminarBtn = new javax.swing.JButton();
 
         jFrame1.setAlwaysOnTop(true);
         jFrame1.setUndecorated(true);
@@ -163,20 +169,25 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 83, 779, 338));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/editar-documento.png"))); // NOI18N
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        editarBtn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        editarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/editar-documento.png"))); // NOI18N
+        editarBtn.setText("Editar");
+        editarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                editarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(807, 162, 117, -1));
+        getContentPane().add(editarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(807, 162, 117, -1));
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/expediente.png"))); // NOI18N
-        jButton2.setText("Eliminar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(807, 251, -1, -1));
+        eliminarBtn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        eliminarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/expediente.png"))); // NOI18N
+        eliminarBtn.setText("Eliminar");
+        eliminarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(eliminarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(807, 251, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,31 +196,77 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
         DefaultTableModel model = (DefaultTableModel) salariosTbl.getModel();
         String buscar = buscarTxt.getText().trim();
-        
+
         salario.mostrarSalarios(buscar, model);
 
     }//GEN-LAST:event_buscarBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-       jFrame1.setVisible(true);
-       jFrame1.setSize(710, 371);
-       jFrame1.setLocationRelativeTo(null);
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
+
+        jFrame1.setVisible(true);
+        jFrame1.setSize(710, 371);
+        jFrame1.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_editarBtnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         jFrame1.setVisible(false);
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+
+        //Variables
+        int selectedRow = salariosTbl.getSelectedRow();
+
+        if (selectedRow == -1) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila a eliminar.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        } else {
+
+            int ID = (int) salariosTbl.getValueAt(selectedRow, 0);
+
+            try {
+
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("delete from SalariosBase where ID_Salario = '"
+                        + ID + "'");
+
+                pst.execute();
+
+                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente.", " -  Info",
+                        JOptionPane.PLAIN_MESSAGE, icon);
+                
+                DefaultTableModel model = (DefaultTableModel) salariosTbl.getModel();
+                while(model.getRowCount() != 0){
+                    
+                    model.removeRow(0);
+                    
+                }
+                
+                salariosTbl.setModel(salario.mostrarSalarios(model));
+
+            } catch (SQLException e) {
+
+                System.err.println("Error al eliminar salario base"+ e);
+                
+            }
+
+        }
+
+    }//GEN-LAST:event_eliminarBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton editarBtn;
+    private javax.swing.JButton eliminarBtn;
     private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
