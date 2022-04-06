@@ -32,9 +32,9 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         txt_exiit = new javax.swing.JLabel();
         agregarNómina = new javax.swing.JFrame();
         Fondo_2 = new javax.swing.JPanel();
+        barra_superior2 = new javax.swing.JPanel();
         panel_exit2 = new javax.swing.JPanel();
         txt_exiit2 = new javax.swing.JLabel();
-        barra_superior2 = new javax.swing.JPanel();
         editarNómina = new javax.swing.JFrame();
         Fondo_3 = new javax.swing.JPanel();
         panel_exit3 = new javax.swing.JPanel();
@@ -141,6 +141,31 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         Fondo_2.setBackground(new java.awt.Color(255, 255, 255));
         Fondo_2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        barra_superior2.setBackground(new java.awt.Color(255, 255, 255));
+        barra_superior2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                barra_superior2MouseDragged(evt);
+            }
+        });
+        barra_superior2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                barra_superior2MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout barra_superior2Layout = new javax.swing.GroupLayout(barra_superior2);
+        barra_superior2.setLayout(barra_superior2Layout);
+        barra_superior2Layout.setHorizontalGroup(
+            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 590, Short.MAX_VALUE)
+        );
+        barra_superior2Layout.setVerticalGroup(
+            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        Fondo_2.add(barra_superior2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
+
         panel_exit2.setBackground(new java.awt.Color(255, 255, 255));
 
         txt_exiit2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
@@ -182,38 +207,13 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
                 .addComponent(txt_exiit2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Fondo_2.add(panel_exit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 50, 40));
-
-        barra_superior2.setBackground(new java.awt.Color(255, 255, 255));
-        barra_superior2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                barra_superior2MouseDragged(evt);
-            }
-        });
-        barra_superior2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                barra_superior2MousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout barra_superior2Layout = new javax.swing.GroupLayout(barra_superior2);
-        barra_superior2.setLayout(barra_superior2Layout);
-        barra_superior2Layout.setHorizontalGroup(
-            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
-        barra_superior2Layout.setVerticalGroup(
-            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        Fondo_2.add(barra_superior2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 40));
+        Fondo_2.add(panel_exit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, -1, 40));
 
         javax.swing.GroupLayout agregarNóminaLayout = new javax.swing.GroupLayout(agregarNómina.getContentPane());
         agregarNómina.getContentPane().setLayout(agregarNóminaLayout);
         agregarNóminaLayout.setHorizontalGroup(
             agregarNóminaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Fondo_2, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         agregarNóminaLayout.setVerticalGroup(
             agregarNóminaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
