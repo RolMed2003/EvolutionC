@@ -32,9 +32,19 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         txt_exiit = new javax.swing.JLabel();
         agregarNómina = new javax.swing.JFrame();
         Fondo_2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         barra_superior2 = new javax.swing.JPanel();
         panel_exit2 = new javax.swing.JPanel();
         txt_exiit2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        panel_nomina = new javax.swing.JPanel();
+        txt_nomina = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         editarNómina = new javax.swing.JFrame();
         Fondo_3 = new javax.swing.JPanel();
         panel_exit3 = new javax.swing.JPanel();
@@ -141,6 +151,9 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         Fondo_2.setBackground(new java.awt.Color(255, 255, 255));
         Fondo_2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Nómina/payment-day.png"))); // NOI18N
+        Fondo_2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+
         barra_superior2.setBackground(new java.awt.Color(255, 255, 255));
         barra_superior2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -152,19 +165,6 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
                 barra_superior2MousePressed(evt);
             }
         });
-
-        javax.swing.GroupLayout barra_superior2Layout = new javax.swing.GroupLayout(barra_superior2);
-        barra_superior2.setLayout(barra_superior2Layout);
-        barra_superior2Layout.setHorizontalGroup(
-            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-        );
-        barra_superior2Layout.setVerticalGroup(
-            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        Fondo_2.add(barra_superior2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
 
         panel_exit2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -207,13 +207,89 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
                 .addComponent(txt_exiit2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Fondo_2.add(panel_exit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, -1, 40));
+        javax.swing.GroupLayout barra_superior2Layout = new javax.swing.GroupLayout(barra_superior2);
+        barra_superior2.setLayout(barra_superior2Layout);
+        barra_superior2Layout.setHorizontalGroup(
+            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barra_superior2Layout.createSequentialGroup()
+                .addContainerGap(411, Short.MAX_VALUE)
+                .addComponent(panel_exit2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129))
+        );
+        barra_superior2Layout.setVerticalGroup(
+            barra_superior2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barra_superior2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panel_exit2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        Fondo_2.add(barra_superior2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel4.setText("Viaticos:");
+        Fondo_2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        Fondo_2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 200, 30));
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel5.setText("Salario base: ");
+        Fondo_2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel6.setText("Horas extras: ");
+        Fondo_2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+
+        jTextField2.setEditable(false);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        Fondo_2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 200, 30));
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        Fondo_2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 200, 30));
+
+        panel_nomina.setBackground(new java.awt.Color(255, 153, 51));
+
+        txt_nomina.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
+        txt_nomina.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nomina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_nomina.setText("AGREGAR NÓMINA");
+
+        javax.swing.GroupLayout panel_nominaLayout = new javax.swing.GroupLayout(panel_nomina);
+        panel_nomina.setLayout(panel_nominaLayout);
+        panel_nominaLayout.setHorizontalGroup(
+            panel_nominaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_nominaLayout.createSequentialGroup()
+                .addComponent(txt_nomina, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panel_nominaLayout.setVerticalGroup(
+            panel_nominaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txt_nomina, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+        );
+
+        Fondo_2.add(panel_nomina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 460, 80));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic", 1, 16)); // NOI18N
+        jButton1.setText("AGREGAR");
+        Fondo_2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, -1, -1));
 
         javax.swing.GroupLayout agregarNóminaLayout = new javax.swing.GroupLayout(agregarNómina.getContentPane());
         agregarNómina.getContentPane().setLayout(agregarNóminaLayout);
         agregarNóminaLayout.setHorizontalGroup(
             agregarNóminaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo_2, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Fondo_2, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         agregarNóminaLayout.setVerticalGroup(
             agregarNóminaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +555,7 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
 
     private void agregar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_buttonActionPerformed
         agregarNómina.setVisible(true);
-        agregarNómina.setSize(910, 552);
+        agregarNómina.setSize(461, 552);
         agregarNómina.setLocationRelativeTo(null);
         
     }//GEN-LAST:event_agregar_buttonActionPerformed
@@ -548,6 +624,18 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         editarNómina.dispose();
     }//GEN-LAST:event_txt_exit3MouseClicked
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
@@ -561,18 +649,28 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     private javax.swing.JPanel barra_superior3;
     private javax.swing.JFrame editarNómina;
     private javax.swing.JButton editar_button;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panel_exit;
     private javax.swing.JPanel panel_exit2;
     private javax.swing.JPanel panel_exit3;
+    private javax.swing.JPanel panel_nomina;
     private javax.swing.JTable tblDatos_nomina;
     private javax.swing.JTable tblNomina;
     private javax.swing.JLabel txt_exiit;
     private javax.swing.JLabel txt_exiit2;
     private javax.swing.JLabel txt_exit3;
+    private javax.swing.JLabel txt_nomina;
     private javax.swing.JButton ver_button;
     // End of variables declaration//GEN-END:variables
 }
