@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Salario_base extends javax.swing.JInternalFrame {
 
-    Salario salario = new Salario();
+    Salario salarioobj = new Salario();
     Utilities ut = new Utilities();
 
     public Salario_base() {
@@ -35,7 +35,7 @@ public class Salario_base extends javax.swing.JInternalFrame {
             public void run() {
 
                 loading.setVisible(true);
-                salariosTbl.setModel(salario.mostrarSalarios(model));
+                salariosTbl.setModel(salarioobj.mostrarSalarios(model));
                 loading.setVisible(false);
 
             }
@@ -65,6 +65,7 @@ public class Salario_base extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         salarioTxt = new javax.swing.JTextField();
+        cerrar = new javax.swing.JButton();
         loading = new javax.swing.JLabel();
         buscarTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -142,6 +143,13 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
         salarioTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
+        cerrar.setText("X");
+        cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -163,11 +171,17 @@ public class Salario_base extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AceptarcambiosBtn)
                 .addGap(64, 64, 64))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrar)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(4, 4, 4)
+                .addComponent(cerrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -241,7 +255,7 @@ public class Salario_base extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -291,76 +305,135 @@ public class Salario_base extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) salariosTbl.getModel();
         String buscar = buscarTxt.getText().trim();
 
-        salario.mostrarSalarios(buscar, model);
+        salarioobj.mostrarSalarios(buscar, model);
 
     }//GEN-LAST:event_buscarBtnActionPerformed
 
     private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
-
-        jFrame1.setVisible(true);
-        jFrame1.setSize(772, 450);
-        jFrame1.setLocationRelativeTo(null);
-
-    }//GEN-LAST:event_editarBtnActionPerformed
-
-    private void AceptarcambiosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarcambiosBtnActionPerformed
 
         int SelectedRow = salariosTbl.getSelectedRow();
 
         if (SelectedRow == -1) {
 
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro a eliminar.", " -  Advertencia",
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro a editar.", " -  Advertencia",
                     JOptionPane.PLAIN_MESSAGE, icon);
 
         } else {
             
-            String Cargo = cargoTxt.getText();
-            String Tipo = tipoTxt.getText();
-            int Val = 0;
+            //Poniendo los datos en la ventana de editar, segun el campo.
+            cargoTxt.setText((String) salariosTbl.getValueAt(SelectedRow, 1));
+            tipoTxt.setText((String) salariosTbl.getValueAt(SelectedRow, 2));
+            salarioTxt.setText(Float.toString((float) salariosTbl.getValueAt(SelectedRow, 3)));
+            ingresoTxt.setText(Float.toString((float) salariosTbl.getValueAt(SelectedRow, 4)));
             
-            if (Cargo.equals("")) {
-                
-                Val++;
-                
-            }if (Tipo.equals("")) {
-                                
-                Val++;
-                
-            }if (ut.isFloat(salarioTxt.getText())) {
-                
-                
-                
-            } else {
-                
-                
-                
-            }
-
-            int ID = (int) salariosTbl.getValueAt(SelectedRow, 0);
-
-            try {
-
-                Connection cn = Conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("update set Cargo = ?, TipoCargo = ?, Salario = ?, HoraExtra = ?"
-                        + " from SalariosBase where ID_Salario = '" + ID + "'");
-
-                /*
-                pst.setString(2, Cargo);
-                pst.setString(3, Tipo);
-                pst.setFloat(4, Salario);
-                pst.setFloat(5, HoraExtra);
-                pst.execute();
-                        */
-            } catch (Exception e) {
-                
-                
-
-            }
+            jFrame1.setVisible(true);
+            jFrame1.setSize(772, 450);
+            jFrame1.setLocationRelativeTo(null);
+            jFrame1.setAlwaysOnTop(false);
 
         }
 
-        jFrame1.setVisible(false);
+    }//GEN-LAST:event_editarBtnActionPerformed
+
+    private void AceptarcambiosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarcambiosBtnActionPerformed
+
+        //Variables
+        String Cargo = cargoTxt.getText();
+        String Tipo = tipoTxt.getText();
+        int Val = 0;
+        float salario = 0, horas = 0;
+        boolean FloatOk = true;
+        
+        //Validando campos de edicion
+        if (Cargo.equals("")) {
+
+            Val++;
+
+        }if (Tipo.equals("")) {
+
+            Val++;
+
+        }if(ut.isFloat(salarioTxt.getText())) {
+
+            salario = Float.parseFloat(salarioTxt.getText());
+
+        } else {
+
+            FloatOk = false;
+
+        }if (ut.isFloat(ingresoTxt.getText())) {
+
+            horas = Float.parseFloat(ingresoTxt.getText());
+
+        } else {
+
+            FloatOk = false;
+
+        }
+
+        int ID = (int) salariosTbl.getValueAt(salariosTbl.getSelectedRow(), 0);
+
+        if (Val == 0) {
+
+            if (FloatOk) {
+
+                try {
+
+                    Connection cn = Conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement("update SalariosBase set Cargo = ?, TipoCargo = ?,"
+                            + "Salario = ?, HoraExtra = ?"
+                            + " where ID_Salario = '" + ID + "'");
+
+                    pst.setString(1, Cargo);
+                    pst.setString(2, Tipo);
+                    pst.setFloat(3, salario);
+                    pst.setFloat(4, horas);
+                    pst.execute();
+
+                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                    JOptionPane.showMessageDialog(null, "Registro editado con exito.", " -  Info",
+                            JOptionPane.PLAIN_MESSAGE, icon);
+                    
+                    jFrame1.setVisible(false);
+                    
+                    cargoTxt.setText("");
+                    tipoTxt.setText("");
+                    salarioTxt.setText("");
+                    ingresoTxt.setText("");
+                    
+                    DefaultTableModel model = (DefaultTableModel) salariosTbl.getModel();
+                    
+                    while(model.getRowCount() != 0){
+                        
+                        model.removeRow(0);
+                        
+                    }
+                    
+                    salariosTbl.setModel(salarioobj.mostrarSalarios(model));
+
+                } catch (SQLException e) {
+
+                    System.err.println("Error al actualizar salario base." + e);
+
+                }
+
+            } else {
+
+                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese valores validos para los campos\n"
+                        + "salario e ingreso por horas extras.", " -  Advertencia",
+                        JOptionPane.PLAIN_MESSAGE, icon);
+
+            }
+
+        } else {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        }
 
     }//GEN-LAST:event_AceptarcambiosBtnActionPerformed
 
@@ -398,7 +471,7 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
                 }
 
-                salariosTbl.setModel(salario.mostrarSalarios(model));
+                salariosTbl.setModel(salarioobj.mostrarSalarios(model));
 
             } catch (SQLException e) {
 
@@ -410,12 +483,19 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_eliminarBtnActionPerformed
 
+    private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
+        
+        jFrame1.setVisible(false);
+        
+    }//GEN-LAST:event_cerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarcambiosBtn;
     private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt;
     private javax.swing.JTextField cargoTxt;
+    private javax.swing.JButton cerrar;
     private javax.swing.JButton editarBtn;
     private javax.swing.JButton eliminarBtn;
     private javax.swing.JTextField ingresoTxt;
