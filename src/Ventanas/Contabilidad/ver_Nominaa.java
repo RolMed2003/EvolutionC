@@ -368,50 +368,51 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         tblNomina.setModel(model);
 
         int SelectedRow = tblDatos_nomina.getSelectedRow();
-        
+
         IDModificacion = (int) tblDatos_nomina.getValueAt(SelectedRow, 0);
-        
+
         try {
-            
+
             Connection cn = Conexion.conectar();
             PreparedStatement pst = cn.prepareStatement("select Salario_base, Horas_extras, Total_horasExtras,"
                     + " Viaticos, Total_percepciones, INSS, IR, Total_deducciones, SalarioNeto "
-                    + " from Empleados where ID_empleado = '1'");
-            
+                    + " from Empleados where ID_empleado = '"+IDModificacion+"'");
+
             ResultSet rs = pst.executeQuery();
-            
-            float salariobase = rs.getFloat(1);
-            System.out.println(salariobase);
-            
-            /*
-            DefaultTableModel model1 = (DefaultTableModel) tblNomina.getModel();
-            
-            while(model1.getRowCount() != 0){
-                
-                model1.removeRow(0);
-                
+
+            if (rs.next()) {
+
+                DefaultTableModel model1 = (DefaultTableModel) tblNomina.getModel();
+
+                while (model1.getRowCount() != 0) {
+
+                    model1.removeRow(0);
+
+                }
+
+                Object[] row = new Object[9];
+                row[0] = rs.getFloat("Salario_base");
+                row[1] = rs.getInt("Horas_extras");
+                row[2] = rs.getFloat("Total_horasExtras");
+                row[3] = rs.getFloat("Viaticos");
+                row[4] = rs.getFloat("Total_percepciones");
+                row[5] = rs.getFloat("INSS");
+                row[6] = rs.getFloat("IR");
+                row[7] = rs.getFloat("Total_deducciones");
+                row[8] = rs.getFloat("SalarioNeto");
+
+                model.addRow(row);
+                tblNomina.setModel(model);
+                tblNomina.selectAll();
+
             }
-            
-            Object[] row = new Object[9];
-            row[0] = rs.getFloat("Salario_base");
-            row[1] = rs.getInt("Horas_extras");
-            row[2] = rs.getFloat("Total_horasExtras");
-            row[3] = rs.getFloat("Viaticos");
-            row[4] = rs.getFloat("Total_percepciones");
-            row[5] = rs.getFloat("INSS");
-            row[6] = rs.getFloat("IR");
-            row[7] = rs.getFloat("Total_deducciones");
-            row[8] = rs.getFloat("SalarioNeto");
-            
-            model.addRow(row);
-            tblNomina.setModel(model);
-            */
+
         } catch (SQLException e) {
-            
+
             System.err.println(e);
-            
+
         }
-        
+
     }//GEN-LAST:event_tblDatos_nominaMouseClicked
 
     private void registrarHoras_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarHoras_buttonActionPerformed
@@ -511,28 +512,28 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
 
         if (Val == 0) {
 
+            float totalPerc = 0, INSS = 0, IR = 0, TotalD = 0, SalarioNeto = 0;
+            
             try {
 
+                float salariobase = Float.parseFloat(salariobase_field.getText());
+                
                 Connection cn = Conexion.conectar();
-                PreparedStatement pst = cn.prepareStatement("update Empleados set Horas_extras = ?, Viaticos = ? where "
-                        + "ID_empleado = '" + IDModificacion + "'");
-                PreparedStatement pst2 = cn.prepareStatement("select HoraExtra from SalariosBase where Cargo = '" + cargo + "'");
-
+                PreparedStatement pst = cn.prepareStatement("update Empleados set Horas_Extras = ?, Viaticos = ?, INSS = ?, "
+                        + "IR = ?, SalarioNeto = ?, Total_horasExtras = ?, Total_percepciones = ?, Total_deducciones = ? where "
+                        + "ID_empleado = '"+ IDModificacion +"'");
+                
                 pst.setInt(1, HorasExtras);
                 pst.setFloat(2, viaticos);
+                pst.setFloat(3, Nomina.GetDedInss(salariobase));
+                pst.setFloat(4, Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
+                pst.setFloat(5, salariobase - Nomina.GetDedInss(salariobase) - Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
+                pst.setFloat(6, HorasExtras * 35);
+                pst.setFloat(7, salariobase + viaticos + (HorasExtras * 35));
+                pst.setFloat(8, Nomina.GetDedInss(salariobase)+Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
                 pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(null, "Se han agregado las horas extras y\n"
-                        + "los viaticos al empleado.");
-
-                tblNomina.setValueAt(HorasExtras, 0, 1);
-                tblNomina.setValueAt(viaticos, 0, 3);
-
-                ResultSet rs = pst2.executeQuery();
-
-                float ingresoHora = rs.getFloat("HoraExtra");
-
-                tblNomina.setValueAt(HorasExtras * ingresoHora, 0, 2);
+                
+                JOptionPane.showMessageDialog(null, "Se han agregado los viaticos y horas extras al empleado.");
 
             } catch (SQLException e) {
 
