@@ -58,6 +58,7 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         registrarHoras.setUndecorated(true);
         registrarHoras.setResizable(false);
@@ -328,7 +329,12 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         Fondo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 1010, 50));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Nómina/employer.png"))); // NOI18N
-        Fondo.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, -1, -1));
+        Fondo.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Seleccione un empleado por favor.");
+        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -338,7 +344,7 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         pack();
@@ -456,6 +462,7 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
     private javax.swing.JButton agregar_button;
     private javax.swing.JPanel barra_superior2;
     private javax.swing.JTextField horasExtra_field;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
