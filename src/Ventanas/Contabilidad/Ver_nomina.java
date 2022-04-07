@@ -13,11 +13,17 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
 
     public Ver_nomina() {
         initComponents();
-
-        tblDatos_nomina.setModel(nom.mostrarDatosNomina((DefaultTableModel) tblDatos_nomina.getModel()));
-
         setSize(1180, 580);
         setLocation(50, 20);
+        tblDatos_nomina.setModel(nom.mostrarDatosNomina((DefaultTableModel) tblDatos_nomina.getModel()));
+
+        DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
+        tblNomina.setModel(nom.mostrarNomina((DefaultTableModel) tblNomina.getModel()));
+        
+        
+        
+        
+        
 
     }
 
@@ -403,17 +409,17 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
             tblDatos_nomina.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        tblNomina.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        tblNomina.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         tblNomina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Salario bruto", "Horas extras", "Total Horas extras", "Viáticos", "INSS", "IR", "Salario neto"
+                "Salario bruto", "Horas extras", "Total Horas extras", "Viáticos", "Total percepciones", "INSS", "IR", "Total deducciones", "Salario neto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -424,7 +430,6 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblNomina);
         if (tblNomina.getColumnModel().getColumnCount() > 0) {
             tblNomina.getColumnModel().getColumn(0).setResizable(false);
-            tblNomina.getColumnModel().getColumn(0).setPreferredWidth(10);
             tblNomina.getColumnModel().getColumn(1).setResizable(false);
             tblNomina.getColumnModel().getColumn(2).setResizable(false);
             tblNomina.getColumnModel().getColumn(3).setResizable(false);
@@ -432,6 +437,7 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
             tblNomina.getColumnModel().getColumn(5).setResizable(false);
             tblNomina.getColumnModel().getColumn(6).setResizable(false);
             tblNomina.getColumnModel().getColumn(7).setResizable(false);
+            tblNomina.getColumnModel().getColumn(8).setResizable(false);
         }
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -559,10 +565,15 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_barra_superiorMousePressed
 
     private void agregar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_buttonActionPerformed
+
+        int SelectedRow = tblDatos_nomina.getSelectedRow();
+
         agregarNómina.setVisible(true);
         agregarNómina.setSize(461, 552);
         agregarNómina.setLocationRelativeTo(null);
-        
+
+        panel_exit.setBackground(Color.white);
+
     }//GEN-LAST:event_agregar_buttonActionPerformed
 
     private void txt_exiit2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_exiit2MouseDragged
