@@ -1,14 +1,21 @@
 
 package Ventanas.Empleados;
 
+import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
 import Clases.Generales.Empleados;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class Gestionar_empleados extends javax.swing.JInternalFrame {
 
-   Empleados emp = new Empleados();
+   Empleados empleadoobj = new Empleados();
     
     public Gestionar_empleados() {
         initComponents();
@@ -29,7 +36,7 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
             public void run(){
                 
                 loading.setVisible(true);
-                EmpleadosTbl.setModel(emp.mostrarEmpleados((DefaultTableModel)EmpleadosTbl.getModel()));
+                EmpleadosTbl.setModel(empleadoobj.mostrarEmpleados((DefaultTableModel)EmpleadosTbl.getModel()));
                 loading.setVisible(false);
                 
             }
@@ -104,6 +111,11 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         eliminarEmpleados_button.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         eliminarEmpleados_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/hombre.png"))); // NOI18N
         eliminarEmpleados_button.setText("Eliminar");
+        eliminarEmpleados_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarEmpleados_buttonActionPerformed(evt);
+            }
+        });
         getContentPane().add(eliminarEmpleados_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(1029, 201, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -128,9 +140,58 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
 
         String buscar = buscarTxt_empleados.getText().trim();
 
-        EmpleadosTbl.setModel(emp.mostrarEmpleados(buscar));
+        EmpleadosTbl.setModel(empleadoobj.mostrarEmpleados(buscar));
 
     }//GEN-LAST:event_buscarBtnActionPerformed
+
+    private void eliminarEmpleados_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleados_buttonActionPerformed
+        
+       //variables
+         int selectedRow = EmpleadosTbl.getSelectedRow();
+         
+         if (selectedRow == -1) {
+             
+             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un Empleado a eliminar.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+            
+         }else {
+             
+             int ID = (int) EmpleadosTbl.getValueAt(selectedRow,0);
+             
+             try {
+                 
+                 Connection cn = Conexion.conectar();
+                 PreparedStatement pst = cn.prepareStatement("delete from Empleados where ID_empleado = '"
+                        + ID + "'");
+                 
+                 pst.execute();
+                 
+                 
+                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente.", " -  Info",
+                        JOptionPane.PLAIN_MESSAGE, icon);
+                
+                DefaultTableModel model = (DefaultTableModel) EmpleadosTbl.getModel();
+                while (model.getRowCount() != 0) {
+                    
+                    model.removeRow(0);
+             
+                }
+                
+                EmpleadosTbl.setModel(empleadoobj.mostrarEmpleados(model));
+                
+             }catch(SQLException e){
+                 
+                 System.err.println("Error al eliminar empleado"+e);
+                        
+                        }
+             
+                
+             
+                 
+             }
+    }//GEN-LAST:event_eliminarEmpleados_buttonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
