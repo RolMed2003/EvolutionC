@@ -91,6 +91,11 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
         aplicarBtn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         aplicarBtn.setText("Aplicar cambios");
+        aplicarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aplicarBtnActionPerformed(evt);
+            }
+        });
         jPanel2.add(aplicarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
         userTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -105,6 +110,11 @@ public class Gestionar extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 3, -1, -1));
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -217,12 +227,12 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
             String user = (String) usuariosTbl.getValueAt(SelectedRow, 1);
             String tipoacceso = (String) usuariosTbl.getValueAt(SelectedRow, 2);
-            
+
             userTxt.setText(user);
             int tipoIn = 0;
-            
-            switch (tipoacceso){
-                
+
+            switch (tipoacceso) {
+
                 case "Administrador":
                     tipoIn = 0;
                     break;
@@ -234,14 +244,14 @@ public class Gestionar extends javax.swing.JInternalFrame {
                     break;
                 case "Empleado":
                     tipoIn = 3;
-                    break;    
+                    break;
                 default:
                     //si
                     break;
             }
-            
+
             tipoCmb.setSelectedIndex(tipoIn);
-            
+
             jFrame1.setVisible(true);
             jFrame1.setSize(400, 270);
             jFrame1.setLocationRelativeTo(null);
@@ -320,6 +330,59 @@ public class Gestionar extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        jFrame1.setVisible(false);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void aplicarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aplicarBtnActionPerformed
+
+        String user = userTxt.getText();
+        int sl = tipoCmb.getSelectedIndex();
+        String tipo = "";
+        int Val = 0;
+
+        switch (sl) {
+
+            case 0:
+                tipo = "Administrador";
+                break;
+
+            case 1:
+                tipo = "Contador";
+                break;
+            case 2:
+                tipo = "Aux.Nomina";
+                break;
+            case 3:
+                tipo = "Empleado";
+                break;
+
+            default:
+                break;
+        }
+
+        if (user.equals("")) {
+
+            Val++;
+
+        }
+
+        if (Val == 0) {
+
+            
+            
+        } else {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia", JOptionPane.PLAIN_MESSAGE,
+                    icon);
+
+        }
+
+    }//GEN-LAST:event_aplicarBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

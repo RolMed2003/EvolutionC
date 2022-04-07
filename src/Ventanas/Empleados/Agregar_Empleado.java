@@ -371,7 +371,7 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
 
                             try {
                                 Connection cn = Conexion.conectar();
-                                PreparedStatement pst3 = cn.prepareStatement("insert into Empleados values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                PreparedStatement pst3 = cn.prepareStatement("insert into Empleados values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                                 PreparedStatement pst4 = cn.prepareStatement("update Usuarios set AsignadoA = ? where User = '"
                                         + UserAsign + "'");
 
@@ -389,6 +389,9 @@ public class Agregar_Empleado extends javax.swing.JInternalFrame {
                                 pst3.setFloat(12, 0);
                                 pst3.setFloat(13, 0);
                                 pst3.setString(14, UserAsign);
+                                pst3.setFloat(15, 0);
+                                pst3.setFloat(16, 0);
+                                pst3.setFloat(17, 0);
                                 pst3.execute();
 
                                 pst4.setString(1, name);
