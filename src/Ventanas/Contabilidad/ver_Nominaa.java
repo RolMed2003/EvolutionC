@@ -542,8 +542,6 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
 
         if (Val == 0) {
 
-            float totalPerc = 0, INSS = 0, IR = 0, TotalD = 0, SalarioNeto = 0;
-
             try {
 
                 float salariobase = Float.parseFloat(salariobase_field.getText());
@@ -553,19 +551,37 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
                         + "IR = ?, SalarioNeto = ?, Total_horasExtras = ?, Total_percepciones = ?, Total_deducciones = ? where "
                         + "ID_empleado = '" + IDModificacion + "'");
 
+                float totalperc = (HorasExtras * 35) + viaticos + salariobase;
+                float INSS = Nomina.GetDedInss(salariobase);
+                float IR = Nomina.GetDedIr(salariobase, INSS);
+                float totald = INSS + IR;
+                float Neto = totalperc - totald;
+   
+                
                 pst.setInt(1, HorasExtras);
                 pst.setFloat(2, viaticos);
-                pst.setFloat(3, Nomina.GetDedInss(salariobase));
-                pst.setFloat(4, Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
-                pst.setFloat(5, salariobase - Nomina.GetDedInss(salariobase) - Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
+                pst.setFloat(3, INSS);
+                pst.setFloat(4, IR);
+                pst.setFloat(5, Neto);
                 pst.setFloat(6, HorasExtras * 35);
-                pst.setFloat(7, salariobase + viaticos + (HorasExtras * 35));
-                pst.setFloat(8, Nomina.GetDedInss(salariobase) + Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
+                pst.setFloat(7, totalperc);
+                pst.setFloat(8, totald);
                 pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Se han agregado los viaticos y horas extras al empleado.");
 
-              registrarHoras.dispose();
+              registrarHoras.setVisible(false);
+              horasExtra_field.setText("");
+              viaticos_field.setText("");
+              
+              tblNomina.setValueAt(HorasExtras, 0, 1);
+              tblNomina.setValueAt(HorasExtras*35, 0, 2);
+              tblNomina.setValueAt(viaticos, 0, 3);
+              tblNomina.setValueAt(totalperc, 0, 4);
+              tblNomina.setValueAt(INSS, 0, 5);
+              tblNomina.setValueAt(IR, 0, 6);
+              tblNomina.setValueAt(totald, 0, 7);
+              tblNomina.setValueAt(Neto, 0, 8);
                 
             } catch (SQLException e) {
 
