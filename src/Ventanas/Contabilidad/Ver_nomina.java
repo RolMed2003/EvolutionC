@@ -390,6 +390,11 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
             }
         });
         tblDatos_nomina.setRowHeight(20);
+        tblDatos_nomina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatos_nominaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDatos_nomina);
         if (tblDatos_nomina.getColumnModel().getColumnCount() > 0) {
             tblDatos_nomina.getColumnModel().getColumn(0).setResizable(false);
@@ -635,6 +640,12 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void tblDatos_nominaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos_nominaMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_tblDatos_nominaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
