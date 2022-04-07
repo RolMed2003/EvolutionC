@@ -2,6 +2,7 @@ package Ventanas.Contabilidad;
 
 import Clases.Apoyo.Conexion;
 import Clases.Apoyo.PlaceHolder;
+import Clases.Apoyo.Utilities;
 import Clases.Generales.Salario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class Salario_base extends javax.swing.JInternalFrame {
 
     Salario salario = new Salario();
+    Utilities ut = new Utilities();
 
     public Salario_base() {
 
@@ -51,16 +53,18 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        AceptarcambiosBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        cargoTxt = new javax.swing.JTextField();
+        tipoTxt = new javax.swing.JTextField();
+        ingresoTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        salarioTxt = new javax.swing.JTextField();
         loading = new javax.swing.JLabel();
         buscarTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -78,12 +82,12 @@ public class Salario_base extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/JOption/cheque.png"))); // NOI18N
-        jButton3.setText("Aceptar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        AceptarcambiosBtn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        AceptarcambiosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/JOption/cheque.png"))); // NOI18N
+        AceptarcambiosBtn.setText("Aceptar");
+        AceptarcambiosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AceptarcambiosBtnActionPerformed(evt);
             }
         });
 
@@ -121,17 +125,22 @@ public class Salario_base extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("Cargo:");
 
-        jTextField1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        cargoTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        tipoTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
-        jTextField3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ingresoTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Tipo:");
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel7.setText("Ingreso horas extras");
+        jLabel7.setText("Ingreso horas extras:");
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setText("Salario base:");
+
+        salarioTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,15 +152,17 @@ public class Salario_base extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3))
+                    .addComponent(salarioTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                    .addComponent(cargoTxt)
+                    .addComponent(tipoTxt)
+                    .addComponent(ingresoTxt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(37, 37, 37))
+                .addComponent(AceptarcambiosBtn)
+                .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,24 +172,30 @@ public class Salario_base extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cargoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tipoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(ingresoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(AceptarcambiosBtn))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(214, Short.MAX_VALUE))
+                    .addComponent(salarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,11 +303,66 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_editarBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void AceptarcambiosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarcambiosBtnActionPerformed
+
+        int SelectedRow = salariosTbl.getSelectedRow();
+
+        if (SelectedRow == -1) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro a eliminar.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        } else {
+            
+            String Cargo = cargoTxt.getText();
+            String Tipo = tipoTxt.getText();
+            int Val = 0;
+            
+            if (Cargo.equals("")) {
+                
+                Val++;
+                
+            }if (Tipo.equals("")) {
+                                
+                Val++;
+                
+            }if (ut.isFloat(salarioTxt.getText())) {
+                
+                
+                
+            } else {
+                
+                
+                
+            }
+
+            int ID = (int) salariosTbl.getValueAt(SelectedRow, 0);
+
+            try {
+
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("update set Cargo = ?, TipoCargo = ?, Salario = ?, HoraExtra = ?"
+                        + " from SalariosBase where ID_Salario = '" + ID + "'");
+
+                /*
+                pst.setString(2, Cargo);
+                pst.setString(3, Tipo);
+                pst.setFloat(4, Salario);
+                pst.setFloat(5, HoraExtra);
+                pst.execute();
+                        */
+            } catch (Exception e) {
+                
+                
+
+            }
+
+        }
 
         jFrame1.setVisible(false);
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_AceptarcambiosBtnActionPerformed
 
     private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
 
@@ -318,20 +390,20 @@ public class Salario_base extends javax.swing.JInternalFrame {
                 Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                 JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente.", " -  Info",
                         JOptionPane.PLAIN_MESSAGE, icon);
-                
+
                 DefaultTableModel model = (DefaultTableModel) salariosTbl.getModel();
-                while(model.getRowCount() != 0){
-                    
+                while (model.getRowCount() != 0) {
+
                     model.removeRow(0);
-                    
+
                 }
-                
+
                 salariosTbl.setModel(salario.mostrarSalarios(model));
 
             } catch (SQLException e) {
 
-                System.err.println("Error al eliminar salario base"+ e);
-                
+                System.err.println("Error al eliminar salario base" + e);
+
             }
 
         }
@@ -340,11 +412,13 @@ public class Salario_base extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AceptarcambiosBtn;
     private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt;
+    private javax.swing.JTextField cargoTxt;
     private javax.swing.JButton editarBtn;
     private javax.swing.JButton eliminarBtn;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTextField ingresoTxt;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -353,13 +427,13 @@ public class Salario_base extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     public static javax.swing.JLabel loading;
+    private javax.swing.JTextField salarioTxt;
     private javax.swing.JTable salariosTbl;
+    private javax.swing.JTextField tipoTxt;
     // End of variables declaration//GEN-END:variables
 }
