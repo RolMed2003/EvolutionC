@@ -11,7 +11,7 @@ public class Nomina {
 
     public Nomina() {
     }
-    
+
     public DefaultTableModel mostrarDatosNomina(DefaultTableModel model) {
 
         try {
@@ -33,80 +33,106 @@ public class Nomina {
             }
 
         } catch (SQLException e) {
-            System.err.println("Error al mostrar los tabla de Datos."+e);
+            System.err.println("Error al mostrar los tabla de Datos." + e);
         }
 
         return model;
     }
 
-    
-    
+    public DefaultTableModel mostrarNomina(DefaultTableModel model) {
+
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select Salario_base, Horas_extras, Total_horasExtras, Viaticos, Total_percepciones, INSS, IR, Total_deducciones, SalarioNeto from Empleados");
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Object[] row = new Object[9];
+
+                row[0] = rs.getFloat(1);
+                row[1] = rs.getInt(2);
+                row[2] = rs.getFloat(3);
+                row[3] = rs.getFloat(4);
+                row[4] = rs.getFloat(5);
+                row[5] = rs.getFloat(6);
+                row[6] = rs.getFloat(7);
+                row[7] = rs.getFloat(8);
+                row[8] = rs.getFloat(9);
+
+                model.addRow(row);
+
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al mostrar la nomina." + e);
+        }
+
+        return model;
+    }
+
     //DedINSS
-    public static float GetDedInss(float a){
+    public static float GetDedInss(float a) {
 
         float DedInss;
 
-        DedInss = a*0.07f;
+        DedInss = a * 0.07f;
 
         return DedInss;
 
     }
 
-
     //DedIR.
-    public static float GetDedIr(float a, float b){
+    public static float GetDedIr(float a, float b) {
 
         float result;
         float dedir = 0;
 
-    result = (a - b) * (12);
+        result = (a - b) * (12);
 
-
-        if(result>=0.01 && result<=100000.00){
+        if (result >= 0.01 && result <= 100000.00) {
 
             //Sin instrucciones.
+        } else if (result >= 100000.01 && result <= 200000.00) {
 
-    }else if(result>=100000.01 && result<=200000.00){
+            result = result - 100000.00f;
+            result = result * 0.15f;
+            result = result / 12;
+            dedir = result;
 
-            result = result-100000.00f;
-            result = result*0.15f;
-            result = result/12;
-            dedir  = result;
+        } else if (result >= 200000.01 && result <= 350000.00) {
 
-    }else if(result>=200000.01 && result<=350000.00){
+            result = result - 200000.00f;
+            result = result + 15000;
+            result = result * 0.20f;
+            result = result / 12;
+            dedir = result;
 
-            result = result-200000.00f;
-            result = result+15000;
-            result = result*0.20f;
-            result = result/12;
-            dedir  = result;
+        } else if (result >= 350000.01 && result <= 500000.00) {
 
-    }else if(result>=350000.01 && result<=500000.00){
+            result = result - 350000.00f;
+            result = result + 45000;
+            result = result * 0.25f;
+            result = result / 12;
+            dedir = result;
 
-            result = result-350000.00f;
-            result = result+45000;
-            result = result*0.25f;
-            result = result/12;
-            dedir  = result;
+        } else if (result >= 500000.00) {
 
-    }else if(result>=500000.00){
+            result = result - 500000.00f;
+            result = result + 82500;
+            result = result * 0.30f;
+            result = result / 12;
+            dedir = result;
 
-            result = result-500000.00f;
-            result = result+82500;
-            result = result*0.30f;
-            result = result/12;
-            dedir  = result;
+        }
 
-    }
-
-
-    return dedir;
+        return dedir;
 
     }
-
 
     //Salario Neto.
-    public static float GetSalarioNeto(float a, float b, float c){
+    public static float GetSalarioNeto(float a, float b, float c) {
 
         float SalarioNeto;
 
@@ -115,14 +141,5 @@ public class Nomina {
 
         return SalarioNeto;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
