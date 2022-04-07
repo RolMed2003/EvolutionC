@@ -50,6 +50,18 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame_Andreus = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        Nombretxt = new javax.swing.JTextField();
+        DNItxt = new javax.swing.JTextField();
+        Sexotxt = new javax.swing.JTextField();
+        Edadtxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         loading = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         EmpleadosTbl = new javax.swing.JTable();
@@ -59,6 +71,65 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         buscarTxt_empleados = new javax.swing.JTextField();
         buscarBtn = new javax.swing.JButton();
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Nombretxt.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jPanel2.add(Nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 220, -1));
+
+        DNItxt.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jPanel2.add(DNItxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 220, -1));
+
+        Sexotxt.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jPanel2.add(Sexotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 220, -1));
+
+        Edadtxt.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
+        jPanel2.add(Edadtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 220, -1));
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jLabel3.setText("Nombre");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jLabel4.setText("Sexo");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 50, -1));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jLabel5.setText("DNI");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 50, -1));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jLabel6.setText("Edad");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 50, -1));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton1.setText("GUARDAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
+        jButton2.setText("CERRAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+
+        javax.swing.GroupLayout jFrame_AndreusLayout = new javax.swing.GroupLayout(jFrame_Andreus.getContentPane());
+        jFrame_Andreus.getContentPane().setLayout(jFrame_AndreusLayout);
+        jFrame_AndreusLayout.setHorizontalGroup(
+            jFrame_AndreusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jFrame_AndreusLayout.setVerticalGroup(
+            jFrame_AndreusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setClosable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,7 +222,31 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
 
     private void editarEmpleados_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarEmpleados_buttonActionPerformed
 
-        
+      int SelectedRow = EmpleadosTbl.getSelectedRow();
+      if (SelectedRow == -1) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro a editar.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        } else {
+            
+            jFrame_Andreus.setVisible(true);
+            jFrame_Andreus.setSize(772, 450);
+            jFrame_Andreus.setLocationRelativeTo(null);
+            jFrame_Andreus.setAlwaysOnTop(false);
+          
+            //Poniendo los datos en la ventana de editar, segun el campo.
+            Nombretxt.setText((String) EmpleadosTbl.getValueAt(SelectedRow, 1));
+            DNItxt.setText((String) EmpleadosTbl.getValueAt(SelectedRow, 2));
+            Sexotxt.setText((String)EmpleadosTbl.getValueAt(SelectedRow, 3));
+            Edadtxt.setText(EmpleadosTbl.getValueAt(SelectedRow,4).toString());
+            
+         
+
+        }
+
+
         
     }//GEN-LAST:event_editarEmpleados_buttonActionPerformed
     private void eliminarEmpleados_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleados_buttonActionPerformed
@@ -203,15 +298,120 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
              }
     }//GEN-LAST:event_eliminarEmpleados_buttonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Variables
+        String Nombre = Nombretxt.getText();
+        String DNI = DNItxt.getText();
+        String Sexo = Sexotxt.getText();
+        String Edad = Edadtxt.getText();
+        int Val = 0;
+
+       
+        
+        //Validando campos de edicion
+        if (Nombre.equals("")) {
+
+            Val++;
+
+        }if (DNI.equals("")) {
+
+            Val++;
+            
+        }if (Sexo.equals("")) {
+
+            Val++;
+
+        }if (Edad.equals("")) {
+
+            Val++;
+            
+        }
+
+
+        int ID = (int) EmpleadosTbl.getValueAt(EmpleadosTbl.getSelectedRow(), 0);
+
+        if (Val == 0) {
+
+
+                try {
+
+                    Connection cn = Conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement("update Empleados set Nombre_Empleado = ?, DNI = ?,"
+                            + "Sexo = ?, Edad = ?"
+                            + " where ID_empleado = '" + ID + "'");
+
+                    pst.setString(1, Nombre);
+                    pst.setString(2, DNI);
+                    pst.setString(3, Sexo);
+                    pst.setString(4, Edad);
+                    pst.execute();
+
+                    Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                    JOptionPane.showMessageDialog(null, "Registro editado con exito.", " -  Info",
+                            JOptionPane.PLAIN_MESSAGE, icon);
+                    
+                    jFrame_Andreus.setVisible(false);
+                    
+                    Nombretxt.setText("");
+                    DNItxt.setText("");
+                    Sexotxt.setText("");
+                    Edadtxt.setText("");
+                    
+                    DefaultTableModel model = (DefaultTableModel) EmpleadosTbl.getModel();
+                    
+                    while(model.getRowCount() != 0){
+                        
+                        model.removeRow(0);
+                        
+                    }
+                    
+                    EmpleadosTbl.setModel(empleadoobj.mostrarEmpleados(model));
+
+                } catch (SQLException e) {
+
+                    System.err.println("Error al actualizar los dato." + e);
+
+                }
+
+
+        } else {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        }
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        jFrame_Andreus.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DNItxt;
+    private javax.swing.JTextField Edadtxt;
     private javax.swing.JTable EmpleadosTbl;
+    private javax.swing.JTextField Nombretxt;
+    private javax.swing.JTextField Sexotxt;
     private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt_empleados;
     private javax.swing.JButton editarEmpleados_button;
     private javax.swing.JButton eliminarEmpleados_button;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JFrame jFrame_Andreus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JLabel loading;
     // End of variables declaration//GEN-END:variables
