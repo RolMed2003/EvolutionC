@@ -17,6 +17,10 @@ public class Agregar extends javax.swing.JInternalFrame {
 
         initComponents();
 
+        //Modelando ventana
+        setTitle("Agregar nuevo salario base");
+        setLocation(431, 190);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -178,6 +182,11 @@ public class Agregar extends javax.swing.JInternalFrame {
                     Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
                     JOptionPane.showMessageDialog(null, "Registro agregado exitosamente", " -  Info",
                             JOptionPane.PLAIN_MESSAGE, icon);
+                    
+                    cargoTxt.setText("");
+                    tipotxt.setText("");
+                    ingresoTxt.setText("");
+                    salarioTxt.setText("");
 
                 } catch (SQLException e) {
 
