@@ -1,8 +1,11 @@
 package Ventanas.Contabilidad;
 
+import Clases.Generales.Empleados;
 import Clases.Generales.Nomina;
 import java.awt.Color;
 import java.util.Locale;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,21 +13,18 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
 
     Nomina nom = new Nomina();
     int aMouse, bMouse, cMouse, dMouse, eMouse, fMouse;
+    Empleados empleado = new Empleados();
 
     public Ver_nomina() {
         initComponents();
         setSize(1180, 580);
         setLocation(50, 20);
+        
         tblDatos_nomina.setModel(nom.mostrarDatosNomina((DefaultTableModel) tblDatos_nomina.getModel()));
 
-        DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
+        /*DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
         tblNomina.setModel(nom.mostrarNomina((DefaultTableModel) tblNomina.getModel()));
-        
-        
-        
-        
-        
-
+*/
     }
 
     @SuppressWarnings("unchecked")
@@ -653,9 +653,38 @@ public class Ver_nomina extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void tblDatos_nominaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos_nominaMouseClicked
-        
-        
-        
+
+        int x = tblDatos_nomina.getSelectedRow();
+
+        if (x == -1) {
+
+            Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro.", " -  Advertencia",
+                    JOptionPane.PLAIN_MESSAGE, icon);
+
+        }else{
+            
+            String cargo = (String) tblDatos_nomina.getValueAt(x, 2);
+            float salario = empleado.showSalarioBase(cargo);
+            
+            DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
+            
+            Object[] row = new Object[9];
+            row[0] = salario;
+            row[1] = salario;
+            row[2] = salario;
+            row[3] = salario;
+            row[4] = salario;
+            row[5] = salario;
+            row[6] = salario;
+            row[7] = salario;
+            row[8] = salario;
+            
+            model.addRow(row);
+            tblNomina.setModel(model);
+            
+        }
+
     }//GEN-LAST:event_tblDatos_nominaMouseClicked
 
 
