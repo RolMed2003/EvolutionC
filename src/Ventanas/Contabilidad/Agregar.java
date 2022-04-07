@@ -38,6 +38,7 @@ public class Agregar extends javax.swing.JInternalFrame {
         agregarBtn = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Agregar salario base");
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("Cargo:");

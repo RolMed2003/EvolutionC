@@ -12,6 +12,7 @@ import java.sql.*;
 public class Gestionar extends javax.swing.JInternalFrame {
 
     Usuario user = new Usuario();
+    Usuario z = new Usuario();
 
     public Gestionar() {
 
@@ -45,11 +46,11 @@ public class Gestionar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-        jPanel2 = new javax.swing.JPanel();
+        editar_frame = new javax.swing.JFrame();
+        Fondo = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         tipoCmb = new javax.swing.JComboBox();
         aplicarBtn = new javax.swing.JButton();
         userTxt = new javax.swing.JTextField();
@@ -66,28 +67,40 @@ public class Gestionar extends javax.swing.JInternalFrame {
         buscarTxt = new javax.swing.JTextField();
         buscarBtn = new javax.swing.JButton();
 
-        jFrame1.setUndecorated(true);
+        editar_frame.setUndecorated(true);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        Fondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/edit.png"))); // NOI18N
+        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Editar Registro de Usuario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/editar-documento.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 30, 395, 50));
+        Fondo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 540, 80));
 
         tipoCmb.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         tipoCmb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Contador", "Aux.Nomina", "Empleado" }));
-        jPanel2.add(tipoCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 225, -1));
+        Fondo.add(tipoCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 225, -1));
 
         aplicarBtn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         aplicarBtn.setText("Aplicar cambios");
@@ -96,18 +109,18 @@ public class Gestionar extends javax.swing.JInternalFrame {
                 aplicarBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(aplicarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        Fondo.add(aplicarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         userTxt.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jPanel2.add(userTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 225, -1));
+        Fondo.add(userTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 225, -1));
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel6.setText("Tipo de acceso:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        Fondo.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel4.setText("Nombre de usuario:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        Fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,17 +128,19 @@ public class Gestionar extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 3, -1, -1));
+        Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, -1));
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout editar_frameLayout = new javax.swing.GroupLayout(editar_frame.getContentPane());
+        editar_frame.getContentPane().setLayout(editar_frameLayout);
+        editar_frameLayout.setHorizontalGroup(
+            editar_frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+        editar_frameLayout.setVerticalGroup(
+            editar_frameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(editar_frameLayout.createSequentialGroup()
+                .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setClosable(true);
@@ -252,9 +267,9 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
             tipoCmb.setSelectedIndex(tipoIn);
 
-            jFrame1.setVisible(true);
-            jFrame1.setSize(400, 270);
-            jFrame1.setLocationRelativeTo(null);
+            editar_frame.setVisible(true);
+            editar_frame.setSize(540, 367);
+            editar_frame.setLocationRelativeTo(null);
 
         }
 
@@ -333,7 +348,7 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        jFrame1.setVisible(false);
+        editar_frame.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -370,10 +385,47 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
         }
 
+        int ID = (int) usuariosTbl.getValueAt(usuariosTbl.getSelectedRow(), 0);
         if (Val == 0) {
 
-            
-            
+            try {
+
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("update Usuarios set User=?, Role_user=? where ID_USER= '" + ID + "'");
+
+                pst.setString(1, user);
+                pst.setString(2, tipo);
+                pst.execute();
+                Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/cheque.png"));
+                JOptionPane.showMessageDialog(null, "Usuario editado con exito.", " -  Info",
+                        JOptionPane.PLAIN_MESSAGE, icon);
+
+                userTxt.setText("");
+                tipoCmb.setSelectedIndex(0);
+
+                new Thread() {
+                    public void run() {
+
+                        loading.setVisible(true);
+                        DefaultTableModel model = (DefaultTableModel) usuariosTbl.getModel();
+
+                        while (model.getRowCount() != 0) {
+
+                            model.removeRow(0);
+
+                        }
+
+                        usuariosTbl.setModel(z.mostrarUsuarios(model));
+                        loading.setVisible(false);
+
+                    }
+                }.start();
+
+            } catch (SQLException e) {
+                System.err.println("Error al modificar el usuario" + e);
+            }
+
+            editar_frame.dispose();
         } else {
 
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
@@ -386,21 +438,21 @@ public class Gestionar extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
     private javax.swing.JButton aplicarBtn;
     private javax.swing.JButton buscarBtn;
     private javax.swing.JTextField buscarTxt;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editarBtn;
+    private javax.swing.JFrame editar_frame;
     private javax.swing.JButton jButton1;
-    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JLabel loading;
     private javax.swing.JComboBox tipoCmb;
