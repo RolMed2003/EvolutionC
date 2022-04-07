@@ -28,8 +28,18 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         setSize(1026, 568);
         setLocation(122, 20);
 
-        DefaultTableModel model = (DefaultTableModel) tblDatos_nomina.getModel();
-        tblDatos_nomina.setModel(nom.mostrarDatosNomina(model));
+        new Thread() {
+            @Override
+            public void run() {
+
+                loading.setVisible(true);
+                DefaultTableModel model = (DefaultTableModel) tblDatos_nomina.getModel();
+                tblDatos_nomina.setModel(nom.mostrarDatosNomina(model));
+                loading.setVisible(false);
+               
+            }
+        }.start();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -52,6 +62,8 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         txt_nomina = new javax.swing.JLabel();
         agregar_button = new javax.swing.JButton();
         Fondo = new javax.swing.JPanel();
+        loading = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos_nomina = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -63,6 +75,7 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         registrarHoras.setUndecorated(true);
         registrarHoras.setResizable(false);
@@ -230,6 +243,11 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         Fondo.setBackground(new java.awt.Color(255, 255, 255));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        loading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Otros/cargando.gif"))); // NOI18N
+        Fondo.add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 690, -1));
+        Fondo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 40, 30));
+
         tblDatos_nomina.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         tblDatos_nomina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -281,13 +299,13 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
 
         registrarHoras_button.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         registrarHoras_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Nómina/editar_nomina.png"))); // NOI18N
-        registrarHoras_button.setText("Registrar horas extras");
+        registrarHoras_button.setText("Registrar / editar horas extras");
         registrarHoras_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarHoras_buttonActionPerformed(evt);
             }
         });
-        Fondo.add(registrarHoras_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, -1, -1));
+        Fondo.add(registrarHoras_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -340,6 +358,10 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         jLabel1.setText("Seleccione un empleado por favor.");
         Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jLabel2.setText("- Nómina seleccionada");
+        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -371,47 +393,55 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
 
         IDModificacion = (int) tblDatos_nomina.getValueAt(SelectedRow, 0);
 
-        try {
+        new Thread() {
+            @Override
+            public void run() {
 
-            Connection cn = Conexion.conectar();
-            PreparedStatement pst = cn.prepareStatement("select Salario_base, Horas_extras, Total_horasExtras,"
-                    + " Viaticos, Total_percepciones, INSS, IR, Total_deducciones, SalarioNeto "
-                    + " from Empleados where ID_empleado = '"+IDModificacion+"'");
+                loading.setVisible(true);
+                try {
 
-            ResultSet rs = pst.executeQuery();
+                    Connection cn = Conexion.conectar();
+                    PreparedStatement pst = cn.prepareStatement("select Salario_base, Horas_extras, Total_horasExtras,"
+                            + " Viaticos, Total_percepciones, INSS, IR, Total_deducciones, SalarioNeto "
+                            + " from Empleados where ID_empleado = '" + IDModificacion + "'");
 
-            if (rs.next()) {
+                    ResultSet rs = pst.executeQuery();
 
-                DefaultTableModel model1 = (DefaultTableModel) tblNomina.getModel();
+                    if (rs.next()) {
 
-                while (model1.getRowCount() != 0) {
+                        DefaultTableModel model1 = (DefaultTableModel) tblNomina.getModel();
 
-                    model1.removeRow(0);
+                        while (model1.getRowCount() != 0) {
+
+                            model1.removeRow(0);
+
+                        }
+
+                        Object[] row = new Object[9];
+                        row[0] = rs.getFloat("Salario_base");
+                        row[1] = rs.getInt("Horas_extras");
+                        row[2] = rs.getFloat("Total_horasExtras");
+                        row[3] = rs.getFloat("Viaticos");
+                        row[4] = rs.getFloat("Total_percepciones");
+                        row[5] = rs.getFloat("INSS");
+                        row[6] = rs.getFloat("IR");
+                        row[7] = rs.getFloat("Total_deducciones");
+                        row[8] = rs.getFloat("SalarioNeto");
+
+                        model.addRow(row);
+                        tblNomina.setModel(model);
+                        tblNomina.selectAll();
+
+                    }
+
+                } catch (SQLException e) {
+
+                    System.err.println(e);
 
                 }
-
-                Object[] row = new Object[9];
-                row[0] = rs.getFloat("Salario_base");
-                row[1] = rs.getInt("Horas_extras");
-                row[2] = rs.getFloat("Total_horasExtras");
-                row[3] = rs.getFloat("Viaticos");
-                row[4] = rs.getFloat("Total_percepciones");
-                row[5] = rs.getFloat("INSS");
-                row[6] = rs.getFloat("IR");
-                row[7] = rs.getFloat("Total_deducciones");
-                row[8] = rs.getFloat("SalarioNeto");
-
-                model.addRow(row);
-                tblNomina.setModel(model);
-                tblNomina.selectAll();
-
+                loading.setVisible(false);
             }
-
-        } catch (SQLException e) {
-
-            System.err.println(e);
-
-        }
+        }.start();
 
     }//GEN-LAST:event_tblDatos_nominaMouseClicked
 
@@ -513,16 +543,16 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
         if (Val == 0) {
 
             float totalPerc = 0, INSS = 0, IR = 0, TotalD = 0, SalarioNeto = 0;
-            
+
             try {
 
                 float salariobase = Float.parseFloat(salariobase_field.getText());
-                
+
                 Connection cn = Conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement("update Empleados set Horas_Extras = ?, Viaticos = ?, INSS = ?, "
                         + "IR = ?, SalarioNeto = ?, Total_horasExtras = ?, Total_percepciones = ?, Total_deducciones = ? where "
-                        + "ID_empleado = '"+ IDModificacion +"'");
-                
+                        + "ID_empleado = '" + IDModificacion + "'");
+
                 pst.setInt(1, HorasExtras);
                 pst.setFloat(2, viaticos);
                 pst.setFloat(3, Nomina.GetDedInss(salariobase));
@@ -530,11 +560,13 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
                 pst.setFloat(5, salariobase - Nomina.GetDedInss(salariobase) - Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
                 pst.setFloat(6, HorasExtras * 35);
                 pst.setFloat(7, salariobase + viaticos + (HorasExtras * 35));
-                pst.setFloat(8, Nomina.GetDedInss(salariobase)+Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
+                pst.setFloat(8, Nomina.GetDedInss(salariobase) + Nomina.GetDedIr(Nomina.GetDedInss(salariobase), salariobase));
                 pst.executeUpdate();
-                
+
                 JOptionPane.showMessageDialog(null, "Se han agregado los viaticos y horas extras al empleado.");
 
+              registrarHoras.dispose();
+                
             } catch (SQLException e) {
 
                 System.err.println(e);
@@ -557,6 +589,8 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
     private javax.swing.JPanel barra_superior2;
     private javax.swing.JTextField horasExtra_field;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -568,6 +602,7 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel loading;
     private javax.swing.JPanel panel_exit2;
     private javax.swing.JPanel panel_nomina;
     private javax.swing.JFrame registrarHoras;
