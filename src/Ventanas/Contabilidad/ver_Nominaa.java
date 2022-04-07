@@ -1,6 +1,7 @@
 package Ventanas.Contabilidad;
 
 import Clases.Apoyo.Conexion;
+import Clases.Apoyo.Utilities;
 import Clases.Generales.Empleados;
 import Clases.Generales.Nomina;
 import java.awt.Color;
@@ -17,7 +18,10 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
 
     Nomina nom = new Nomina();
     Empleados empleado = new Empleados();
+    Utilities ut = new Utilities();
     int cMouse, dMouse;
+    int IDModificacion = 0;
+    String cargo = "";
 
     public ver_Nominaa() {
         initComponents();
@@ -352,49 +356,79 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
 
     private void tblDatos_nominaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatos_nominaMouseClicked
 
-        int x = tblDatos_nomina.getSelectedRow();
+        //Reseteando tabla para que solo se muestre un empleado.
+        DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
 
-        if (x == -1) {
+        while (model.getRowCount() != 0) {
 
-            System.out.println("");
-
-        } else {
-
-            String cargo = (String) tblDatos_nomina.getValueAt(x, 2);
-            float salario = empleado.showSalarioBase(cargo);
-            float INSS = Nomina.GetDedInss(salario);
-            float IR = Nomina.GetDedIr(salario, INSS);
-            float totalDeducciones = INSS + IR;
-            float salario_neto = Nomina.GetSalarioNeto(salario, INSS, IR);
-
-            DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
-
-            Object[] row = new Object[9];
-            row[0] = salario;
-            row[1] = 0;
-            row[2] = 0;
-            row[3] = 0;
-            row[4] = 0;
-            row[5] = INSS;
-            row[6] = IR;
-            row[7] = totalDeducciones;
-            row[8] = salario_neto;
-
-            model.addRow(row);
-            tblNomina.setModel(model);
+            model.removeRow(0);
 
         }
+
+        tblNomina.setModel(model);
+
+        int SelectedRow = tblDatos_nomina.getSelectedRow();
+        
+        IDModificacion = (int) tblDatos_nomina.getValueAt(SelectedRow, 0);
+        
+        try {
+            
+            Connection cn = Conexion.conectar();
+            PreparedStatement pst = cn.prepareStatement("select Salario_base, Horas_extras, Total_horasExtras,"
+                    + " Viaticos, Total_percepciones, INSS, IR, Total_deducciones, SalarioNeto "
+                    + " from Empleados where ID_empleado = '1'");
+            
+            ResultSet rs = pst.executeQuery();
+            
+            float salariobase = rs.getFloat(1);
+            System.out.println(salariobase);
+            
+            /*
+            DefaultTableModel model1 = (DefaultTableModel) tblNomina.getModel();
+            
+            while(model1.getRowCount() != 0){
+                
+                model1.removeRow(0);
+                
+            }
+            
+            Object[] row = new Object[9];
+            row[0] = rs.getFloat("Salario_base");
+            row[1] = rs.getInt("Horas_extras");
+            row[2] = rs.getFloat("Total_horasExtras");
+            row[3] = rs.getFloat("Viaticos");
+            row[4] = rs.getFloat("Total_percepciones");
+            row[5] = rs.getFloat("INSS");
+            row[6] = rs.getFloat("IR");
+            row[7] = rs.getFloat("Total_deducciones");
+            row[8] = rs.getFloat("SalarioNeto");
+            
+            model.addRow(row);
+            tblNomina.setModel(model);
+            */
+        } catch (SQLException e) {
+            
+            System.err.println(e);
+            
+        }
+        
     }//GEN-LAST:event_tblDatos_nominaMouseClicked
 
     private void registrarHoras_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarHoras_buttonActionPerformed
+
         DefaultTableModel model = (DefaultTableModel) tblNomina.getModel();
+
         int x = tblNomina.getSelectedRow();
+
         if (x == -1) {
+
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro.", " -  Advertencia",
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro de la tabla de nomina de empleados.",
+                    " -  Advertencia",
                     JOptionPane.PLAIN_MESSAGE, icon);
 
         } else {
+
             registrarHoras.setVisible(true);
             registrarHoras.setSize(461, 515);
             registrarHoras.setLocationRelativeTo(null);
@@ -402,7 +436,6 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
             salariobase_field.setText(Float.toString((Float) tblNomina.getValueAt(x, 0)));
 
         }
-
 
     }//GEN-LAST:event_registrarHoras_buttonActionPerformed
 
@@ -452,6 +485,66 @@ public class ver_Nominaa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_horasExtra_fieldActionPerformed
 
     private void agregar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_buttonActionPerformed
+
+        int HorasExtras = 0;
+        float viaticos = 0;
+        int Val = 0;
+
+        if (ut.isInt(horasExtra_field.getText().trim())) {
+
+            HorasExtras = Integer.parseInt(horasExtra_field.getText().trim());
+
+        } else {
+
+            Val++;
+
+        }
+        if (ut.isFloat(viaticos_field.getText().trim())) {
+
+            viaticos = Float.parseFloat(viaticos_field.getText().trim());
+
+        } else {
+
+            Val++;
+
+        }
+
+        if (Val == 0) {
+
+            try {
+
+                Connection cn = Conexion.conectar();
+                PreparedStatement pst = cn.prepareStatement("update Empleados set Horas_extras = ?, Viaticos = ? where "
+                        + "ID_empleado = '" + IDModificacion + "'");
+                PreparedStatement pst2 = cn.prepareStatement("select HoraExtra from SalariosBase where Cargo = '" + cargo + "'");
+
+                pst.setInt(1, HorasExtras);
+                pst.setFloat(2, viaticos);
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Se han agregado las horas extras y\n"
+                        + "los viaticos al empleado.");
+
+                tblNomina.setValueAt(HorasExtras, 0, 1);
+                tblNomina.setValueAt(viaticos, 0, 3);
+
+                ResultSet rs = pst2.executeQuery();
+
+                float ingresoHora = rs.getFloat("HoraExtra");
+
+                tblNomina.setValueAt(HorasExtras * ingresoHora, 0, 2);
+
+            } catch (SQLException e) {
+
+                System.err.println(e);
+
+            }
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese valores validos para todos los campos.");
+
+        }
 
     }//GEN-LAST:event_agregar_buttonActionPerformed
 
