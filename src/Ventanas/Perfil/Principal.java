@@ -1,10 +1,10 @@
 package Ventanas.Perfil;
 
 import Ventanas.Contabilidad.Agregar;
-import Ventanas.Contabilidad.Ver_nomina;
 import Ventanas.Empleados.Agregar_Empleado;
 import Ventanas.Empleados.Gestionar_empleados;
 import Ventanas.Contabilidad.Salario_base;
+import Ventanas.Contabilidad.ver_Nominaa;
 import Ventanas.Usuarios.Gestionar;
 import Ventanas.Usuarios.login;
 import Ventanas.Usuarios.registroUsuario;
@@ -242,7 +242,7 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_verSalariosBtnActionPerformed
     private void verNominaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verNominaBtnActionPerformed
-        Ver_nomina x = new Ver_nomina();
+        ver_Nominaa x = new ver_Nominaa();
         Desktop.add(x);
         x.setVisible(true);
     }//GEN-LAST:event_verNominaBtnActionPerformed
