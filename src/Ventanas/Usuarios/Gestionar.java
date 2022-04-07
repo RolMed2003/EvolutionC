@@ -67,7 +67,6 @@ public class Gestionar extends javax.swing.JInternalFrame {
         buscarBtn = new javax.swing.JButton();
 
         jFrame1.setUndecorated(true);
-        jFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -106,9 +105,18 @@ public class Gestionar extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jButton1.setText("X");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 3, -1, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 3, -1, -1));
 
-        jFrame1.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 400, 240));
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+        );
 
         setClosable(true);
         setTitle("Gestion de usuarios");
@@ -235,7 +243,7 @@ public class Gestionar extends javax.swing.JInternalFrame {
             tipoCmb.setSelectedIndex(tipoIn);
             
             jFrame1.setVisible(true);
-            jFrame1.setSize(400, 230);
+            jFrame1.setSize(400, 270);
             jFrame1.setLocationRelativeTo(null);
 
         }

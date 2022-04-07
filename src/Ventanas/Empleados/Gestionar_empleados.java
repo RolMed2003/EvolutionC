@@ -106,6 +106,11 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
         editarEmpleados_button.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         editarEmpleados_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Iconos/Login/editar-documento.png"))); // NOI18N
         editarEmpleados_button.setText("Editar");
+        editarEmpleados_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarEmpleados_buttonActionPerformed(evt);
+            }
+        });
         getContentPane().add(editarEmpleados_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(1027, 142, 119, -1));
 
         eliminarEmpleados_button.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -144,6 +149,11 @@ public class Gestionar_empleados extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_buscarBtnActionPerformed
 
+    private void editarEmpleados_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarEmpleados_buttonActionPerformed
+
+        
+        
+    }//GEN-LAST:event_editarEmpleados_buttonActionPerformed
     private void eliminarEmpleados_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpleados_buttonActionPerformed
         
        //variables
