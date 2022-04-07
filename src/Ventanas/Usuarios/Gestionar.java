@@ -425,7 +425,7 @@ public class Gestionar extends javax.swing.JInternalFrame {
                 System.err.println("Error al modificar el usuario" + e);
             }
 
-            editar_frame.dispose();
+            editar_frame.setVisible(false);
         } else {
 
             Icon icon = new ImageIcon(getClass().getResource("../../Recursos/Iconos/JOption/advertencia.png"));
